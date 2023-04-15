@@ -937,6 +937,7 @@ static void InitTrainerBattleVariables(void)
     sTrainerBattleEndScript = NULL;
 }
 
+
 void TrainerBattleLoadArgs(const u8 *data)
 {
     InitTrainerBattleVariables();
