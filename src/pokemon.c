@@ -1751,8 +1751,8 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT(base, iv, ev, statIndex, field)               \
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
-    n = ModifyStatByNature(nature, n, statIndex);               \
+    s32 n = ((level/50 + 1) * baseStat) / 1.5 ; \
+    n = ModifyStatByNature(nature, n, statIndex) + (Sqrt(baseStat) + iv + ev/4 + level) / 2.5;               \
     if (B_FRIENDSHIP_BOOST == TRUE)                             \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
     SetMonData(mon, field, &n);                                 \
@@ -1789,8 +1789,8 @@ void CalculateMonStats(struct Pokemon *mon)
     }
     else
     {
-        s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
-        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
+        s32 n = (level/  100 + 1) * gSpeciesInfo[species].baseHP + level;
+        newMaxHP = n + (Sqrt(gSpeciesInfo[species].baseHP) + hpIV + hpEV/4 + level) / 2.5;
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
