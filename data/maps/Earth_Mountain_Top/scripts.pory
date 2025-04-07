@@ -1,0 +1,21 @@
+mapscripts Earth_Mountain_Top_MapScripts {}
+
+
+script Earth_Mountain_Top_Camera{
+    lock
+    special(SpawnCameraObject)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(
+        delay_16
+        walk_up*9
+    ))
+    waitmovement(0)
+    msgbox(format("There's two suns…\nIn the sky."), MSGBOX_DEFAULT)
+    closemessage
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(
+        walk_down*9
+    ))
+    waitmovement(0)
+    special(RemoveCameraObject)
+    release
+    end
+}

@@ -207,3 +207,13 @@ const u16 gMetatileAttributes_MysteryEventsHouse[] = INCBIN_U16("data/tilesets/s
 
 const u16 gMetatiles_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatiles.bin");
 const u16 gMetatileAttributes_UnionRoom[] = INCBIN_U16("data/tilesets/secondary/union_room/metatile_attributes.bin");
+
+const u16 gMetatiles_porytiles_test[] = INCBIN_U16("data/tilesets/primary/porytiles_test/metatiles.bin");
+const u16 gMetatileAttributes_porytiles_test[] = INCBIN_U16("data/tilesets/primary/porytiles_test/metatile_attributes.bin");
+
+const u16 gMetatiles_MountainPeak[] = INCBIN_U16("data/tilesets/primary/mountain_peak/metatiles.bin");
+const u16 gMetatileAttributes_MountainPeak[] = INCBIN_U16("data/tilesets/primary/mountain_peak/metatile_attributes.bin");
+
+
+const u16 gMetatiles_MountainPeak_Secondary[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/metatiles.bin");
+const u16 gMetatileAttributes_MountainPeak_Secondary[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/metatile_attributes.bin");

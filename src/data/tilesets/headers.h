@@ -825,3 +825,37 @@ const struct Tileset gTileset_UnionRoom =
     .metatileAttributes = gMetatileAttributes_UnionRoom,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_porytiles_test =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_porytiles_test,
+    .palettes = gTilesetPalettes_porytiles_test,
+    .metatiles = gMetatiles_porytiles_test,
+    .metatileAttributes = gMetatileAttributes_porytiles_test,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_MountainPeak =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_MountainPeak,
+    .palettes = gTilesetPalettes_MountainPeak,
+    .metatiles = gMetatiles_MountainPeak,
+    .metatileAttributes = gMetatileAttributes_MountainPeak,
+    .callback = NULL,
+};
+
+
+const struct Tileset gTileset_MountainPeak_Secondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MountainPeak_Secondary,
+    .palettes = gTilesetPalettes_MountainPeak_Secondary,
+    .metatiles = gMetatiles_MountainPeak_Secondary,
+    .metatileAttributes = gMetatileAttributes_MountainPeak_Secondary,
+    .callback = NULL,
+};
