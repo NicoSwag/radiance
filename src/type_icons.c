@@ -107,6 +107,7 @@ const union AnimCmd sSpriteAnim_TypeIcon_Mystery[] =
     ANIMCMD_END
 };
 
+
 const union AnimCmd sSpriteAnim_TypeIcon_Fire[] =
 {
     ANIMCMD_FRAME(TYPE_ICON_2_FRAME(TYPE_FIRE), 0),
@@ -132,6 +133,12 @@ const union AnimCmd sSpriteAnim_TypeIcon_Psychic[] =
     ANIMCMD_FRAME(TYPE_ICON_2_FRAME(TYPE_PSYCHIC), 0),
     ANIMCMD_END
 };
+
+const union AnimCmd sSpriteAnim_TypeIcon_Stellar[] =
+{
+    ANIMCMD_FRAME(TYPE_ICON_2_FRAME(TYPE_STELLAR), 0),
+    ANIMCMD_END
+};
 const union AnimCmd sSpriteAnim_TypeIcon_Ice[] =
 {
     ANIMCMD_FRAME(TYPE_ICON_2_FRAME(TYPE_ICE), 0),
@@ -152,6 +159,12 @@ const union AnimCmd sSpriteAnim_TypeIcon_Fairy[] =
     ANIMCMD_FRAME(TYPE_ICON_2_FRAME(TYPE_FAIRY), 0),
     ANIMCMD_END
 };
+const union AnimCmd sSpriteAnim_TypeIcon_Sound[] =
+{
+    ANIMCMD_FRAME(TYPE_ICON_3_FRAME(TYPE_SOUND), 0),
+    ANIMCMD_END
+};
+
 
 const union AnimCmd *const sSpriteAnimTable_TypeIcons[] =
 {
@@ -175,7 +188,8 @@ const union AnimCmd *const sSpriteAnimTable_TypeIcons[] =
     [TYPE_DRAGON] =     sSpriteAnim_TypeIcon_Dragon,
     [TYPE_DARK] =       sSpriteAnim_TypeIcon_Dark,
     [TYPE_FAIRY] =      sSpriteAnim_TypeIcon_Fairy,
-    [TYPE_STELLAR] =    sSpriteAnim_TypeIcon_Mystery,
+    [TYPE_STELLAR] =    sSpriteAnim_TypeIcon_Stellar,
+    [TYPE_SOUND] =    sSpriteAnim_TypeIcon_Sound,
 };
 
 const struct CompressedSpritePalette sTypeIconPal1 =
@@ -188,6 +202,12 @@ const struct CompressedSpritePalette sTypeIconPal2 =
 {
     .data = gBattleIcons_Pal2,
     .tag = TYPE_ICON_TAG_2
+};
+
+const struct CompressedSpritePalette sTypeIconPal3 =
+{
+    .data = gBattleIcons_Pal3,
+    .tag = TYPE_ICON_TAG_3
 };
 
 const struct OamData sOamData_TypeIcons =
@@ -213,6 +233,15 @@ const struct CompressedSpriteSheet sSpriteSheet_TypeIcons1 =
     .tag = TYPE_ICON_TAG,
 };
 
+const struct CompressedSpriteSheet sSpriteSheet_TypeIcons3 =
+{
+    .data = gBattleIcons_Gfx3,
+    .size = (8*16) * 10,
+    .tag = TYPE_ICON_TAG_3,
+};
+
+
+
 const struct SpriteTemplate sSpriteTemplate_TypeIcons1 =
 {
     .tileTag = TYPE_ICON_TAG,
@@ -228,6 +257,17 @@ const struct SpriteTemplate sSpriteTemplate_TypeIcons2 =
 {
     .tileTag = TYPE_ICON_TAG_2,
     .paletteTag = TYPE_ICON_TAG_2,
+    .oam = &sOamData_TypeIcons,
+    .anims = sSpriteAnimTable_TypeIcons,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_TypeIcon
+};
+
+const struct SpriteTemplate sSpriteTemplate_TypeIcons3 =
+{
+    .tileTag = TYPE_ICON_TAG_3,
+    .paletteTag = TYPE_ICON_TAG_3,
     .oam = &sOamData_TypeIcons,
     .anims = sSpriteAnimTable_TypeIcons,
     .images = NULL,
@@ -255,8 +295,10 @@ static void LoadTypeSpritesAndPalettes(void)
 
     LoadCompressedSpriteSheet(&sSpriteSheet_TypeIcons1);
     LoadCompressedSpriteSheet(&sSpriteSheet_TypeIcons2);
+    LoadCompressedSpriteSheet(&sSpriteSheet_TypeIcons3);
     LoadCompressedSpritePalette(&sTypeIconPal1);
     LoadCompressedSpritePalette(&sTypeIconPal2);
+    LoadCompressedSpritePalette(&sTypeIconPal3);
 }
 
 static void LoadTypeIconsPerBattler(u32 battler, u32 position)
@@ -381,7 +423,12 @@ static void SetTypeIconXY(s32* x, s32* y, u32 position, bool32 useDoubleBattleCo
 static void CreateSpriteAndSetTypeSpriteAttributes(u32 type, u32 x, u32 y, u32 position, u32 battler, bool32 useDoubleBattleCoords)
 {
     struct Sprite* sprite;
-    const struct SpriteTemplate* spriteTemplate = gTypesInfo[type].useSecondTypeIconPalette ? &sSpriteTemplate_TypeIcons2 : &sSpriteTemplate_TypeIcons1;
+    const struct SpriteTemplate* spriteTemplate;
+    if(gTypesInfo[type].useThirdTypeIconPalette){
+        spriteTemplate = &sSpriteTemplate_TypeIcons3;
+    }
+    else
+        spriteTemplate = gTypesInfo[type].useSecondTypeIconPalette ? &sSpriteTemplate_TypeIcons2 : &sSpriteTemplate_TypeIcons1;
     u32 spriteId = CreateSpriteAtEnd(spriteTemplate, x, y, UCHAR_MAX);
 
     if (spriteId == MAX_SPRITES)

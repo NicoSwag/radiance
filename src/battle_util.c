@@ -802,7 +802,7 @@ void HandleAction_ActionFinished(void)
         && GetMoveCategory(gCurrentMove) != DAMAGE_CATEGORY_STATUS
         && IsTypeStellarBoosted(gBattlerAttacker, moveType))
     {
-        ExpendTypeStellarBoost(gBattlerAttacker, moveType);
+        //ExpendTypeStellarBoost(gBattlerAttacker, moveType);
     }
     ClearDamageCalcResults();
     gCurrentMove = 0;
@@ -5787,7 +5787,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && !IsBattleMoveStatus(move)
              && IsBattlerTurnDamaged(gBattlerTarget)
              && !IS_BATTLER_OF_TYPE(battler, moveType)
-             && moveType != TYPE_STELLAR
+             //&& moveType != TYPE_STELLAR
              && moveType != TYPE_MYSTERY
              && IsBattlerAlive(battler))
             {
@@ -9365,7 +9365,8 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageCalculationData *
         modifier = uq4_12_multiply(modifier, (B_TERRAIN_TYPE_BOOST >= GEN_8 ? UQ_4_12(1.3) : UQ_4_12(1.5)));
     if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_PSYCHIC_TERRAIN) && moveType == TYPE_PSYCHIC)
         modifier = uq4_12_multiply(modifier, (B_TERRAIN_TYPE_BOOST >= GEN_8 ? UQ_4_12(1.3) : UQ_4_12(1.5)));
-
+    if(IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_GRAVITY) && moveType == TYPE_STELLAR)
+        modifier = uq4_12_multiply(modifier, 1.5);
     if (moveType == TYPE_ELECTRIC && ((gFieldStatuses & STATUS_FIELD_MUDSPORT)
     || AbilityBattleEffects(ABILITYEFFECT_FIELD_SPORT, 0, 0, ABILITYEFFECT_MUD_SPORT, 0)))
         modifier = uq4_12_multiply(modifier, UQ_4_12(B_SPORT_DMG_REDUCTION >= GEN_5 ? 0.33 : 0.5));

@@ -5,6 +5,7 @@ void LoadTypeIcons(u32);
 
 #define TYPE_ICON_TAG 0x2720
 #define TYPE_ICON_TAG_2 0x2721
+#define TYPE_ICON_TAG_3 0x2722
 #define NUM_FRAMES_HIDE_TYPE_ICON 10
 
 #define tMonPosition      data[0]
@@ -14,5 +15,6 @@ void LoadTypeIcons(u32);
 
 #define TYPE_ICON_1_FRAME(monType) ((monType - 1) * 2)
 #define TYPE_ICON_2_FRAME(monType) ((monType - 11) * 2)
+#define TYPE_ICON_3_FRAME(monType) ((monType - 21) * 2)
 
 #endif // GUARD_TYPE_ICONS_H
