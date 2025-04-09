@@ -509,7 +509,7 @@ static void ExitSoar(void)
 
 // movement limits
 #define MIN_Z Q_8_7(4, 0)
-#define MAX_Z Q_8_7(50, 0)
+#define MAX_Z Q_8_7(16, 0)
 #define MIN_X Q_8_7(0, 0)
 #define MAX_X Q_8_7(30*8, 0)
 #define MIN_Y Q_8_7(0, 0)
