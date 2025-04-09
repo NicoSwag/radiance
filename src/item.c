@@ -1022,3 +1022,13 @@ u32 GetItemStatus2Mask(u16 itemId)
     else
         return 0;
 }
+
+u32 ItemId_GetCoinPrice(u16 itemId)
+{
+    return gItemsInfo[SanitizeItemId(itemId)].coinPrice;
+}
+
+u32 ItemId_GetBpPrice(u16 itemId)
+{
+    return gItemsInfo[SanitizeItemId(itemId)].bpPrice;
+}
