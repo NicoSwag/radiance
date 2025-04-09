@@ -566,7 +566,7 @@ TEST("Battle strings fit on the battle message window")
     const u32 fontId = FONT_NORMAL;
     u32 battleStringId = 0;
     u8 *battleString = Alloc(BATTLE_STRING_BUFFER_SIZE);
-
+ 
     s32 sixDigitNines = 999999;                                 // 36 pixels.
     u8 nickname[POKEMON_NAME_LENGTH + 1] = _("MMMMMMMMMMMM");   // 72 pixels.
     u32 longMoveID = MOVE_NATURES_MADNESS;                      // 89 pixels.
@@ -808,6 +808,7 @@ TEST("Battle strings fit on the battle message window")
         StringCopy(gStringVar2, nickname);
         StringCopy(gStringVar3, boxName);
         break;
+
     default:
         break;
     }

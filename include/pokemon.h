@@ -371,6 +371,8 @@ struct SpeciesInfo /*0xC4*/
     u16 padding2:4;
     u16 itemCommon;
     u16 itemRare;
+    u16 materialDropped;
+    u8 materialAmount;
     u8 genderRatio;
     u8 eggCycles;
     u8 friendship;

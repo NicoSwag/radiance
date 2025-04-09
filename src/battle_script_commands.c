@@ -18786,3 +18786,23 @@ void BS_RestoreSavedMove(void)
     gBattleStruct->savedMove = MOVE_NONE;
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
+
+void BS_GiveMaterial(void)
+{
+    NATIVE_ARGS();
+    u16 materialAmount = gSpeciesInfo[gBattleMons[gBattlerTarget].species].materialAmount;
+    u16 material = gSpeciesInfo[gBattleMons[gBattlerTarget].species].materialDropped;
+    if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER)) && materialAmount != 0)
+    {
+        
+        AddBagItem(material, materialAmount);
+        PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff1, 1, materialAmount);
+        PREPARE_ITEM_BUFFER(gBattleTextBuff2, material);
+        BattleScriptPush(cmd->nextInstr);
+        gBattlescriptCurrInstr = BattleScript_PrintMaterialString;
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}

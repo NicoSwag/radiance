@@ -2586,3 +2586,7 @@
 	printstring STRINGID_EMPTYSTRING3
 	waitmessage 1
 	.endm
+
+	.macro givematerial
+	callnative BS_GiveMaterial
+	.endm

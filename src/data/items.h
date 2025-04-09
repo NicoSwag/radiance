@@ -120,6 +120,11 @@ static const u8 sKingsRockDesc[]      = _("A hold item that\n"
                                           "may cause flinching\n"
                                           "when the foe is hit.");
 
+static const u8 sMaterialDesc[]      = _("Material dropped by\n"
+                                          "a Pokémon. Can be\n"
+                                          "used to make items.");
+                                          
+
 static const u8 sFigyBerryDesc[]      = _("A hold item that\n"
                                           "restores HP but\n"
                                           "may confuse.");
@@ -8788,6 +8793,18 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = EVO_HELD_ITEM_FIELD_FUNC,
         .effect = gItemEffect_EvoItem,
         .flingPower = 30,
+        .iconPic = gItemIcon_RazorFang,
+        .iconPalette = gItemIconPalette_RazorFang,
+    },
+
+    [ITEM_ZUBAT_FANG] =
+    {
+        .name = _("Zubat Fang"),
+        .pluralName = _("Zubat Fangs"),
+        .price = 100,
+        .description = sMaterialDesc,
+        .pocket = POCKET_ITEMS,
+        .flingPower = 10,
         .iconPic = gItemIcon_RazorFang,
         .iconPalette = gItemIconPalette_RazorFang,
     },

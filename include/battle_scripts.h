@@ -135,6 +135,7 @@ extern const u8 BattleScript_ThrashConfuses[];
 extern const u8 BattleScript_MoveUsedIsConfused[];
 extern const u8 BattleScript_MoveUsedIsConfusedNoMore[];
 extern const u8 BattleScript_PrintPayDayMoneyString[];
+extern const u8 BattleScript_PrintMaterialString[];
 extern const u8 BattleScript_WrapTurnDmg[];
 extern const u8 BattleScript_WrapEnds[];
 extern const u8 BattleScript_MoveUsedIsInLove[];

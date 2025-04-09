@@ -5555,6 +5555,7 @@ BattleScript_LocalBattleWonReward::
 BattleScript_PayDayMoneyAndPickUpItems::
 	givepaydaymoney
 	pickup
+	givematerial
 	end2
 
 BattleScript_LocalBattleLost::
@@ -7286,6 +7287,12 @@ BattleScript_PrintPayDayMoneyString::
 	printstring STRINGID_PLAYERPICKEDUPMONEY
 	waitmessage B_WAIT_TIME_LONG
 	return
+
+BattleScript_PrintMaterialString::
+	printstring STRINGID_GOTMATERIALAFTERBATTLE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 
 BattleScript_WrapTurnDmg::
 	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_DoTurnDmgEnd
