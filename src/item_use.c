@@ -1608,6 +1608,7 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
         // TODO: handle key items with callbacks to menus allow to be used by registering them.
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
     }
+}
 void ItemUseOutOfBattle_EonFlute(u8 taskId)
 {
 	s16* data = gTasks[taskId].data;

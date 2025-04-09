@@ -26,6 +26,7 @@
 #include "text_window.h"
 #include "trig.h"
 #include "window.h"
+#include "malloc.h"
 
 #define NOCASH_BREAKPOINT asm("mov r11, r11")
 
@@ -282,8 +283,8 @@ static void CB2_LoadSoarGraphics(void)
 		LZ77UnCompVram(sRegionMapBkgnd_ImageLZ, (void *)(VRAM + BG2_IMAGE_OFFSET));
 
 		// Load tilemap
-		LZ77UnCompVram(sRegionMapBkgnd_TilemapLZ, gDecompressionBuffer);
-		src = gDecompressionBuffer;
+		void *buffer = malloc_and_decompress(sRegionMapBkgnd_TilemapLZ, NULL);
+		src = buffer;
 		dest = (void *)(VRAM + BG2_TILEMAP_OFFSET);
 		// Copy each row to VRAM
 		for (i = 0; i < 64; i++)
@@ -292,15 +293,15 @@ static void CB2_LoadSoarGraphics(void)
 			src += 64;
 			dest += 128;
 		}
-
+		Free(buffer);
 		// load palette
 		LoadPalette(sRegionMapBkgnd_Pal, 0x70, 64);
-
 		// Create sprites
 		LoadEonGraphics();
 		gPlttBufferUnfaded[0] = RGB(8, 8, 20);
 
 		gMain.state++;
+		
 		break;
 	case 1:
 		LoadUserWindowBorderGfx(0, 1, 14);
