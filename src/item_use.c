@@ -45,6 +45,8 @@
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/map_types.h"
+#include "constants/vars.h"
+#include "soar.h"
 
 static void SetUpItemUseCallback(u8);
 static void FieldCB_UseItemOnField(void);
@@ -1606,6 +1608,18 @@ void ItemUseOutOfBattle_TownMap(u8 taskId)
         // TODO: handle key items with callbacks to menus allow to be used by registering them.
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
     }
+void ItemUseOutOfBattle_EonFlute(u8 taskId)
+{
+	s16* data = gTasks[taskId].data;
+	
+	if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
+	{
+        sItemUseOnFieldCB = ItemUseOnFieldCB_EonFlute;
+		SetUpItemUseOnFieldCallback(taskId);
+	}
+	else {
+		DisplayDadsAdviceCannotUseItemMessage(taskId, data[3]);
+	}
 }
 
 #undef tUsingRegisteredKeyItem
