@@ -1858,7 +1858,7 @@
 	
 	@ Sets the text of the name box in the next-shown message box.
 	.macro speakername text:req
-	.byte 0xe3
+	.byte SCR_OP_SETSPEAKER
 	.4byte \text
 	.endm
 
@@ -1888,6 +1888,11 @@
 	.byte SCR_OP_DYNMULTIPUSH
 	.4byte \name
 	.2byte \id
+	.endm
+
+	.macro setspeaker text:req
+	.byte SCR_OP_SETSPEAKER
+	.4byte \text
 	.endm
 
 	.macro dynmultistack left:req, top:req, ignoreBPress:req, maxBeforeScroll:req, shouldSort:req, initialSelected:req, callbacks:req
