@@ -203,7 +203,7 @@ const u8 gText_BerriesPocket[] = _("BERRIES");
 const u8 gText_KeyItemsPocket[] = _("KEY ITEMS");
 const u8 gText_MedicinePocket[] = _("MEDICINE");
 const u8 gText_BattleItemsPocket[] = _("BATTLE ITEM");
-const u8 gText_TreasuresPocket[] = _("TREASURES");
+const u8 gText_TreasuresPocket[] = _("MATERIALS");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
