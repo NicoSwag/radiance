@@ -50,6 +50,8 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
+#include "even_crafting_ui.h"
+
 // Menu actions
 enum
 {

@@ -137,10 +137,8 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	lock
-	speakername Test_Name
-	msgbox Test_Msgbox, MSGBOX_DEFAULT
-	closemessage
+	fadescreen FADE_TO_BLACK
+	openevencrafting ECU_DEFAULT
 	release
 	end
 

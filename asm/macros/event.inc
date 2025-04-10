@@ -2532,3 +2532,10 @@
 	compare \a, \b
 	cant_see_if 5
 	.endm
+	
+	@ Opens the specified crafting UI
+	.macro openevencrafting ui:req
+	callnative OpenEvenCraftingUI_FromScript
+	.byte \ui
+	.endm
+
