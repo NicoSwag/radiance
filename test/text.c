@@ -596,9 +596,11 @@ TEST("Battle strings fit on the battle message window")
     PREPARE_STRING_BUFFER(gBattleTextBuff1, STRINGID_EMPTYSTRING3);
     PREPARE_STRING_BUFFER(gBattleTextBuff2, STRINGID_EMPTYSTRING3);
     PREPARE_STRING_BUFFER(gBattleTextBuff3, STRINGID_EMPTYSTRING3);
+    PREPARE_STRING_BUFFER(gBattleTextBuff4, STRINGID_EMPTYSTRING3);
     *gStringVar1 = EOS;
     *gStringVar2 = EOS;
     *gStringVar3 = EOS;
+    *gStringVar4 = EOS;
 
     // Set positions
     gBattlerPositions[0] = B_POSITION_PLAYER_LEFT;

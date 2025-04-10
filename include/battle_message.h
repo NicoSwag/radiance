@@ -85,6 +85,7 @@
 #define B_TXT_ATK_TRAINER_NAME_WITH_CLASS 0x45
 #define B_TXT_SCR_TEAM1 0x46
 #define B_TXT_SCR_TEAM2 0x47
+#define B_TXT_BUFF4 0x48    
 
 #define B_BUFF_STRING                       0
 #define B_BUFF_NUMBER                       1
@@ -244,7 +245,7 @@ struct BattleMsgData
     u8 itemEffectBattler;
     u8 moveType;
     u16 abilities[MAX_BATTLERS_COUNT];
-    u8 textBuffs[3][TEXT_BUFF_ARRAY_COUNT];
+    u8 textBuffs[4][TEXT_BUFF_ARRAY_COUNT];
 };
 
 void BufferStringBattle(u16 stringID, u32 battler);

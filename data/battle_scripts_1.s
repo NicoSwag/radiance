@@ -7293,6 +7293,11 @@ BattleScript_PrintMaterialString::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_PrintMaterialStringDouble::
+	printstring STRINGID_GOTMATERIALAFTERBATTLEDOUBLE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 
 BattleScript_WrapTurnDmg::
 	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_DoTurnDmgEnd

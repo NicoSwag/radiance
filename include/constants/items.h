@@ -998,11 +998,12 @@
 #define ITEM_BEFORE_MATERIAL ITEM_STRANGE_BALL
 
 #define ITEM_ZUBAT_FANG ITEM_STRANGE_BALL + 1
+#define ITEM_VENOM_SAMPLE ITEM_STRANGE_BALL + 2
 
 // HOPO BERRY
 // LEGEND PLATE
 
-#define ITEMS_COUNT ITEM_ZUBAT_FANG + 1
+#define ITEMS_COUNT ITEM_VENOM_SAMPLE + 1
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

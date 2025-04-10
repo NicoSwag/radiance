@@ -8800,13 +8800,23 @@ const struct Item gItemsInfo[] =
     [ITEM_ZUBAT_FANG] =
     {
         .name = _("Zubat Fang"),
-        .pluralName = _("Zubat Fangs"),
         .price = 100,
         .description = sMaterialDesc,
         .pocket = POCKET_TREASURES,
         .flingPower = 10,
         .iconPic = gItemIcon_RazorFang,
         .iconPalette = gItemIconPalette_RazorFang,
+    },
+
+    [ITEM_VENOM_SAMPLE] =
+    {
+        .name = _("Venom Sample"),
+        .price = 100,
+        .description = sMaterialDesc,
+        .pocket = POCKET_TREASURES,
+        .flingPower = 10,
+        .iconPic = gItemIcon_BlackSludge,
+        .iconPalette = gItemIconPalette_BlackSludge,
     },
 
     [ITEM_EVIOLITE] =

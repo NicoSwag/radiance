@@ -373,6 +373,10 @@ struct SpeciesInfo /*0xC4*/
     u16 itemRare;
     u16 materialDropped;
     u8 materialAmount;
+    u8 materialProbability;
+    u16 materialDropped2;
+    u8 materialAmount2;
+    u8 materialProbability2;
     u8 genderRatio;
     u8 eggCycles;
     u8 friendship;

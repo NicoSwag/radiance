@@ -5458,8 +5458,12 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
 #if P_FAMILY_ZUBAT
     [SPECIES_ZUBAT] =
     {
-        .materialDropped = ITEM_ZUBAT_FANG,
-        .materialAmount = 1,
+        .materialDropped = ITEM_VENOM_SAMPLE,
+        .materialAmount = 3,
+        .materialProbability = 70,
+        .materialDropped2 = ITEM_ZUBAT_FANG,
+        .materialAmount2 = 2,
+        .materialProbability2 = 20,
         .baseHP        = 40,
         .baseAttack    = 45,
         .baseDefense   = 35,
