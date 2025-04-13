@@ -22,6 +22,16 @@
       "map": "MAP_EARTH_FACTORY_AREA_EAST",
       "offset": 0,
       "direction": "right"
+    },
+    {
+      "map": "MAP_EARTH_FROZEN_CREVICE",
+      "offset": 0,
+      "direction": "up"
+    },
+    {
+      "map": "MAP_EARTH_FROZEN_CREVICE_EAST",
+      "offset": 84,
+      "direction": "up"
     }
   ],
   "object_events": [

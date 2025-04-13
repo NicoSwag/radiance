@@ -19,11 +19,6 @@
       "direction": "right"
     },
     {
-      "map": "MAP_EARTH_MARBLE_PLAINS",
-      "offset": -14,
-      "direction": "up"
-    },
-    {
       "map": "MAP_EARTH_ICE_FLOES_WEST",
       "offset": -60,
       "direction": "down"
@@ -32,6 +27,11 @@
       "map": "MAP_EARTH_ICE_FLOES_EAST",
       "offset": 29,
       "direction": "down"
+    },
+    {
+      "map": "MAP_EARTH_MARBLE_PLAINS_WEST",
+      "offset": -4,
+      "direction": "up"
     }
   ],
   "object_events": [

@@ -32,6 +32,16 @@
       "map": "MAP_EARTH_MOSSDEEP_RUINS_EAST",
       "offset": 5,
       "direction": "up"
+    },
+    {
+      "map": "MAP_EARTH_FACTORY_AREA_WEST",
+      "offset": -84,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_EARTH_FACTORY_AREA_EAST",
+      "offset": 6,
+      "direction": "down"
     }
   ],
   "object_events": [
