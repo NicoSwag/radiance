@@ -18806,21 +18806,15 @@ void BS_GiveMaterial(void)
 
     u8 materialRoll = Random() % 100;
     u8 materialRoll2 = Random() % 100;
-    u8 materialFinalAmount;
-    u8 materialFinalAmount2;
 
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK | BATTLE_TYPE_TRAINER)))
     
         if(materialAmount !=0 && materialAmount2 !=0 && materialRoll < materialProbability && materialRoll2 < materialProbability2)
         {
-            materialFinalAmount = Random() % (materialAmount-1) + 1;
-            materialFinalAmount2 = Random() % (materialAmount2-1) + 1;
-            AddBagItem(material, materialFinalAmount);
-            AddBagItem(material2, materialFinalAmount2);
-            PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff1, 1, materialFinalAmount);
-            PREPARE_ITEM_BUFFER(gBattleTextBuff2, material);
-            PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff3, 1, materialFinalAmount2);
-            PREPARE_ITEM_BUFFER(gBattleTextBuff4, material2);
+            AddBagItem(material, materialAmount);
+            AddBagItem(material2, materialAmount2);
+            PREPARE_ITEM_BUFFER(gBattleTextBuff1, material);
+            PREPARE_ITEM_BUFFER(gBattleTextBuff2, material2);
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_PrintMaterialStringDouble;
 
@@ -18828,10 +18822,8 @@ void BS_GiveMaterial(void)
         else if(materialAmount !=0 && materialRoll < materialProbability)
         {
         
-            materialFinalAmount = Random() % (materialAmount-1) + 1;
-            AddBagItem(material, materialFinalAmount);
-            PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff1, 1, materialFinalAmount);
-            PREPARE_ITEM_BUFFER(gBattleTextBuff2, material);
+            AddBagItem(material, materialAmount);
+            PREPARE_ITEM_BUFFER(gBattleTextBuff1, material);
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_PrintMaterialString;
         
@@ -18839,10 +18831,8 @@ void BS_GiveMaterial(void)
         else if(materialAmount2 !=0 && materialRoll2 < materialProbability2)
         {
         
-            materialFinalAmount2 = Random() % (materialAmount2-1) + 1;
-            AddBagItem(material2, materialFinalAmount2);
-            PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff1, 1, materialFinalAmount2);
-            PREPARE_ITEM_BUFFER(gBattleTextBuff2, material2);
+            AddBagItem(material2, materialAmount2);
+            PREPARE_ITEM_BUFFER(gBattleTextBuff1, material2);
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_PrintMaterialString;
         }

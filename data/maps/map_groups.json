@@ -38,7 +38,8 @@
   ],
   "gMapGroup_Radiance_Earth": [
     "Earth_Mountain_Top",
-    "Earth_test"
+    "Earth_test",
+    "Earth_Mountain_Side"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

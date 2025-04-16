@@ -5308,14 +5308,26 @@
     {
       "id": "LAYOUT_EARTH_TEST",
       "name": "Earth_test_Layout",
-      "width": 30,
-      "height": 30,
+      "width": 69,
+      "height": 69,
       "border_width": 3,
       "border_height": 2,
       "primary_tileset": "gTileset_MountainPeak",
       "secondary_tileset": "gTileset_MountainPeak_Secondary",
       "border_filepath": "data/layouts/Earth_test/border.bin",
       "blockdata_filepath": "data/layouts/Earth_test/map.bin"
+    },
+    {
+      "id": "LAYOUT_EARTH_MOUNTAIN_SIDE",
+      "name": "Earth_Mountain_Side_Layout",
+      "width": 84,
+      "height": 80,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MountainPeak",
+      "secondary_tileset": "gTileset_MountainPeak_Secondary",
+      "border_filepath": "data/layouts/Earth_Mountain_Side/border.bin",
+      "blockdata_filepath": "data/layouts/Earth_Mountain_Side/map.bin"
     }
   ]
 }

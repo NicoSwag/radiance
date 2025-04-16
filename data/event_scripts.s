@@ -1161,3 +1161,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Earth_Mountain_Top/scripts.inc"
 
 	.include "data/maps/Earth_test/scripts.inc"
+
+	.include "data/maps/Earth_Mountain_Side/scripts.inc"

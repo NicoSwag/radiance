@@ -5,7 +5,7 @@ const struct CraftingIngredient sPotionIngredients[] =
     [0] =
     {
         .item = ITEM_ORAN_BERRY,
-        .count = 1,
+        .count = 2,
         .isConsumed= TRUE,
     },
     [1] =
