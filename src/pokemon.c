@@ -1224,43 +1224,43 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         iv = value & MAX_IV_MASK;
         SetBoxMonData(boxMon, MON_DATA_HP_IV, &iv);
         if(iv == 31){
-            evValue = 3;
+            evValue = 30;
             SetBoxMonData(boxMon, MON_DATA_HP_EV, &evValue);
         }
         else if (iv>= 26 && iv<= 30){
-            evValue = 2;
+            evValue = 20;
             SetBoxMonData(boxMon, MON_DATA_HP_EV, &evValue);
         }
         else if (iv>= 20 && iv<= 25){
-            evValue = 1;
+            evValue = 10;
             SetBoxMonData(boxMon, MON_DATA_HP_EV, &evValue);
         }
         iv = (value & (MAX_IV_MASK << 5)) >> 5;
         SetBoxMonData(boxMon, MON_DATA_ATK_IV, &iv);
         if(iv == 31){
-            evValue = 3;
+            evValue = 30;
             SetBoxMonData(boxMon, MON_DATA_ATK_EV, &evValue);
         }
         else if (iv>= 26 && iv<= 30){
-            evValue = 2;
+            evValue = 20;
             SetBoxMonData(boxMon, MON_DATA_ATK_EV, &evValue);
         }
         else if (iv>= 20 && iv<= 25){
-            evValue = 1;
+            evValue = 10;
             SetBoxMonData(boxMon, MON_DATA_ATK_EV, &evValue);
         }
         iv = (value & (MAX_IV_MASK << 10)) >> 10;
         SetBoxMonData(boxMon, MON_DATA_DEF_IV, &iv);
         if(iv == 31){
-            evValue = 3;
+            evValue = 30;
             SetBoxMonData(boxMon, MON_DATA_DEF_EV, &evValue);
         }
         else if (iv>= 26 && iv<= 30){
-            evValue = 2;
+            evValue = 20;
             SetBoxMonData(boxMon, MON_DATA_DEF_EV, &evValue);
         }
         else if (iv>= 20 && iv<= 25){
-            evValue = 1;
+            evValue = 10;
             SetBoxMonData(boxMon, MON_DATA_DEF_EV, &evValue);
         }
         value = (u16)(ivRandom >> 16);
@@ -1268,43 +1268,43 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         iv = value & MAX_IV_MASK;
         SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &iv);
         if(iv == 31){
-            evValue = 3;
+            evValue = 30;
             SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &evValue);
         }
         else if (iv>= 26 && iv<= 30){
-            evValue = 2;
+            evValue = 20;
             SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &evValue);
         }
         else if (iv>= 20 && iv<= 25){
-            evValue = 1;
+            evValue = 10;
             SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &evValue);
         }
         iv = (value & (MAX_IV_MASK << 5)) >> 5;
         SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
         if(iv == 31){
-            evValue = 3;
+            evValue = 30;
             SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &evValue);
         }
         else if (iv>= 26 && iv<= 30){
-            evValue = 2;
+            evValue = 20;
             SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &evValue);
         }
         else if (iv>= 20 && iv<= 25){
-            evValue = 1;
+            evValue = 10;
             SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &evValue);
         }
         iv = (value & (MAX_IV_MASK << 10)) >> 10;
         SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
         if(iv == 31){
-            evValue = 3;
+            evValue = 30;
             SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &evValue);
         }
         else if (iv>= 26 && iv<= 30){
-            evValue = 2;
+            evValue = 20;
             SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &evValue);
         }
         else if (iv>= 20 && iv<= 25){
-            evValue = 1;
+            evValue = 10;
             SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &evValue);
         }
         if (gSpeciesInfo[species].perfectIVCount != 0)
@@ -1828,7 +1828,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
     s32 n = ((level/50 + 1) * baseStat) / 1.5 ; \
-    n = ModifyStatByNature(nature, n, statIndex) + (Sqrt(baseStat) * ev + level) / 2.5;               \
+    n = ModifyStatByNature(nature, n, statIndex) + (Sqrt(baseStat) * (ev/10) + level) / 2.5;               \
     if (B_FRIENDSHIP_BOOST == TRUE)                             \
         n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));\
     SetMonData(mon, field, &n);                                 \
@@ -1866,7 +1866,7 @@ void CalculateMonStats(struct Pokemon *mon)
     else
     {
         s32 n = (level/  100 + 1) * gSpeciesInfo[species].baseHP + level;
-        newMaxHP = n + (Sqrt(gSpeciesInfo[species].baseHP) * hpEV + level) / 2.5;
+        newMaxHP = n + (Sqrt(gSpeciesInfo[species].baseHP) * (hpEV/10) + level) / 2.5;
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
@@ -3869,7 +3869,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     u16 evCount;
 
     // Determine the EV cap to use
-    u32 maxAllowedEVs = 10;
+    u32 maxAllowedEVs = 6000;
 
     // Get item hold effect
     heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
