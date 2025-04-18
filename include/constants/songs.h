@@ -546,8 +546,11 @@
 #define PH_NURSE_SOLO               609
 
 #define MUS_VS_WILD_RADIANCE        610
+#define MUS_VS_RIVAL_RADIANCE       611
+#define MUS_VS_TRAINER_RADIANCE     612
+#define MUS_VS_LEADER_RADIANCE      613
 
-#define END_MUS                     MUS_VS_WILD_RADIANCE
+#define END_MUS                     MUS_VS_LEADER_RADIANCE
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 

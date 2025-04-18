@@ -612,6 +612,9 @@ gSongTable::
 	song ph_nurse_held, 2, 2
 	song ph_nurse_solo, 2, 2
 	song mus_vs_wild_radiance, 0, 0
+	song mus_vs_rival_radiance, 0, 0
+	song mus_vs_trainer_radiance, 0, 0
+	song mus_vs_leader_radiance, 0, 0
 
 	.align 2
 dummy_song_header:

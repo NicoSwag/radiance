@@ -4086,6 +4086,9 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(PH_NURSE_HELD) \
     X(PH_NURSE_SOLO) \
     X(MUS_VS_WILD_RADIANCE) \
+    X(MUS_VS_RIVAL_RADIANCE) \
+    X(MUS_VS_TRAINER_RADIANCE) \
+    X(MUS_VS_LEADER_RADIANCE) \
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \

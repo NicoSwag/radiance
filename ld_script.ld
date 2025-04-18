@@ -1265,6 +1265,10 @@ SECTIONS {
         sound/songs/midi/ph_nurse_held.o(.rodata);
         sound/songs/midi/ph_nurse_solo.o(.rodata);
         sound/songs/midi/mus_vs_wild_radiance.o(.rodata);
+        sound/songs/midi/mus_vs_rival_radiance.o(.rodata);
+        sound/songs/midi/mus_vs_trainer_radiance.o(.rodata);
+        sound/songs/midi/mus_vs_leader_radiance.o(.rodata);
+
     } > ROM =0
 
     lib_rodata :

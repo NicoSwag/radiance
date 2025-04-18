@@ -149,15 +149,18 @@ Test_Msgbox:
 	.string "Test.$"
 
 Debug_EventScript_Script_2::
+	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, Route104_Text_MayDefeat
 	release
 	end
 
 Debug_EventScript_Script_3::
+	trainerbattle_no_intro TRAINER_CALVIN_1, Route102_Text_CalvinDefeated
 	release
 	end
 
 Debug_EventScript_Script_4::
 	release
+	trainerbattle_no_intro TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneDefeat
 	end
 
 Debug_EventScript_Script_5::
