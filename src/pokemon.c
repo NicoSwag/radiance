@@ -1217,96 +1217,22 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     else
     {
         u32 iv;
-        u32 evValue;
         u32 ivRandom = Random32();
         value = (u16)ivRandom;
 
         iv = value & MAX_IV_MASK;
-        SetBoxMonData(boxMon, MON_DATA_HP_IV, &iv);
-        if(iv == 31){
-            evValue = 30;
-            SetBoxMonData(boxMon, MON_DATA_HP_EV, &evValue);
-        }
-        else if (iv>= 26 && iv<= 30){
-            evValue = 20;
-            SetBoxMonData(boxMon, MON_DATA_HP_EV, &evValue);
-        }
-        else if (iv>= 20 && iv<= 25){
-            evValue = 10;
-            SetBoxMonData(boxMon, MON_DATA_HP_EV, &evValue);
-        }
+        SetBoxMonData(boxMon, MON_DATA_HP_EV, &iv);
         iv = (value & (MAX_IV_MASK << 5)) >> 5;
-        SetBoxMonData(boxMon, MON_DATA_ATK_IV, &iv);
-        if(iv == 31){
-            evValue = 30;
-            SetBoxMonData(boxMon, MON_DATA_ATK_EV, &evValue);
-        }
-        else if (iv>= 26 && iv<= 30){
-            evValue = 20;
-            SetBoxMonData(boxMon, MON_DATA_ATK_EV, &evValue);
-        }
-        else if (iv>= 20 && iv<= 25){
-            evValue = 10;
-            SetBoxMonData(boxMon, MON_DATA_ATK_EV, &evValue);
-        }
+        SetBoxMonData(boxMon, MON_DATA_ATK_EV, &iv);
         iv = (value & (MAX_IV_MASK << 10)) >> 10;
-        SetBoxMonData(boxMon, MON_DATA_DEF_IV, &iv);
-        if(iv == 31){
-            evValue = 30;
-            SetBoxMonData(boxMon, MON_DATA_DEF_EV, &evValue);
-        }
-        else if (iv>= 26 && iv<= 30){
-            evValue = 20;
-            SetBoxMonData(boxMon, MON_DATA_DEF_EV, &evValue);
-        }
-        else if (iv>= 20 && iv<= 25){
-            evValue = 10;
-            SetBoxMonData(boxMon, MON_DATA_DEF_EV, &evValue);
-        }
+        SetBoxMonData(boxMon, MON_DATA_DEF_EV, &iv);
         value = (u16)(ivRandom >> 16);
-
         iv = value & MAX_IV_MASK;
-        SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &iv);
-        if(iv == 31){
-            evValue = 30;
-            SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &evValue);
-        }
-        else if (iv>= 26 && iv<= 30){
-            evValue = 20;
-            SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &evValue);
-        }
-        else if (iv>= 20 && iv<= 25){
-            evValue = 10;
-            SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &evValue);
-        }
+        SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &iv);
         iv = (value & (MAX_IV_MASK << 5)) >> 5;
-        SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
-        if(iv == 31){
-            evValue = 30;
-            SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &evValue);
-        }
-        else if (iv>= 26 && iv<= 30){
-            evValue = 20;
-            SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &evValue);
-        }
-        else if (iv>= 20 && iv<= 25){
-            evValue = 10;
-            SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &evValue);
-        }
+        SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &iv);
         iv = (value & (MAX_IV_MASK << 10)) >> 10;
-        SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
-        if(iv == 31){
-            evValue = 30;
-            SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &evValue);
-        }
-        else if (iv>= 26 && iv<= 30){
-            evValue = 20;
-            SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &evValue);
-        }
-        else if (iv>= 20 && iv<= 25){
-            evValue = 10;
-            SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &evValue);
-        }
+        SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &iv);
         if (gSpeciesInfo[species].perfectIVCount != 0)
         {
             iv = MAX_PER_STAT_IVS;
@@ -1328,22 +1254,22 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                 switch (selectedIvs[i])
                 {
                 case STAT_HP:
-                    SetBoxMonData(boxMon, MON_DATA_HP_IV, &iv);
+                    SetBoxMonData(boxMon, MON_DATA_HP_EV, &iv);
                     break;
                 case STAT_ATK:
-                    SetBoxMonData(boxMon, MON_DATA_ATK_IV, &iv);
+                    SetBoxMonData(boxMon, MON_DATA_ATK_EV, &iv);
                     break;
                 case STAT_DEF:
-                    SetBoxMonData(boxMon, MON_DATA_DEF_IV, &iv);
+                    SetBoxMonData(boxMon, MON_DATA_DEF_EV, &iv);
                     break;
                 case STAT_SPEED:
-                    SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &iv);
+                    SetBoxMonData(boxMon, MON_DATA_SPEED_EV, &iv);
                     break;
                 case STAT_SPATK:
-                    SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
+                    SetBoxMonData(boxMon, MON_DATA_SPATK_EV, &iv);
                     break;
                 case STAT_SPDEF:
-                    SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
+                    SetBoxMonData(boxMon, MON_DATA_SPDEF_EV, &iv);
                     break;
                 }
             }

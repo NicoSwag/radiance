@@ -17119,6 +17119,7 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
 
         *expAmount = value + 1;
     }
+    *expAmount = *expAmount * 7 / 10;
 }
 
 void BS_ItemRestoreHP(void)
