@@ -5029,6 +5029,8 @@ static u32 GetMonHoldEffect(struct Pokemon *mon)
     return holdEffect;
 }
 
+static bool32 NoAliveMonsForOpponent(void);
+
 static void Cmd_getexp(void)
 {
     CMD_ARGS(u8 battler);
@@ -5100,6 +5102,16 @@ static void Cmd_getexp(void)
 
             if (B_TRAINER_EXP_MULTIPLIER <= GEN_7 && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                 calculatedExp = (calculatedExp * 150) / 100;
+
+                if(!NoAliveMonsForOpponent()) {
+                    gBattleStruct->storedExp += calculatedExp;
+                    gBattleScripting.getexpState = 6;
+                    break;
+                }
+                else {
+                    calculatedExp += gBattleStruct->storedExp;
+                    gBattleStruct->storedExp = 0;
+                }
 
             if (B_SPLIT_EXP < GEN_6)
             {
@@ -17119,7 +17131,6 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
 
         *expAmount = value + 1;
     }
-    *expAmount = *expAmount * 7 / 10;
 }
 
 void BS_ItemRestoreHP(void)

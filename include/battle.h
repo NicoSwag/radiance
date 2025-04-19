@@ -838,6 +838,7 @@ struct BattleStruct
     u16 savedMove; // backup current move for mid-turn switching, e.g. Red Card
     u16 opponentMonCanTera:6;
     u16 opponentMonCanDynamax:6;
+    u64 storedExp;
     u16 padding:4;
 };
 
