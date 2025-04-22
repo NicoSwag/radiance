@@ -76,6 +76,11 @@
 #define FLDEFF_TRACKS_SPOT               71
 #define FLDEFF_TRACKS_BUG                72
 #define FLDEFF_CAVE_DUST                 73
+#define FLDEFF_SNOW_TALL_GRASS           74
+#define FLDEFF_JUMP_SNOW_TALL_GRASS      75
+#define FLDEFF_SNOW_LONG_GRASS           76
+#define FLDEFF_SNOW_LONG_GRASS_RIGHT     77
+#define FLDEFF_SNOW_LONG_GRASS_LEFT     78
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
@@ -118,6 +123,11 @@
 #define FLDEFFOBJ_TRACKS_SPOT           38
 #define FLDEFFOBJ_TRACKS_BUG            39
 #define FLDEFFOBJ_CAVE_DUST             40
+#define FLDEFFOBJ_SNOW_TALL_GRASS       41
+#define FLDEFFOBJ_JUMP_SNOW_TALL_GRASS  42
+#define FLDEFFOBJ_SNOW_LONG_GRASS       43
+#define FLDEFFOBJ_SNOW_LONG_GRASS_RIGHT       44
+#define FLDEFFOBJ_SNOW_LONG_GRASS_LEFT       45
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -132,5 +142,6 @@
 #define FLDEFF_PAL_TAG_HOF_MONITOR        0x1010
 #define FLDEFF_PAL_TAG_UNKNOWN            0x1011
 #define FLDEFF_PAL_TAG_CAVE_DUST          0x1012
+#define FLDEFF_PAL_TAG_SNOW               0x1013
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

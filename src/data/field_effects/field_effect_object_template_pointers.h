@@ -3,17 +3,22 @@ extern const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowMedium;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowLarge;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_ShadowExtraLarge;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowTallGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Ripple;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Ash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_SurfBlob;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Arrow;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_GroundImpactDust;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpTallGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpSnowTallGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_SandFootprints;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpBigSplash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Splash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpSmallSplash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_LongGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrass;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrassRight;
+extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrassLeft;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpLongGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_UnusedGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_UnusedGrass2;
@@ -46,17 +51,22 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_SHADOW_L]              = &gFieldEffectObjectTemplate_ShadowLarge,
     [FLDEFFOBJ_SHADOW_XL]             = &gFieldEffectObjectTemplate_ShadowExtraLarge,
     [FLDEFFOBJ_TALL_GRASS]            = &gFieldEffectObjectTemplate_TallGrass,
+    [FLDEFFOBJ_SNOW_TALL_GRASS]       = &gFieldEffectObjectTemplate_SnowTallGrass,
     [FLDEFFOBJ_RIPPLE]                = &gFieldEffectObjectTemplate_Ripple,
     [FLDEFFOBJ_ASH]                   = &gFieldEffectObjectTemplate_Ash,
     [FLDEFFOBJ_SURF_BLOB]             = &gFieldEffectObjectTemplate_SurfBlob,
     [FLDEFFOBJ_ARROW]                 = &gFieldEffectObjectTemplate_Arrow,
     [FLDEFFOBJ_GROUND_IMPACT_DUST]    = &gFieldEffectObjectTemplate_GroundImpactDust,
     [FLDEFFOBJ_JUMP_TALL_GRASS]       = &gFieldEffectObjectTemplate_JumpTallGrass,
+    [FLDEFFOBJ_JUMP_SNOW_TALL_GRASS]       = &gFieldEffectObjectTemplate_JumpSnowTallGrass,
     [FLDEFFOBJ_SAND_FOOTPRINTS]       = &gFieldEffectObjectTemplate_SandFootprints,
     [FLDEFFOBJ_JUMP_BIG_SPLASH]       = &gFieldEffectObjectTemplate_JumpBigSplash,
     [FLDEFFOBJ_SPLASH]                = &gFieldEffectObjectTemplate_Splash,
     [FLDEFFOBJ_JUMP_SMALL_SPLASH]     = &gFieldEffectObjectTemplate_JumpSmallSplash,
     [FLDEFFOBJ_LONG_GRASS]            = &gFieldEffectObjectTemplate_LongGrass,
+    [FLDEFFOBJ_SNOW_LONG_GRASS]            = &gFieldEffectObjectTemplate_SnowLongGrass,
+    [FLDEFFOBJ_SNOW_LONG_GRASS_RIGHT]            = &gFieldEffectObjectTemplate_SnowLongGrassRight,
+    [FLDEFFOBJ_SNOW_LONG_GRASS_LEFT]            = &gFieldEffectObjectTemplate_SnowLongGrassLeft,
     [FLDEFFOBJ_JUMP_LONG_GRASS]       = &gFieldEffectObjectTemplate_JumpLongGrass,
     [FLDEFFOBJ_UNUSED_GRASS]          = &gFieldEffectObjectTemplate_UnusedGrass,
     [FLDEFFOBJ_UNUSED_GRASS_2]        = &gFieldEffectObjectTemplate_UnusedGrass2,

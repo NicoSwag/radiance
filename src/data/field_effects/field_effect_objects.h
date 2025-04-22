@@ -76,6 +76,14 @@ static const struct SpriteFrameImage sPicTable_TallGrass[] = {
     overworld_frame(gFieldEffectObjectPic_TallGrass, 2, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_SnowTallGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_SnowTallGrass, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_SnowTallGrass, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_SnowTallGrass, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_SnowTallGrass, 2, 2, 3),
+    overworld_frame(gFieldEffectObjectPic_SnowTallGrass, 2, 2, 4),
+};
+
 static const union AnimCmd sAnim_TallGrass[] =
 {
     ANIMCMD_FRAME(1, 10),
@@ -91,6 +99,11 @@ static const union AnimCmd *const sAnimTable_TallGrass[] =
     sAnim_TallGrass,
 };
 
+static const union AnimCmd *const sAnimTable_SnowTallGrass[] =
+{
+    sAnim_TallGrass,
+};
+
 const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
     .tileTag = TAG_NONE,
     .paletteTag = FLDEFF_PAL_TAG_GENERAL_1,
@@ -99,6 +112,16 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
     .images = sPicTable_TallGrass,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateTallGrassFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_SnowTallGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_SNOW,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_SnowTallGrass,
+    .images = sPicTable_SnowTallGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateSnowTallGrassFieldEffect,
 };
 
 static const struct SpriteFrameImage sPicTable_Ripple[] = {
@@ -311,6 +334,13 @@ static const struct SpriteFrameImage sPicTable_JumpTallGrass[] = {
     overworld_frame(gFieldEffectObjectPic_JumpTallGrass, 2, 1, 3),
 };
 
+static const struct SpriteFrameImage sPicTable_JumpSnowTallGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_JumpSnowTallGrass, 2, 1, 0),
+    overworld_frame(gFieldEffectObjectPic_JumpSnowTallGrass, 2, 1, 1),
+    overworld_frame(gFieldEffectObjectPic_JumpSnowTallGrass, 2, 1, 2),
+    overworld_frame(gFieldEffectObjectPic_JumpSnowTallGrass, 2, 1, 3),
+};
+
 static const union AnimCmd sAnim_JumpTallGrass[] =
 {
     ANIMCMD_FRAME(0, 8),
@@ -331,6 +361,16 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_JumpTallGrass = {
     .oam = &gObjectEventBaseOam_16x8,
     .anims = sAnimTable_JumpTallGrass,
     .images = sPicTable_JumpTallGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateJumpImpactEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_JumpSnowTallGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_SNOW,
+    .oam = &gObjectEventBaseOam_16x8,
+    .anims = sAnimTable_JumpTallGrass,
+    .images = sPicTable_JumpSnowTallGrass,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateJumpImpactEffect,
 };
@@ -666,6 +706,27 @@ static const struct SpriteFrameImage sPicTable_LongGrass[] = {
     overworld_frame(gFieldEffectObjectPic_LongGrass, 2, 2, 3),
 };
 
+static const struct SpriteFrameImage sPicTable_SnowLongGrass[] = {
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrass, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrass, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrass, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrass, 2, 2, 3),
+};
+
+static const struct SpriteFrameImage sPicTable_SnowLongGrassRight[] = {
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassRight, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassRight, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassRight, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassRight, 2, 2, 3),
+};
+
+static const struct SpriteFrameImage sPicTable_SnowLongGrassLeft[] = {
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassLeft, 2, 2, 0),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassLeft, 2, 2, 1),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassLeft, 2, 2, 2),
+    overworld_frame(gFieldEffectObjectPic_SnowLongGrassLeft, 2, 2, 3),
+};
+
 static const union AnimCmd sAnim_LongGrass[] =
 {
     ANIMCMD_FRAME(1, 3),
@@ -691,6 +752,36 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_LongGrass = {
     .images = sPicTable_LongGrass,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = UpdateLongGrassFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrass = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_SNOW,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_LongGrass,
+    .images = sPicTable_SnowLongGrass,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateSnowLongGrassFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrassRight = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_SNOW,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_LongGrass,
+    .images = sPicTable_SnowLongGrassRight,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateSnowLongGrassRightFieldEffect,
+};
+
+const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrassLeft = {
+    .tileTag = TAG_NONE,
+    .paletteTag = FLDEFF_PAL_TAG_SNOW,
+    .oam = &gObjectEventBaseOam_16x16,
+    .anims = sAnimTable_LongGrass,
+    .images = sPicTable_SnowLongGrassLeft,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = UpdateSnowLongGrassLeftFieldEffect,
 };
 
 static const struct SpriteFrameImage sPicTable_JumpLongGrass[] = {
@@ -1356,3 +1447,5 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_CaveDust = {
 };
 
 const struct SpritePalette gSpritePalette_CaveDust = {gFieldEffectObjectPalette_CaveDust, FLDEFF_PAL_TAG_CAVE_DUST};
+
+const struct SpritePalette gSpritePalette_Snow = {gFieldEffectObjectPalette_Snow, FLDEFF_PAL_TAG_SNOW};

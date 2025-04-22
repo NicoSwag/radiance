@@ -9,6 +9,7 @@
 static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
 {
     [MB_NORMAL]                             = TILE_FLAG_UNUSED,
+    [MB_SNOW_TALL_GRASS]                             = TILE_FLAG_UNUSED,
     [MB_TALL_GRASS]                         = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_LONG_GRASS]                         = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_UNUSED_05]                          = TILE_FLAG_HAS_ENCOUNTERS,
@@ -36,7 +37,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_ICE]                                = TILE_FLAG_UNUSED,
     [MB_SAND]                               = TILE_FLAG_UNUSED,
     [MB_SEAWEED]                            = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE | TILE_FLAG_HAS_ENCOUNTERS,
-    [MB_UNUSED_23]                          = TILE_FLAG_UNUSED,
+    [MB_SNOW_LONG_GRASS]                          = TILE_FLAG_UNUSED,
     [MB_ASHGRASS]                           = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_FOOTPRINTS]                         = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_THIN_ICE]                           = TILE_FLAG_UNUSED,
@@ -85,7 +86,8 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_WATER_DOOR]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_WATER_SOUTH_ARROW_WARP]             = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_DEEP_SOUTH_WARP]                    = TILE_FLAG_UNUSED,
-    [MB_UNUSED_6F]                          = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
+    [MB_SNOW_LONG_GRASS_RIGHT]                          = TILE_FLAG_UNUSED,
+    [MB_SNOW_LONG_GRASS_LEFT]                          = TILE_FLAG_UNUSED,
     [MB_BRIDGE_OVER_POND_LOW]               = TILE_FLAG_UNUSED,
     [MB_BRIDGE_OVER_POND_MED]               = TILE_FLAG_UNUSED,
     [MB_BRIDGE_OVER_POND_HIGH]              = TILE_FLAG_UNUSED,
@@ -182,7 +184,8 @@ bool8 MetatileBehavior_IsJumpSouth(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsPokeGrass(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_LONG_GRASS)
+    if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_SNOW_TALL_GRASS
+        || metatileBehavior == MB_SNOW_LONG_GRASS || metatileBehavior == MB_SNOW_LONG_GRASS_RIGHT || metatileBehavior == MB_SNOW_LONG_GRASS_LEFT)
         return TRUE;
     else
         return FALSE;
@@ -253,9 +256,6 @@ bool8 MetatileBehavior_IsEscalator(u8 metatileBehavior)
 
 bool8 Unref_MetatileBehavior_IsUnused04(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_UNUSED_04)
-        return TRUE;
-    else
         return FALSE;
 }
 
@@ -742,9 +742,50 @@ bool8 MetatileBehavior_IsTallGrass(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsSnowTallGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOW_TALL_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsLongGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_LONG_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsLongGrassGeneric(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_SNOW_LONG_GRASS || metatileBehavior == MB_SNOW_LONG_GRASS_RIGHT
+        || metatileBehavior == MB_SNOW_LONG_GRASS_LEFT)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSnowLongGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOW_LONG_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSnowLongGrassRight(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOW_LONG_GRASS_RIGHT)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsSnowLongGrassLeft(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOW_LONG_GRASS_LEFT)
         return TRUE;
     else
         return FALSE;
@@ -1267,6 +1308,9 @@ bool8 MetatileBehavior_IsRunningDisallowed(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_NO_RUNNING
      || metatileBehavior == MB_LONG_GRASS
+     ||metatileBehavior == MB_SNOW_LONG_GRASS
+     ||metatileBehavior == MB_SNOW_LONG_GRASS_RIGHT
+     ||metatileBehavior == MB_SNOW_LONG_GRASS_LEFT
      || metatileBehavior == MB_HOT_SPRINGS
      || MetatileBehavior_IsPacifidlogLog(metatileBehavior) != FALSE)
         return TRUE;
