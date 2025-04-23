@@ -180,6 +180,33 @@ void GetInteractedEncounterSpecies_Script(void)
 	VarSet(VAR_WILD_ENCOUNTER_SPECIES, GetWildEncounter(gSpecialVar_LastTalked));
 }
 
+u16 GetWildEncounterLevel(u16 localId){
+	u16 minLevel;
+	u16 maxLevel;
+	u16 randomLevel;
+	
+	switch (gObjectEvents[localId].trainerRange_berryTreeId){
+		case 0:
+			minLevel = 3;
+			maxLevel = 6;
+			break;
+		default:
+			minLevel = 1;
+			maxLevel = 2;
+			break;
+	}
+
+	randomLevel = ((Random() % (maxLevel - minLevel + 1)) + minLevel);
+	return randomLevel;
+}
+
+void GetInteractedEncounterLevel_Script(void)
+{
+	VarSet(VAR_WILD_ENCOUNTER_LEVEL, GetWildEncounterLevel(gSpecialVar_LastTalked));
+}
+
+
+
 void ClearInteractedEncounterSpecies_Script(void)
 {
 	currentEncounters[gSpecialVar_LastTalked] = 0xFFFF;

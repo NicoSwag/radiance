@@ -2482,6 +2482,13 @@ bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setwildbattleow(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1);
+    CreateScriptedWildMon(VarGet(VAR_WILD_ENCOUNTER_SPECIES), VarGet(VAR_WILD_ENCOUNTER_LEVEL), ITEM_NONE);
+    return FALSE;
+}
+
 bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);

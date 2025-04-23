@@ -1,0 +1,13 @@
+script HandleOverworldPokemonEncounter {
+	lock
+	faceplayer
+	callnative(GetInteractedEncounterSpecies_Script)
+    callnative(GetInteractedEncounterLevel_Script)
+    setwildbattleow
+    dowildbattle
+    removeobject(VAR_LAST_TALKED)
+    callnative(ClearInteractedEncounterSpecies_Script)
+    clearflag(FLAG_OVERWORLD_POKEMON_ENCOUNTER_OBJECTS)
+	release
+	end
+}

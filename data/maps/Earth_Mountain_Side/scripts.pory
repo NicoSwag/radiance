@@ -1,1 +1,5 @@
-mapscripts Earth_Mountain_Side_MapScripts {}
+mapscripts Earth_Mountain_Side_MapScripts {	
+    MAP_SCRIPT_ON_LOAD {
+		callnative(ClearAllWildEncounters)
+	}
+}

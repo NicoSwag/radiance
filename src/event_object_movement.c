@@ -2964,6 +2964,7 @@ const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 local
     return FindObjectEventTemplateByLocalId(localId, templates, count);
 }
 
+
 const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId, struct ObjectEvent *objectEvent)
 {
     u32 form = 0;
