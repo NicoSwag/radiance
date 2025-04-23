@@ -158,7 +158,7 @@ u8 UpdateSpritePaletteByTemplate(const struct SpriteTemplate *, struct Sprite *)
 void ObjectEventSetGraphicsId(struct ObjectEvent *, u16 graphicsId);
 void ObjectEventTurn(struct ObjectEvent *, u8 direction);
 void ObjectEventTurnByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, u8 direction);
-const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId);
+const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId, struct ObjectEvent *);
 void SetObjectInvisibility(u8 localId, u8 mapNum, u8 mapGroup, bool8 invisible);
 void FreeAndReserveObjectSpritePalettes(void);
 u8 LoadObjectEventPalette(u16 paletteTag);
@@ -251,6 +251,7 @@ void CameraObjectFreeze(void);
 u8 GetObjectEventBerryTreeId(u8 objectEventId);
 void SetBerryTreeJustPicked(u8 mapId, u8 mapNumber, u8 mapGroup);
 bool8 IsBerryTreeSparkling(u8 localId, u8 mapNum, u8 mapGroup);
+const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
 
 void MovementType_None(struct Sprite *);
 void MovementType_LookAround(struct Sprite *);

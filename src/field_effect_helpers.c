@@ -87,7 +87,7 @@ void SetUpReflection(struct ObjectEvent *objectEvent, struct Sprite *sprite, boo
 
 static s16 GetReflectionVerticalOffset(struct ObjectEvent *objectEvent)
 {
-    return GetObjectEventGraphicsInfo(objectEvent->graphicsId)->height - 2;
+    return GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent)->height - 2;
 }
 
 static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct Sprite *reflectionSprite)
@@ -341,7 +341,7 @@ u32 FldEff_Shadow(void)
             return 0;
     }
     objectEventId = GetObjectEventIdByLocalIdAndMap(gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
-    graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId);
+    graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId, &gObjectEvents[objectEventId]);
     if (graphicsInfo->shadowSize == SHADOW_SIZE_NONE) // don't create a shadow at all
         return 0;
     spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[sShadowEffectTemplateIds[graphicsInfo->shadowSize]], 0, 0, 0x94);
@@ -361,6 +361,7 @@ u32 FldEff_Shadow(void)
     }
     return 0;
 }
+
 
 void UpdateShadowFieldEffect(struct Sprite *sprite)
 {
@@ -743,7 +744,7 @@ void UpdateShortGrassFieldEffect(struct Sprite *sprite)
     }
     else
     {
-        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId);
+        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId, &gObjectEvents[objectEventId]);
         struct Sprite *linkedSprite = &gSprites[gObjectEvents[objectEventId].spriteId];
         s16 parentY = linkedSprite->y;
         s16 parentX = linkedSprite->x;
@@ -764,7 +765,6 @@ void UpdateShortGrassFieldEffect(struct Sprite *sprite)
         UpdateObjectEventSpriteInvisibility(sprite, linkedSprite->invisible);
     }
 }
-
 #undef sLocalId
 #undef sMapNum
 #undef sMapGroup
@@ -926,7 +926,7 @@ u32 FldEff_Splash(void)
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *linkedSprite;
-        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
         struct Sprite *sprite = &gSprites[spriteId];
         sprite->coordOffsetEnabled = TRUE;
         linkedSprite = &gSprites[objectEvent->spriteId];
@@ -1008,7 +1008,7 @@ u32 FldEff_FeetInFlowingWater(void)
     u8 spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SPLASH], 0, 0, 0);
     if (spriteId != MAX_SPRITES)
     {
-        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
         struct Sprite *sprite = &gSprites[spriteId];
         sprite->callback = UpdateFeetInFlowingWaterFieldEffect;
         sprite->coordOffsetEnabled = TRUE;
@@ -1105,7 +1105,7 @@ void UpdateHotSpringsWaterFieldEffect(struct Sprite *sprite)
     }
     else
     {
-        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId);
+        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId, &gObjectEvents[objectEventId]);
         struct Sprite *linkedSprite = &gSprites[gObjectEvents[objectEventId].spriteId];
         sprite->x = linkedSprite->x;
         sprite->y = (graphicsInfo->height >> 1) + linkedSprite->y - 8;
@@ -1491,7 +1491,7 @@ u32 FldEff_SandPile(void)
     u8 spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_SAND_PILE], 0, 0, 0);
     if (spriteId != MAX_SPRITES)
     {
-        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
         struct Sprite *sprite = &gSprites[spriteId];
         sprite->coordOffsetEnabled = TRUE;
         sprite->oam.priority = gSprites[objectEvent->spriteId].oam.priority;
@@ -1640,7 +1640,7 @@ void UpdateDisguiseFieldEffect(struct Sprite *sprite)
     if (TryGetObjectEventIdByLocalIdAndMap(sprite->sLocalId, sprite->sMapNum, sprite->sMapGroup, &objectEventId))
         FieldEffectStop(sprite, sprite->sFldEff);
 
-    graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId);
+    graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId, &gObjectEvents[objectEventId]);
     linkedSprite = &gSprites[gObjectEvents[objectEventId].spriteId];
     sprite->invisible = linkedSprite->invisible;
     sprite->x = linkedSprite->x;
@@ -1953,7 +1953,7 @@ static void UpdateGrassFieldEffectSubpriority(struct Sprite *sprite, u8 elevatio
         struct ObjectEvent *objectEvent = &gObjectEvents[i];
         if (objectEvent->active)
         {
-            const struct ObjectEventGraphicsInfo UNUSED *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+            const struct ObjectEventGraphicsInfo UNUSED *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
             struct Sprite *linkedSprite = &gSprites[objectEvent->spriteId];
 
             xhi = sprite->x + sprite->centerToCornerVecX;

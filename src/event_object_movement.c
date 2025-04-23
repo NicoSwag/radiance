@@ -54,6 +54,7 @@
 #include "constants/trainer_types.h"
 #include "constants/union_room.h"
 #include "constants/weather.h"
+#include "ow_encounters.h"
 
 // this file was known as evobjmv.c in Game Freak's original source
 
@@ -170,7 +171,6 @@ static u16 GetObjectEventFlagIdByObjectEventId(u8);
 static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeSpriteTemplateFromObjectEventTemplate(const struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
-static const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8, s16, s16);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -206,6 +206,8 @@ static const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u32 species, 
 static bool8 NpcTakeStep(struct Sprite *);
 static bool8 AreElevationsCompatible(u8, u8);
 static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphicsId, u16 movementType, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
+static u16 PackGraphicsId(const struct ObjectEventTemplate *template);
+
 
 static u16 GetGraphicsIdForMon(u32 species, bool32 shiny, bool32 female);
 static u16 GetUnownSpecies(struct Pokemon *mon);
@@ -1416,7 +1418,12 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
     y = template->y + MAP_OFFSET;
     objectEvent->active = TRUE;
     objectEvent->triggerGroundEffectsOnMove = TRUE;
-    objectEvent->graphicsId = template->graphicsId;
+    objectEvent->localId = template->localId;
+    objectEvent->graphicsId = PackGraphicsId(template);
+    if (objectEvent->graphicsId == OBJ_EVENT_GFX_ZIGZAGOON_1)
+    {
+        objectEvent->graphicsId = (GetWildEncounterSpeciesFromObjectEvent(objectEvent, 0xFF, FALSE) + OBJ_EVENT_MON);
+    }
     SetObjectEventDynamicGraphicsId(objectEvent);
     if (IS_OW_MON_OBJ(objectEvent))
     {
@@ -1426,7 +1433,7 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
             objectEvent->shiny = VarGet(template->trainerRange_berryTreeId) >> 5;
     }
     objectEvent->movementType = template->movementType;
-    objectEvent->localId = template->localId;
+    
     objectEvent->mapNum = mapNum;
     objectEvent->mapGroup = mapGroup;
     objectEvent->initialCoords.x = x;
@@ -1524,8 +1531,11 @@ void RemoveObjectEventByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 
 static void RemoveObjectEventInternal(struct ObjectEvent *objectEvent)
 {
+    u8 paletteNum;
+
+    ClearWildEncounter(objectEvent->localId);
     struct SpriteFrameImage image;
-    image.size = GetObjectEventGraphicsInfo(objectEvent->graphicsId)->size;
+    image.size = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent)->size;
     gSprites[objectEvent->spriteId].images = &image;
     // It's possible that this function is called while the sprite pointed to `== sDummySprite`, i.e during map resume;
     // In this case, don't free the palette as `paletteNum` is likely blank dummy data
@@ -1682,7 +1692,14 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
         return OBJECT_EVENTS_COUNT;
 
     objectEvent = &gObjectEvents[objectEventId];
-    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+
+    if (objectEvent->graphicsId == OBJ_EVENT_GFX_ZIGZAGOON_1)
+    {
+        objectEvent->graphicsId = (GetWildEncounterSpeciesFromObjectEvent(objectEvent, 0xFF, FALSE) + OBJ_EVENT_MON);
+    }
+
+
+    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
     if (spriteTemplate->paletteTag != TAG_NONE && spriteTemplate->paletteTag != OBJ_EVENT_PAL_TAG_DYNAMIC)
         LoadObjectEventPalette(spriteTemplate->paletteTag);
 
@@ -1692,8 +1709,17 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     if (OW_GFX_COMPRESS)
         spriteTemplate->tileTag = LoadSheetGraphicsInfo(graphicsInfo, objectEvent->graphicsId, NULL);
 
-    if (objectEvent->graphicsId & OBJ_EVENT_MON && objectEvent->graphicsId & OBJ_EVENT_MON_SHINY)
+    if (objectEvent->graphicsId >= OBJ_EVENT_MON + SPECIES_SHINY_TAG)
+    {
         objectEvent->shiny = TRUE;
+        objectEvent->graphicsId -= SPECIES_SHINY_TAG;
+    }
+
+    if (objectEvent->graphicsId >= OBJ_EVENT_MON + SPECIES_SHINY_TAG)
+    {
+        objectEvent->shiny = TRUE;
+        objectEvent->graphicsId -= SPECIES_SHINY_TAG;
+    }
 
     spriteId = CreateSprite(spriteTemplate, 0, 0, 0);
     if (spriteId == MAX_SPRITES)
@@ -1717,24 +1743,55 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
     sprite->sObjEventId = objectEventId;
     objectEvent->spriteId = spriteId;
     objectEvent->inanimate = graphicsInfo->inanimate;
-    if (!objectEvent->inanimate)
+    
+    u16 currentFlag = FlagGet(objectEventTemplate->flagId);
+    if(!objectEvent->inanimate)
         StartSpriteAnim(sprite, GetFaceDirectionAnimNum(objectEvent->facingDirection));
-
+    
     SetObjectSubpriorityByElevation(objectEvent->previousElevation, sprite, 1);
     UpdateObjectEventVisibility(objectEvent, sprite);
     return objectEventId;
 }
 
+// Pack pokemon form info into a graphicsId, from a template's script
+static u16 PackGraphicsId(const struct ObjectEventTemplate *template)
+{
+    u16 graphicsId = template->graphicsId;
+    u32 form = 0;
+
+    // set form based on template's script,
+    // if first command is bufferspeciesname
+    if (IS_OW_MON_OBJ(template))
+    {
+        if (template->script && template->script[0] == 0x7d)
+        {
+            form = T1_READ_16(&template->script[2]);
+            form = (form >> 10) & 0x1F;
+        }
+        else if (template->trainerRange_berryTreeId)
+        {
+            form = template->trainerRange_berryTreeId & 0x1F;
+        }
+        graphicsId |= form << 12;
+    }
+    return graphicsId;
+}
+
 static u8 TrySpawnObjectEventTemplate(const struct ObjectEventTemplate *objectEventTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
 {
     u8 objectEventId;
-    u16 graphicsId = objectEventTemplate->graphicsId;
+    u16 graphicsId = PackGraphicsId(objectEventTemplate);
     struct SpriteTemplate spriteTemplate;
     struct SpriteFrameImage spriteFrameImage;
     const struct ObjectEventGraphicsInfo *graphicsInfo;
     const struct SubspriteTable *subspriteTables = NULL;
 
-    graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    if (graphicsId == OBJ_EVENT_GFX_ZIGZAGOON_1)
+    {
+        graphicsId = (GetWildEncounterSpeciesFromObjectEvent(NULL, objectEventTemplate->localId, FALSE) + OBJ_EVENT_MON);
+    }
+
+    graphicsInfo = GetObjectEventGraphicsInfo(graphicsId, NULL);
     CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(graphicsId, objectEventTemplate->movementType, &spriteTemplate, &subspriteTables);
     spriteFrameImage.size = graphicsInfo->size;
     spriteTemplate.images = &spriteFrameImage;
@@ -1748,6 +1805,7 @@ static u8 TrySpawnObjectEventTemplate(const struct ObjectEventTemplate *objectEv
 
     return objectEventId;
 }
+
 
 u8 SpawnSpecialObjectEvent(struct ObjectEventTemplate *objectEventTemplate)
 {
@@ -1793,7 +1851,7 @@ u8 TrySpawnObjectEvent(u8 localId, u8 mapNum, u8 mapGroup)
 
 static void CopyObjectGraphicsInfoToSpriteTemplate(u16 graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables)
 {
-    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId, NULL);
 
     spriteTemplate->tileTag = graphicsInfo->tileTag;
     spriteTemplate->paletteTag = graphicsInfo->paletteTag;
@@ -1839,23 +1897,16 @@ u8 CreateObjectGraphicsSprite(u16 graphicsId, void (*callback)(struct Sprite *),
 {
     struct SpriteTemplate *spriteTemplate;
     const struct SubspriteTable *subspriteTables;
-    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    const struct ObjectEventGraphicsInfo *graphicsInfo;
     struct Sprite *sprite;
     u8 spriteId;
-    bool32 isShiny = graphicsId & OBJ_EVENT_MON_SHINY;
-
-    spriteTemplate = Alloc(sizeof(struct SpriteTemplate));
-    CopyObjectGraphicsInfoToSpriteTemplate(graphicsId, callback, spriteTemplate, &subspriteTables);
+    bool32 isShiny = graphicsId >= SPECIES_SHINY_TAG + OBJ_EVENT_MON;
 
     if (isShiny)
         graphicsId -= SPECIES_SHINY_TAG;
 
-    if (OW_GFX_COMPRESS)
-    {
-        // Checking only for compressed here so as not to mess with decorations
-        if (graphicsInfo->compressed)
-            spriteTemplate->tileTag = LoadSheetGraphicsInfo(graphicsInfo, graphicsId, NULL);
-    }
+    spriteTemplate = Alloc(sizeof(struct SpriteTemplate));
+    CopyObjectGraphicsInfoToSpriteTemplate(graphicsId, callback, spriteTemplate, &subspriteTables);
 
     if (spriteTemplate->paletteTag == OBJ_EVENT_PAL_TAG_DYNAMIC)
     {
@@ -1867,6 +1918,13 @@ u8 CreateObjectGraphicsSprite(u16 graphicsId, void (*callback)(struct Sprite *),
         LoadObjectEventPalette(spriteTemplate->paletteTag);
     }
 
+    //if (OW_GFX_COMPRESS)
+    //{
+    //    graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    //    // Checking only for compressed here so as not to mess with decorations
+    //    if (graphicsInfo->compressed)
+    //        spriteTemplate->tileTag = LoadSheetGraphicsInfo(graphicsInfo, graphicsId, NULL);
+    //}
     spriteId = CreateSprite(spriteTemplate, x, y, subpriority);
 
     Free(spriteTemplate);
@@ -1898,7 +1956,7 @@ u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevati
     const struct SubspriteTable *subspriteTables;
     const struct ObjectEventGraphicsInfo *graphicsInfo;
 
-    graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    graphicsInfo = GetObjectEventGraphicsInfo(graphicsId, NULL);
     CopyObjectGraphicsInfoToSpriteTemplate(graphicsId, SpriteCB_VirtualObject, &spriteTemplate, &subspriteTables);
     x += MAP_OFFSET;
     y += MAP_OFFSET;
@@ -2590,12 +2648,24 @@ void TrySpawnObjectEvents(s16 cameraX, s16 cameraY)
             s16 npcX = template->x + MAP_OFFSET;
             s16 npcY = template->y + MAP_OFFSET;
 
-            if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX
-                && !FlagGet(template->flagId))
-                TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
+            if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX)
+            {
+                if (!IsWildEncounterCompleted(template->localId)
+                &&  (!FlagGet(template->flagId) 
+                    || IsWildEncounterLoaded(template->localId)))
+                    TrySpawnObjectEventTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
+            }
+            else
+            {
+                if(IsWildEncounterCompleted(template->localId))
+                {
+                    ClearWildEncounter(template->localId);
+                }
+            }
         }
     }
 }
+
 
 void RemoveObjectEventsOutsideView(void)
 {
@@ -2659,6 +2729,7 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
     struct SpriteFrameImage spriteFrameImage;
     const struct SubspriteTable *subspriteTables;
     const struct ObjectEventGraphicsInfo *graphicsInfo;
+    const struct ObjectEventTemplate *objectEventTemplate;
 
     for (i = 0; i < ARRAY_COUNT(gLinkPlayerObjectEvents); i++)
     {
@@ -2667,30 +2738,30 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
     }
 
     objectEvent = &gObjectEvents[objectEventId];
+
+    if (objectEvent->graphicsId == OBJ_EVENT_GFX_ZIGZAGOON_1)
+    {
+        objectEvent->graphicsId = (GetWildEncounterSpeciesFromObjectEvent(objectEvent, 0xFF, FALSE) + OBJ_EVENT_MON);
+    }
+       
+
     subspriteTables = NULL;
-    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
     CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(objectEvent->graphicsId, objectEvent->movementType, &spriteTemplate, &subspriteTables);
     spriteFrameImage.size = graphicsInfo->size;
     spriteTemplate.images = &spriteFrameImage;
-
     if (OW_GFX_COMPRESS)
         spriteTemplate.tileTag = LoadSheetGraphicsInfo(graphicsInfo, objectEvent->graphicsId, NULL);
-
-    if (spriteTemplate.paletteTag == OBJ_EVENT_PAL_TAG_DYNAMIC)
-    {
-        u32 paletteNum = LoadDynamicFollowerPalette(OW_SPECIES(objectEvent), OW_SHINY(objectEvent), OW_FEMALE(objectEvent));
-        spriteTemplate.paletteTag = GetSpritePaletteTagByPaletteNum(paletteNum);
-    }
-    else if (spriteTemplate.paletteTag != TAG_NONE)
-    {
+    if (spriteTemplate.paletteTag != TAG_NONE && spriteTemplate.paletteTag != OBJ_EVENT_PAL_TAG_DYNAMIC)
         LoadObjectEventPalette(spriteTemplate.paletteTag);
-    }
 
     i = CreateSprite(&spriteTemplate, 0, 0, 0);
     if (i != MAX_SPRITES)
     {
         sprite = &gSprites[i];
         // Use palette from species palette table
+        if (spriteTemplate.paletteTag == OBJ_EVENT_PAL_TAG_DYNAMIC)
+            sprite->oam.paletteNum = LoadDynamicFollowerPalette(OW_SPECIES(objectEvent), OW_SHINY(objectEvent), OW_FEMALE(objectEvent));
         if (OW_GFX_COMPRESS && sprite->usingSheet)
             sprite->sheetSpan = GetSpanPerImage(sprite->oam.shape, sprite->oam.size);
         GetMapCoordsFromSpritePos(x + objectEvent->currentCoords.x, y + objectEvent->currentCoords.y, &sprite->x, &sprite->y);
@@ -2710,6 +2781,8 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         sprite->coordOffsetEnabled = TRUE;
         sprite->sObjEventId = objectEventId;
         objectEvent->spriteId = i;
+        objectEventTemplate = GetObjectEventTemplateByLocalIdAndMap(objectEvent->localId, objectEvent->mapNum, objectEvent->mapGroup);
+
         if (!objectEvent->inanimate && objectEvent->movementType != MOVEMENT_TYPE_PLAYER)
             StartSpriteAnim(sprite, GetFaceDirectionAnimNum(objectEvent->facingDirection));
 
@@ -2792,7 +2865,7 @@ static void ObjectEventSetGraphics(struct ObjectEvent *objectEvent, const struct
 void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, u16 graphicsId)
 {
     objectEvent->graphicsId = graphicsId;
-    ObjectEventSetGraphics(objectEvent, GetObjectEventGraphicsInfo(graphicsId));
+    ObjectEventSetGraphics(objectEvent, GetObjectEventGraphicsInfo(graphicsId, objectEvent));
     objectEvent->graphicsId = graphicsId;
 }
 
@@ -2830,7 +2903,7 @@ void PlayerObjectTurn(struct PlayerAvatar *playerAvatar, u8 direction)
 static void SetBerryTreeGraphicsById(struct ObjectEvent *objectEvent, u8 berryId, u8 berryStage)
 {
     const u16 graphicsId = gBerryTreeObjectEventGraphicsIdTable[berryStage];
-    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId, objectEvent);
     struct Sprite *sprite = &gSprites[objectEvent->spriteId];
     UpdateSpritePalette(&sObjectEventSpritePalettes[gBerryTreePaletteSlotTablePointers[berryId][berryStage]-2], sprite);
     sprite->oam.shape = graphicsInfo->oam->shape;
@@ -2871,16 +2944,58 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
     }
 }
 
-const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId)
+const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
+    const struct ObjectEventTemplate *templates;
+    const struct MapHeader *mapHeader;
+    u8 count;
+
+    if (gSaveBlock1Ptr->location.mapNum == mapNum && gSaveBlock1Ptr->location.mapGroup == mapGroup)
+    {
+        templates = gSaveBlock1Ptr->objectEventTemplates;
+        count = gMapHeader.events->objectEventCount;
+    }
+    else
+    {
+        mapHeader = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum);
+        templates = mapHeader->events->objectEvents;
+        count = mapHeader->events->objectEventCount;
+    }
+    return FindObjectEventTemplateByLocalId(localId, templates, count);
+}
+
+const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId, struct ObjectEvent *objectEvent)
+{
+    u32 form = 0;
+
     if (graphicsId >= OBJ_EVENT_GFX_VARS && graphicsId <= OBJ_EVENT_GFX_VAR_F)
         graphicsId = VarGetObjectEventGraphicsId(graphicsId - OBJ_EVENT_GFX_VARS);
 
-    if (graphicsId == OBJ_EVENT_GFX_BARD)
-        return gMauvilleOldManGraphicsInfoPointers[GetCurrentMauvilleOldMan()];
+    if (graphicsId >= OBJ_EVENT_MON + SPECIES_SHINY_TAG)
+        graphicsId -= SPECIES_SHINY_TAG;
+    // graphicsId may contain mon form info
+    if (graphicsId > OBJ_EVENT_MON_SPECIES_MASK)
+    {
+        form = graphicsId >> 12;
+        graphicsId = graphicsId & OBJ_EVENT_MON_SPECIES_MASK;
+    }
 
-    if (graphicsId & OBJ_EVENT_MON)
-        return SpeciesToGraphicsInfo(graphicsId & OBJ_EVENT_MON_SPECIES_MASK, graphicsId & OBJ_EVENT_MON_SHINY, graphicsId & OBJ_EVENT_MON_FEMALE);
+    if (graphicsId == OBJ_EVENT_GFX_BARD)
+    {
+        return gMauvilleOldManGraphicsInfoPointers[GetCurrentMauvilleOldMan()];
+    }
+
+    if (graphicsId >= OBJ_EVENT_MON)
+        return SpeciesToGraphicsInfo(graphicsId - OBJ_EVENT_MON, 0xFF, form);
+    
+    if(objectEvent != NULL)
+    {
+        if (objectEvent->graphicsId == OBJ_EVENT_GFX_ZIGZAGOON_1)
+        {
+            return SpeciesToGraphicsInfo(GetWildEncounterSpeciesFromObjectEvent(objectEvent, 0xFF, FALSE), 0, 0);
+        }
+            
+    }
 
     if (graphicsId >= NUM_OBJ_EVENT_GFX)
         graphicsId = OBJ_EVENT_GFX_NINJA_BOY;
@@ -3101,7 +3216,7 @@ void MoveObjectEventToMapCoords(struct ObjectEvent *objectEvent, s16 x, s16 y)
     const struct ObjectEventGraphicsInfo *graphicsInfo;
 
     sprite = &gSprites[objectEvent->spriteId];
-    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
     SetObjectEventCoords(objectEvent, x, y);
     SetSpritePosToMapCoords(objectEvent->currentCoords.x, objectEvent->currentCoords.y, &sprite->x, &sprite->y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
@@ -3350,11 +3465,8 @@ const u8 *GetObjectEventScriptPointerByObjectEventId(u8 objectEventId)
 static u16 GetObjectEventFlagIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
     const struct ObjectEventTemplate *obj = GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup);
-#ifdef UBFIX
-    // BUG: The function may return NULL, and attempting to read from NULL may freeze the game using modern compilers.
     if (obj == NULL)
         return 0;
-#endif // UBFIX
     return obj->flagId;
 }
 
@@ -3394,25 +3506,9 @@ u8 GetObjectEventBerryTreeId(u8 objectEventId)
     return gObjectEvents[objectEventId].trainerRange_berryTreeId;
 }
 
-static const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
-{
-    const struct ObjectEventTemplate *templates;
-    const struct MapHeader *mapHeader;
-    u8 count;
 
-    if (gSaveBlock1Ptr->location.mapNum == mapNum && gSaveBlock1Ptr->location.mapGroup == mapGroup)
-    {
-        templates = gSaveBlock1Ptr->objectEventTemplates;
-        count = gMapHeader.events->objectEventCount;
-    }
-    else
-    {
-        mapHeader = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum);
-        templates = mapHeader->events->objectEvents;
-        count = mapHeader->events->objectEventCount;
-    }
-    return FindObjectEventTemplateByLocalId(localId, templates, count);
-}
+
+
 
 const struct ObjectEventTemplate *FindObjectEventTemplateByLocalId(u8 localId, const struct ObjectEventTemplate *templates, u8 count)
 {
@@ -8312,7 +8408,7 @@ bool8 MovementAction_DisableAnimation_Step0(struct ObjectEvent *objectEvent, str
 
 bool8 MovementAction_RestoreAnimation_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    objectEvent->inanimate = GetObjectEventGraphicsInfo(objectEvent->graphicsId)->inanimate;
+    objectEvent->inanimate = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent)->inanimate;
     sprite->sActionFuncId = 1;
     return TRUE;
 }
@@ -9248,7 +9344,7 @@ static void UpdateObjectEventOffscreen(struct ObjectEvent *objectEvent, struct S
 
     objectEvent->offScreen = FALSE;
 
-    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+    graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
     if (sprite->coordOffsetEnabled)
     {
         x = sprite->x + sprite->x2 + sprite->centerToCornerVecX + gSpriteCoordOffsetX;
@@ -9537,7 +9633,7 @@ static void GetGroundEffectFlags_JumpLanding(struct ObjectEvent *objEvent, u32 *
 
 static u8 ObjectEventGetNearbyReflectionType(struct ObjectEvent *objEvent)
 {
-    const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(objEvent->graphicsId);
+    const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(objEvent->graphicsId, objEvent);
 
     // ceil div by tile width?
     s16 width = (info->width + 8) >> 4;
@@ -9835,13 +9931,13 @@ static void (*const sGroundEffectTracksFuncs[])(struct ObjectEvent *objEvent, st
 
 void GroundEffect_SandTracks(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
-    const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(objEvent->graphicsId);
+    const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(objEvent->graphicsId, objEvent);
     sGroundEffectTracksFuncs[objEvent->invisible ? TRACKS_NONE : info->tracks](objEvent, sprite, FALSE);
 }
 
 void GroundEffect_DeepSandTracks(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
-    const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(objEvent->graphicsId);
+    const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(objEvent->graphicsId, objEvent);
     sGroundEffectTracksFuncs[objEvent->invisible ? TRACKS_NONE : info->tracks](objEvent, sprite, TRUE);
 }
 
@@ -10726,7 +10822,7 @@ void SetVirtualObjectGraphics(u8 virtualObjId, u16 graphicsId)
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
-        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
+        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(graphicsId, NULL);
         u16 tileNum = sprite->oam.tileNum;
         u8 i = FindObjectEventPaletteIndexByTag(graphicsInfo->paletteTag);
         if (i != 0xFF)
@@ -10869,7 +10965,7 @@ static void DoShadowFieldEffect(struct ObjectEvent *objectEvent)
 
 static void DoRippleFieldEffect(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
     gFieldEffectArguments[0] = sprite->x;
     gFieldEffectArguments[1] = sprite->y + (graphicsInfo->height >> 1) - 2;
     gFieldEffectArguments[2] = 151;
@@ -10964,7 +11060,7 @@ u8 MovementAction_UnlockAnim_Step0(struct ObjectEvent *objectEvent, struct Sprit
             FREE_AND_SET_NULL(sLockedAnimObjectEvents);
         if (ableToStore == TRUE)
         {
-            objectEvent->inanimate = GetObjectEventGraphicsInfo(objectEvent->graphicsId)->inanimate;
+            objectEvent->inanimate = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent)->inanimate;
             objectEvent->facingDirectionLocked = FALSE;
             sprite->animPaused = 0;
         }
