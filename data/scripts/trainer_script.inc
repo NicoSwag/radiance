@@ -26,3 +26,4 @@ EventScript_ObjectApproachPlayer::
 	special DoTrainerApproach
 	waitstate
 	gotonative LoadTrainerObjectScript
+	end

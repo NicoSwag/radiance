@@ -18,6 +18,8 @@ HandleOverworldPokemonEncounter::
 # 10 "data/scripts/ow_encounters.pory"
 	clearflag FLAG_OVERWORLD_POKEMON_ENCOUNTER_OBJECTS
 # 11 "data/scripts/ow_encounters.pory"
+	clearflag FLAG_TRAINER_SEE_SCRIPTS
+# 12 "data/scripts/ow_encounters.pory"
 	release
 	end
 

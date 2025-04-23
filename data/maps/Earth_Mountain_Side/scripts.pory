@@ -3,3 +3,13 @@ mapscripts Earth_Mountain_Side_MapScripts {
 		callnative(ClearAllWildEncounters)
 	}
 }
+
+script Wild_Script_Test{
+    lock
+    msgbox("Hello", MSGBOX_NPC)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
+    waitmovement(0)
+    clearflag(FLAG_TRAINER_SEE_SCRIPTS)
+    release
+    end
+}

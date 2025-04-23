@@ -8,6 +8,7 @@ script HandleOverworldPokemonEncounter {
     removeobject(VAR_LAST_TALKED)
     callnative(ClearInteractedEncounterSpecies_Script)
     clearflag(FLAG_OVERWORLD_POKEMON_ENCOUNTER_OBJECTS)
+    clearflag(FLAG_TRAINER_SEE_SCRIPTS)
 	release
 	end
 }

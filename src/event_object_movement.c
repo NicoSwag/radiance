@@ -11167,6 +11167,8 @@ u8 MovementAction_Fly_Finish(struct ObjectEvent *objectEvent, struct Sprite *spr
     return TRUE;
 }
 
+
+
 bool8 MovementAction_EmoteX_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
