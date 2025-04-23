@@ -16,9 +16,6 @@ extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpBigSplash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_Splash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpSmallSplash;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_LongGrass;
-extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrass;
-extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrassRight;
-extern const struct SpriteTemplate gFieldEffectObjectTemplate_SnowLongGrassLeft;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_JumpLongGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_UnusedGrass;
 extern const struct SpriteTemplate gFieldEffectObjectTemplate_UnusedGrass2;
@@ -64,9 +61,6 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_SPLASH]                = &gFieldEffectObjectTemplate_Splash,
     [FLDEFFOBJ_JUMP_SMALL_SPLASH]     = &gFieldEffectObjectTemplate_JumpSmallSplash,
     [FLDEFFOBJ_LONG_GRASS]            = &gFieldEffectObjectTemplate_LongGrass,
-    [FLDEFFOBJ_SNOW_LONG_GRASS]            = &gFieldEffectObjectTemplate_SnowLongGrass,
-    [FLDEFFOBJ_SNOW_LONG_GRASS_RIGHT]            = &gFieldEffectObjectTemplate_SnowLongGrassRight,
-    [FLDEFFOBJ_SNOW_LONG_GRASS_LEFT]            = &gFieldEffectObjectTemplate_SnowLongGrassLeft,
     [FLDEFFOBJ_JUMP_LONG_GRASS]       = &gFieldEffectObjectTemplate_JumpLongGrass,
     [FLDEFFOBJ_UNUSED_GRASS]          = &gFieldEffectObjectTemplate_UnusedGrass,
     [FLDEFFOBJ_UNUSED_GRASS_2]        = &gFieldEffectObjectTemplate_UnusedGrass2,

@@ -1232,6 +1232,25 @@ static void QueueAnimTiles_MountainPeak_Flower(u16 timer)
 }
 
 
+const u16 gTilesetAnims_MountainPeak_Purple_Flower_Frame0[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/anim/purple_flower/0.4bpp");
+const u16 gTilesetAnims_MountainPeak_Purple_Flower_Frame1[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/anim/purple_flower/1.4bpp");
+const u16 gTilesetAnims_MountainPeak_Purple_Flower_Frame2[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/anim/purple_flower/2.4bpp");
+const u16 gTilesetAnims_MountainPeak_Purple_Flower_Frame3[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/anim/purple_flower/3.4bpp");
+
+
+const u16 *const gTilesetAnims_MountainPeak_PurpleFlower[] = {
+    gTilesetAnims_MountainPeak_Purple_Flower_Frame0,
+    gTilesetAnims_MountainPeak_Purple_Flower_Frame1,
+    gTilesetAnims_MountainPeak_Purple_Flower_Frame2,
+    gTilesetAnims_MountainPeak_Purple_Flower_Frame3,
+};
+static void QueueAnimTiles_MountainPeak_PurpleFlower(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_MountainPeak_PurpleFlower);
+    AppendTilesetAnimToBuffer(gTilesetAnims_MountainPeak_PurpleFlower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(512)), 24 * TILE_SIZE_4BPP);
+}
+
+
 static void TilesetAnim_MountainPeak(u16 timer)
 {
     if (timer % 8 == 0) {
@@ -1241,9 +1260,23 @@ static void TilesetAnim_MountainPeak(u16 timer)
         QueueAnimTiles_MountainPeak_Flower(timer / 16);
 }
 
+static void TilesetAnim_MountainPeakSecondary(u16 timer)
+{
+    if (timer % 32 == 0) {
+        QueueAnimTiles_MountainPeak_PurpleFlower(timer / 32);
+    }
+}
+
 void InitTilesetAnim_MountainPeak(void)
 {
     sPrimaryTilesetAnimCounter = 0;
     sPrimaryTilesetAnimCounterMax = 256;
     sPrimaryTilesetAnimCallback = TilesetAnim_MountainPeak;
+}
+
+void InitTilesetAnim_MountainPeakSecondary(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_MountainPeakSecondary;
 }

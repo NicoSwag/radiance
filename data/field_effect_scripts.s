@@ -82,9 +82,6 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
 	.4byte gFieldEffectScript_SnowTallGrass             @ FLDEFF_SNOW_TALL_GRASS
 	.4byte gFieldEffectScript_JumpSnowTallGrass         @ FLDEFF_JUMP_TALL_GRASS
-	.4byte gFieldEffectScript_SnowLongGrass             @ FLDEFF_SNOW_LONG_GRASS
-	.4byte gFieldEffectScript_SnowLongGrassRight        @ FLDEFF_SNOW_LONG_GRASS_RIGHT
-	.4byte gFieldEffectScript_SnowLongGrassLeft        @ FLDEFF_SNOW_LONG_GRASS_LEFT
 
 
 gFieldEffectScript_ExclamationMarkIcon1::
@@ -393,16 +390,4 @@ gFieldEffectScript_SnowTallGrass::
 
 gFieldEffectScript_JumpSnowTallGrass::
 	field_eff_loadfadedpal_callnative gSpritePalette_Snow, FldEff_JumpSnowTallGrass
-	field_eff_end
-
-gFieldEffectScript_SnowLongGrass::
-	field_eff_loadfadedpal_callnative gSpritePalette_Snow FldEff_SnowLongGrass
-	field_eff_end
-
-gFieldEffectScript_SnowLongGrassRight::
-	field_eff_loadfadedpal_callnative gSpritePalette_Snow FldEff_SnowLongGrassRight
-	field_eff_end
-
-gFieldEffectScript_SnowLongGrassLeft::
-	field_eff_loadfadedpal_callnative gSpritePalette_Snow FldEff_SnowLongGrassLeft
 	field_eff_end

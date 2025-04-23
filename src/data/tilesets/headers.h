@@ -857,5 +857,5 @@ const struct Tileset gTileset_MountainPeak_Secondary =
     .palettes = gTilesetPalettes_MountainPeak_Secondary,
     .metatiles = gMetatiles_MountainPeak_Secondary,
     .metatileAttributes = gMetatileAttributes_MountainPeak_Secondary,
-    .callback = NULL,
+    .callback = InitTilesetAnim_MountainPeakSecondary,
 };

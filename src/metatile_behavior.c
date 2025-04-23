@@ -86,8 +86,6 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_WATER_DOOR]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_WATER_SOUTH_ARROW_WARP]             = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_DEEP_SOUTH_WARP]                    = TILE_FLAG_UNUSED,
-    [MB_SNOW_LONG_GRASS_RIGHT]                          = TILE_FLAG_UNUSED,
-    [MB_SNOW_LONG_GRASS_LEFT]                          = TILE_FLAG_UNUSED,
     [MB_BRIDGE_OVER_POND_LOW]               = TILE_FLAG_UNUSED,
     [MB_BRIDGE_OVER_POND_MED]               = TILE_FLAG_UNUSED,
     [MB_BRIDGE_OVER_POND_HIGH]              = TILE_FLAG_UNUSED,
@@ -185,7 +183,7 @@ bool8 MetatileBehavior_IsJumpSouth(u8 metatileBehavior)
 bool8 MetatileBehavior_IsPokeGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_SNOW_TALL_GRASS
-        || metatileBehavior == MB_SNOW_LONG_GRASS || metatileBehavior == MB_SNOW_LONG_GRASS_RIGHT || metatileBehavior == MB_SNOW_LONG_GRASS_LEFT)
+        || metatileBehavior == MB_SNOW_LONG_GRASS)
         return TRUE;
     else
         return FALSE;
@@ -760,36 +758,12 @@ bool8 MetatileBehavior_IsLongGrass(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsLongGrassGeneric(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_SNOW_LONG_GRASS || metatileBehavior == MB_SNOW_LONG_GRASS_RIGHT
-        || metatileBehavior == MB_SNOW_LONG_GRASS_LEFT)
+    if (metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_SNOW_LONG_GRASS)
         return TRUE;
     else
         return FALSE;
 }
 
-bool8 MetatileBehavior_IsSnowLongGrass(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_SNOW_LONG_GRASS)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool8 MetatileBehavior_IsSnowLongGrassRight(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_SNOW_LONG_GRASS_RIGHT)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool8 MetatileBehavior_IsSnowLongGrassLeft(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_SNOW_LONG_GRASS_LEFT)
-        return TRUE;
-    else
-        return FALSE;
-}
 
 bool8 MetatileBehavior_IsBerryTreeSoil(u8 metatileBehavior)
 {
