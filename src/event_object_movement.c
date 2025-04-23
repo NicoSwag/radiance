@@ -2693,10 +2693,10 @@ void RemoveObjectEventsOutsideView(void)
 
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *objectEvent)
 {
-    s16 left =   gSaveBlock1Ptr->pos.x - 2;
-    s16 right =  gSaveBlock1Ptr->pos.x + 17;
-    s16 top =    gSaveBlock1Ptr->pos.y;
-    s16 bottom = gSaveBlock1Ptr->pos.y + 16;
+    s16 left =   gSaveBlock1Ptr->pos.x - 7;
+    s16 right =  gSaveBlock1Ptr->pos.x + 22;
+    s16 top =    gSaveBlock1Ptr->pos.y - 5;
+    s16 bottom = gSaveBlock1Ptr->pos.y + 21;
 
     if (objectEvent->currentCoords.x >= left && objectEvent->currentCoords.x <= right
      && objectEvent->currentCoords.y >= top && objectEvent->currentCoords.y <= bottom)
@@ -2739,10 +2739,7 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
 
     objectEvent = &gObjectEvents[objectEventId];
 
-    if (objectEvent->graphicsId == OBJ_EVENT_GFX_ZIGZAGOON_1)
-    {
-        objectEvent->graphicsId = (GetWildEncounterSpeciesFromObjectEvent(objectEvent, 0xFF, FALSE) + OBJ_EVENT_MON);
-    }
+    
        
 
     subspriteTables = NULL;
