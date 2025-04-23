@@ -549,8 +549,9 @@
 #define MUS_VS_RIVAL_RADIANCE       611
 #define MUS_VS_TRAINER_RADIANCE     612
 #define MUS_VS_LEADER_RADIANCE      613
+#define MUS_VAST_ICE_MOUNTAIN       614
 
-#define END_MUS                     MUS_VS_LEADER_RADIANCE
+#define END_MUS                     MUS_VAST_ICE_MOUNTAIN
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 

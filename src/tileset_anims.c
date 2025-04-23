@@ -1231,6 +1231,16 @@ static void QueueAnimTiles_MountainPeak_Flower(u16 timer)
     AppendTilesetAnimToBuffer(gTilesetAnims_MountainPeak_Flower[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(1)), 4 * TILE_SIZE_4BPP);
 }
 
+static void TilesetAnim_MountainPeak(u16 timer)
+{
+    if (timer % 8 == 0) {
+        QueueAnimTiles_MountainPeak_Waterfall(timer / 8);
+    }
+    if (timer % 16 == 0)
+        QueueAnimTiles_MountainPeak_Flower(timer / 16);
+}
+
+
 
 const u16 gTilesetAnims_MountainPeak_Purple_Flower_Frame0[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/anim/purple_flower/0.4bpp");
 const u16 gTilesetAnims_MountainPeak_Purple_Flower_Frame1[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/anim/purple_flower/1.4bpp");
@@ -1251,14 +1261,6 @@ static void QueueAnimTiles_MountainPeak_PurpleFlower(u16 timer)
 }
 
 
-static void TilesetAnim_MountainPeak(u16 timer)
-{
-    if (timer % 8 == 0) {
-        QueueAnimTiles_MountainPeak_Waterfall(timer / 8);
-    }
-    if (timer % 16 == 0)
-        QueueAnimTiles_MountainPeak_Flower(timer / 16);
-}
 
 static void TilesetAnim_MountainPeakSecondary(u16 timer)
 {

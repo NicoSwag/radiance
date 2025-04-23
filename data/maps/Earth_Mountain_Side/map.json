@@ -2,7 +2,7 @@
   "id": "MAP_EARTH_MOUNTAIN_SIDE",
   "name": "Earth_Mountain_Side",
   "layout": "LAYOUT_EARTH_MOUNTAIN_SIDE",
-  "music": "MUS_DUMMY",
+  "music": "MUS_VAST_ICE_MOUNTAIN",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
   "weather": "WEATHER_SNOW",
