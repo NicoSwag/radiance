@@ -1,14 +1,19 @@
 script HandleOverworldPokemonEncounter {
 	lock
 	faceplayer
+    waitmovement(0)
 	callnative(GetInteractedEncounterSpecies_Script)
     callnative(GetInteractedEncounterLevel_Script)
     setwildbattleow
+    playse(SE_PIN)
+    applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark))
+    waitmovement(0)
+    waitse
     dowildbattle
     removeobject(VAR_LAST_TALKED)
     callnative(ClearInteractedEncounterSpecies_Script)
     clearflag(FLAG_OVERWORLD_POKEMON_ENCOUNTER_OBJECTS)
     clearflag(FLAG_TRAINER_SEE_SCRIPTS)
-	release
+	releaseall
 	end
 }

@@ -2739,9 +2739,11 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
 
     objectEvent = &gObjectEvents[objectEventId];
 
-    
+    if (objectEvent->graphicsId == OBJ_EVENT_GFX_ZIGZAGOON_1)
+    {
+        objectEvent->graphicsId = (GetWildEncounterSpeciesFromObjectEvent(objectEvent, 0xFF, FALSE) + OBJ_EVENT_MON);
+    }
        
-
     subspriteTables = NULL;
     graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId, objectEvent);
     CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(objectEvent->graphicsId, objectEvent->movementType, &spriteTemplate, &subspriteTables);
@@ -3723,7 +3725,7 @@ bool8 ObjectEventIsTrainerAndCloseToPlayer(struct ObjectEvent *objectEvent)
     maxY = objY + objectEvent->trainerRange_berryTreeId;
     if (minX > playerX || maxX < playerX
      || minY > playerY || maxY < playerY)
-        return FALSE;
+    return FALSE;
 
     return TRUE;
 }
@@ -6335,7 +6337,7 @@ u32 GetObjectObjectCollidesWith(struct ObjectEvent *objectEvent, s16 x, s16 y, b
 {
     u8 i;
     struct ObjectEvent *curObject;
-
+    
     if (objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
         return OBJECT_EVENTS_COUNT; // follower cannot collide with other objects, but they can collide with it
 
