@@ -434,6 +434,7 @@ static u8 CheckTrainer(u8 objectEventId)
     const u8 *scriptPtr;
     u8 numTrainers = 1;
     u8 approachDistance;
+    u16 repelLureVar = VarGet(VAR_REPEL_STEP_COUNT);
 
     u16 scriptFlag = GetObjectEventTrainerSightFlagByObjectEventId(objectEventId);
 
@@ -458,8 +459,13 @@ static u8 CheckTrainer(u8 objectEventId)
             return 0;
     }
 
-    if(scriptFlag >= TRAINER_TYPE_RUN_SCRIPT)
-        approachDistance = GetTrainerApproachDistanceFixed(&gObjectEvents[objectEventId]);
+    if(scriptFlag >= TRAINER_TYPE_RUN_SCRIPT){
+        if(repelLureVar)
+            approachDistance = 0;
+        else 
+            approachDistance = GetTrainerApproachDistanceFixed(&gObjectEvents[objectEventId]);
+    }
+        
     else
         approachDistance = GetTrainerApproachDistance(&gObjectEvents[objectEventId]);
 
@@ -545,14 +551,14 @@ static u8 GetTrainerApproachDistanceFixed(struct ObjectEvent *trainerObj)
     PlayerGetDestCoords(&x, &y);
     if (trainerObj->trainerType == TRAINER_TYPE_NORMAL || trainerObj->trainerType >= TRAINER_TYPE_RUN_SCRIPT)  // can only see in one direction
     {
-        approachDistance = sDirectionalApproachDistanceFuncs[trainerObj->facingDirection - 1](trainerObj, 1, x, y);
+        approachDistance = sDirectionalApproachDistanceFuncs[trainerObj->facingDirection - 1](trainerObj, 2, x, y);
         return CheckPathBetweenTrainerAndPlayer(trainerObj, approachDistance, trainerObj->facingDirection);
     }
     else // TRAINER_TYPE_SEE_ALL_DIRECTIONS, TRAINER_TYPE_BURIED
     {
         for (i = 0; i < ARRAY_COUNT(sDirectionalApproachDistanceFuncs); i++)
         {
-            approachDistance = sDirectionalApproachDistanceFuncs[i](trainerObj, 1, x, y);
+            approachDistance = sDirectionalApproachDistanceFuncs[i](trainerObj, 2, x, y);
             if (CheckPathBetweenTrainerAndPlayer(trainerObj, approachDistance, i + 1)) // directions are 1-4 instead of 0-3. south north west east
                 return approachDistance;
         }

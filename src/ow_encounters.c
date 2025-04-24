@@ -60,7 +60,7 @@
         Free(*ptr__);                  \
 })
 
-#define ENCOUNTER_LOC_LITTLECOVE_WOODS 		0
+#define ENCOUNTER_LOC_AMETHYST_MOUNTAINS 		0
 #define ENCOUNTER_LOC_LITTLECOVE_NORTH 		1
 #define ENCOUNTER_LOC_B3_WATER 				2
 #define ENCOUNTER_LOC_A2_CAVE 				3
@@ -71,15 +71,13 @@
 #define MAX_SPECIES_IN_TABLE 10
 const u16 WildEncounterTable[][MAX_SPECIES_IN_TABLE][2] =
 {
-	[ENCOUNTER_LOC_LITTLECOVE_WOODS] = {
-		{SPECIES_SURSKIT,		16},
-		{SPECIES_LOTAD,			12},
-		{SPECIES_SEEDOT,		 8},
-		{SPECIES_PETILIL,		12},
-		{SPECIES_KRICKETOT,		16},
-		{SPECIES_ZIGZAGOON,		12},
-		{SPECIES_PIKIPEK,		16},
-		{SPECIES_TAILLOW,		 8},
+	[ENCOUNTER_LOC_AMETHYST_MOUNTAINS] = {
+		{SPECIES_GLIMMET,		25},
+		{SPECIES_SABLEYE,		20},
+		{SPECIES_SNEASEL,		20},
+		{SPECIES_MORELULL,		15},
+		{SPECIES_SWINUB,		15},
+		{SPECIES_TEDDIURSA,		5},
 	},
 
 	[ENCOUNTER_LOC_LITTLECOVE_NORTH] = {
@@ -188,7 +186,7 @@ u16 GetWildEncounterLevel(u16 localId){
 	switch (gObjectEvents[localId].trainerRange_berryTreeId){
 		case 0:
 			minLevel = 3;
-			maxLevel = 6;
+			maxLevel = 5;
 			break;
 		default:
 			minLevel = 1;
