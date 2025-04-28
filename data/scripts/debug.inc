@@ -180,8 +180,23 @@ Debug_EventScript_Script_7::
 	end
 
 Debug_EventScript_Script_8::
-	release
+	lockall
+	checkforfieldmove FIELD_MOVE_EFFECT_BURN, 2
+	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantBurnTest
+	msgbox Text_Test_CanBurn, MSGBOX_DEFAULT
+	releaseall
 	end
+
+EventScript_CheckTreeCantBurnTest::
+	msgbox Text_Test_CannotBurn, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Text_Test_CanBurn:
+	.string "Yes!$"
+
+Text_Test_CannotBurn:
+	.string "Nope.$"
 
 Debug_CheckSaveBlock::
 	callnative CheckSaveBlock1Size

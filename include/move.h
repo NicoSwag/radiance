@@ -134,6 +134,8 @@ struct MoveInfo
     u8 contestCategory:3;
     u8 contestComboStarterId;
     u8 contestComboMoves[MAX_COMBO_MOVES];
+    u8 fieldMoveEffect;
+    u8 fieldMoveTier;
     const u8 *battleAnimScript;
 };
 

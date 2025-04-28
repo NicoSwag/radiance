@@ -2543,3 +2543,9 @@
 	.byte \ui
 	.endm
 
+	@ Macro for Ranger-Style field Moves
+	.macro checkforfieldmove fieldeffectflag:req fieldeffecttier:req
+	.byte SCR_OP_CHECKFORFIELDMOVE
+	.4byte \fieldeffectflag
+	.byte \fieldeffecttier
+	.endm
