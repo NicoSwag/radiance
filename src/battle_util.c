@@ -4872,7 +4872,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                         {
                             move = gBattleMons[i].moves[j];
                             moveType = GetBattleMoveType(move);
-                            if (CalcTypeEffectivenessMultiplier(move, moveType, i, battler, ABILITY_ANTICIPATION, FALSE) >= UQ_4_12(2.0))
+                            if (CalcTypeEffectivenessMultiplier(move, moveType, i, battler, ABILITY_ANTICIPATION, FALSE) >= UQ_4_12(1.5))
                             {
                                 effect++;
                                 break;
@@ -10223,7 +10223,7 @@ static inline uq4_12_t GetScreensModifier(u32 move, u32 battlerAtk, u32 battlerD
 
 static inline uq4_12_t GetCollisionCourseElectroDriftModifier(u32 move, uq4_12_t typeEffectivenessModifier)
 {
-    if (GetMoveEffect(move) == EFFECT_COLLISION_COURSE && typeEffectivenessModifier >= UQ_4_12(2.0))
+    if (GetMoveEffect(move) == EFFECT_COLLISION_COURSE && typeEffectivenessModifier >= UQ_4_12(1.5))
         return UQ_4_12(1.3333);
     return UQ_4_12(1.0);
 }
@@ -10233,7 +10233,7 @@ static inline uq4_12_t GetAttackerAbilitiesModifier(u32 battlerAtk, uq4_12_t typ
     switch (abilityAtk)
     {
     case ABILITY_NEUROFORCE:
-        if (typeEffectivenessModifier >= UQ_4_12(2.0))
+        if (typeEffectivenessModifier >= UQ_4_12(1.5))
             return UQ_4_12(1.25);
         break;
     case ABILITY_SNIPER:
@@ -10260,12 +10260,12 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
     case ABILITY_FILTER:
     case ABILITY_SOLID_ROCK:
     case ABILITY_PRISM_ARMOR:
-        if (typeEffectivenessModifier >= UQ_4_12(2.0))
+        if (typeEffectivenessModifier >= UQ_4_12(1.5))
             return UQ_4_12(0.75);
         break;
     case ABILITY_FLUFFY:
         if (!IsMoveMakingContact(move, battlerAtk) && moveType == TYPE_FIRE)
-            return UQ_4_12(2.0);
+            return UQ_4_12(1.5);
         if (IsMoveMakingContact(move, battlerAtk) && moveType != TYPE_FIRE)
             return UQ_4_12(0.5);
         break;
@@ -10309,7 +10309,7 @@ static inline uq4_12_t GetAttackerItemsModifier(u32 battlerAtk, uq4_12_t typeEff
         return uq4_12_add(UQ_4_12(1.0), metronomeBoostBase * metronomeTurns);
         break;
     case HOLD_EFFECT_EXPERT_BELT:
-        if (typeEffectivenessModifier >= UQ_4_12(2.0))
+        if (typeEffectivenessModifier >= UQ_4_12(1.5))
             return UQ_4_12(1.2);
         break;
     case HOLD_EFFECT_LIFE_ORB:
@@ -10332,7 +10332,7 @@ static inline uq4_12_t GetDefenderItemsModifier(struct DamageCalculationData *da
     case HOLD_EFFECT_RESIST_BERRY:
         if (UnnerveOn(battlerDef, itemDef))
             return UQ_4_12(1.0);
-        if (moveType == holdEffectDefParam && (moveType == TYPE_NORMAL || typeEffectivenessModifier >= UQ_4_12(2.0)))
+        if (moveType == holdEffectDefParam && (moveType == TYPE_NORMAL || typeEffectivenessModifier >= UQ_4_12(1.5)))
         {
             if (damageCalcData->updateFlags)
                 gSpecialStatuses[battlerDef].berryReduced = TRUE;
@@ -10839,12 +10839,12 @@ s32 GetStealthHazardDamageByTypesAndHP(enum TypeSideHazard hazardType, u8 type1,
         if (dmg == 0)
             dmg = 1;
         break;
-    case UQ_4_12(2.0):
+    case UQ_4_12(1.5):
         dmg = maxHp / 4;
         if (dmg == 0)
             dmg = 1;
         break;
-    case UQ_4_12(4.0):
+    case UQ_4_12(2.0):
         dmg = maxHp / 2;
         if (dmg == 0)
             dmg = 1;

@@ -922,7 +922,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 }
                 break;
             case ABILITY_WONDER_GUARD:
-                if (effectiveness < UQ_4_12(2.0))
+                if (effectiveness < UQ_4_12(1.5))
                     RETURN_SCORE_MINUS(20);
                 break;
             case ABILITY_JUSTIFIED:

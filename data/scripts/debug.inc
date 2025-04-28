@@ -174,7 +174,9 @@ Debug_EventScript_Script_6::
 	end
 
 Debug_EventScript_Script_7::
-	release
+	setwildbattle SPECIES_PHEROMOSA, 60
+	special BattleSetup_StartLegendaryBattle
+	waitstate
 	end
 
 Debug_EventScript_Script_8::

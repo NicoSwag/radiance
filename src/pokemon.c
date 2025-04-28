@@ -5969,6 +5969,8 @@ u16 GetBattleBGM(void)
         case SPECIES_KYOGRE:
         case SPECIES_GROUDON:
             return MUS_VS_KYOGRE_GROUDON;
+        case SPECIES_PHEROMOSA:
+            return MUS_VS_ULTRA_BEAST;
         case SPECIES_REGIROCK:
         case SPECIES_REGICE:
         case SPECIES_REGISTEEL:

@@ -216,7 +216,7 @@ static bool32 ShouldSwitchIfHasBadOdds(u32 battler)
             if (!IsBattleMoveStatus(aiMove))
             {
                 // Check if mon has a super effective move
-                if (AI_GetMoveEffectiveness(aiMove, battler, opposingBattler) >= UQ_4_12(2.0))
+                if (AI_GetMoveEffectiveness(aiMove, battler, opposingBattler) >= UQ_4_12(1.5))
                     hasSuperEffectiveMove = TRUE;
 
                 // Get maximum damage mon can deal
@@ -289,7 +289,7 @@ static bool32 ShouldSwitchIfHasBadOdds(u32 battler)
     }
 
     // General bad type matchups have more wiggle room
-    if (typeEffectiveness >= UQ_4_12(2.0)) // If the player has at least a 2x type advantage
+    if (typeEffectiveness >= UQ_4_12(1.5)) // If the player has at least a 2x type advantage
     {
         if (!hasSuperEffectiveMove // If the AI doesn't have a super effective move
         && (gBattleMons[battler].hp >= gBattleMons[battler].maxHP / 2 // And the current mon has at least 1/2 their HP, or 1/4 HP and Regenerator
@@ -381,7 +381,7 @@ static bool32 FindMonThatHitsWonderGuard(u32 battler)
         move = gBattleMons[battler].moves[i];
         if (move != MOVE_NONE)
         {
-            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(1.5))
                 return FALSE;
         }
     }
@@ -406,7 +406,7 @@ static bool32 FindMonThatHitsWonderGuard(u32 battler)
             if (move != MOVE_NONE)
             {
                 // Found a mon
-                if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0) && RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetSwitchChance(SHOULD_SWITCH_WONDER_GUARD)))
+                if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(1.5) && RandomPercentage(RNG_AI_SWITCH_WONDER_GUARD, GetSwitchChance(SHOULD_SWITCH_WONDER_GUARD)))
                     return SetSwitchinAndSwitch(battler, i);
             }
         }
@@ -639,7 +639,7 @@ static bool32 ShouldSwitchIfBadlyStatused(u32 battler)
                 || monAbility == ABILITY_EARLY_BIRD)
                 || holdEffect == (HOLD_EFFECT_CURE_SLP | HOLD_EFFECT_CURE_STATUS)
                 || HasMove(battler, MOVE_SLEEP_TALK)
-                || (HasMoveEffect(battler, MOVE_SNORE) && AI_GetMoveEffectiveness(MOVE_SNORE, battler, opposingBattler) >= UQ_4_12(2.0))
+                || (HasMoveEffect(battler, MOVE_SNORE) && AI_GetMoveEffectiveness(MOVE_SNORE, battler, opposingBattler) >= UQ_4_12(1.5))
                 || (IsBattlerGrounded(battler)
                     && (HasMove(battler, MOVE_MISTY_TERRAIN) || HasMove(battler, MOVE_ELECTRIC_TERRAIN)))
                 )
@@ -758,7 +758,7 @@ static bool32 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool32 noRng)
             if (move == MOVE_NONE)
                 continue;
 
-            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(1.5))
             {
                 if (noRng)
                     return TRUE;
@@ -780,7 +780,7 @@ static bool32 HasSuperEffectiveMoveAgainstOpponents(u32 battler, bool32 noRng)
             if (move == MOVE_NONE)
                 continue;
 
-            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+            if (AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(1.5))
             {
                 if (noRng)
                     return TRUE;
@@ -865,7 +865,7 @@ static bool32 FindMonWithFlagsAndSuperEffective(u32 battler, u16 flags, u32 perc
                 if (move == 0)
                     continue;
 
-                if (AI_GetMoveEffectiveness(move, battler, battlerIn1) >= UQ_4_12(2.0) && (RandomPercentage(RNG_AI_SWITCH_SE_DEFENSIVE, percentChance) || AI_DATA->aiSwitchPredictionInProgress))
+                if (AI_GetMoveEffectiveness(move, battler, battlerIn1) >= UQ_4_12(1.5) && (RandomPercentage(RNG_AI_SWITCH_SE_DEFENSIVE, percentChance) || AI_DATA->aiSwitchPredictionInProgress))
                     return SetSwitchinAndSwitch(battler, i);
             }
         }
@@ -953,7 +953,7 @@ static bool32 ShouldSwitchIfEncored(u32 battler)
         return SetSwitchinAndSwitch(battler, PARTY_SIZE);
 
     // Stay in if effective move
-    else if (AI_GetMoveEffectiveness(encoredMove, battler, opposingBattler) >= UQ_4_12(2.0))
+    else if (AI_GetMoveEffectiveness(encoredMove, battler, opposingBattler) >= UQ_4_12(1.5))
         return FALSE;
 
     // Switch out 50% of the time otherwise
@@ -1324,7 +1324,7 @@ static u32 GetBestMonTypeMatchup(struct Pokemon *party, int firstId, int lastId,
             for (i = 0; i < MAX_MON_MOVES; i++)
             {
                 u32 move = GetMonData(&party[bestMonId], MON_DATA_MOVE1 + i);
-                if (move != MOVE_NONE && AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(2.0))
+                if (move != MOVE_NONE && AI_GetMoveEffectiveness(move, battler, opposingBattler) >= UQ_4_12(1.5))
                     break;
             }
 
@@ -1980,7 +1980,7 @@ static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, 
             {
                 if (typeMatchup < bestResistEffective)
                 {
-                    if (AI_GetMoveEffectiveness(aiMove, battler, opposingBattler) >= UQ_4_12(2.0))
+                    if (AI_GetMoveEffectiveness(aiMove, battler, opposingBattler) >= UQ_4_12(1.5))
                     {
                         if (canSwitchinWin1v1)
                         {

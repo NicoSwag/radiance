@@ -1269,6 +1269,7 @@ SECTIONS {
         sound/songs/midi/mus_vs_trainer_radiance.o(.rodata);
         sound/songs/midi/mus_vs_leader_radiance.o(.rodata);
         sound/songs/midi/mus_vast_ice_mountain.o(.rodata);
+        sound/songs/midi/mus_vs_ultra_beast.o(.rodata);
 
     } > ROM =0
 
