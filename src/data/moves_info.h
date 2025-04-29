@@ -11269,6 +11269,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {COMBO_STARTER_CHARGE},
         .battleAnimScript = gBattleAnimMove_Discharge,
     },
+    
 
     [MOVE_LAVA_PLUME] =
     {
