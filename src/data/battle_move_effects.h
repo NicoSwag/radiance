@@ -1354,6 +1354,12 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_TELEKINESIS_HIT] =
+    {
+        .battleScript = BattleScript_EffectTelekinesisHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+
     [EFFECT_POWER_SWAP] =
     {
         .battleScript = BattleScript_EffectPowerSwap,
@@ -1483,6 +1489,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     [EFFECT_ATTACK_ACCURACY_UP] =
     {
         .battleScript = BattleScript_EffectAttackAccUp,
+        .battleTvScore = 0, // TODO: Assign points
+        .encourageEncore = TRUE,
+    },
+
+    [EFFECT_SPATK_ACCURACY_UP] =
+    {
+        .battleScript = BattleScript_EffectSpatkAccUp,
         .battleTvScore = 0, // TODO: Assign points
         .encourageEncore = TRUE,
     },

@@ -204,15 +204,20 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Comet Punch"),
         .description = COMPOUND_STRING(
-            "Repeatedly punches the foe\n"
-            "2 to 5 times."),
-        .effect = EFFECT_MULTI_HIT,
-        .power = 18,
-        .type = TYPE_NORMAL,
-        .accuracy = 85,
+            "Punches the foe like a comet.\n"
+            "May lower the foe's Sp.Def.\n"
+            "Can break medium obstacles."),
+        .effect = EFFECT_HIT,
+        .power = 75,
+        .type = TYPE_STELLAR,
+        .accuracy = 100,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_SP_DEF_MINUS_1,
+            .chance = 20,
+        }),
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .punchingMove = TRUE,
@@ -1753,6 +1758,36 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_HyperBeam,
+        .validApprenticeMove = TRUE,
+    },
+
+    [MOVE_GAMMA_BURST] =
+    {
+        .name = COMPOUND_STRING("Gamma Burst"),
+        .description = COMPOUND_STRING(
+            "Powerful, but leaves the\n"
+            "user immobile the next turn.\n"
+            "Produces a lot of energy"),
+        .effect = EFFECT_HIT,
+        .power = 150,
+        .type = TYPE_STELLAR,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
+        .fieldMoveTier = 3,
+        .accuracy = 90,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .ignoresKingsRock = B_UPDATED_MOVE_FLAGS < GEN_3,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_RECHARGE,
+            .self = TRUE,
+        }),
+        .contestEffect = CONTEST_EFFECT_JAMS_OTHERS_BUT_MISS_ONE_TURN,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_GammaBurst,
         .validApprenticeMove = TRUE,
     },
 
@@ -7223,12 +7258,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Wish"),
         .description = COMPOUND_STRING(
             "A wish that restores HP.\n"
-            "It takes time to work."),
+            "It takes time to work.\n"
+            "Lights up dark areas."),
         .effect = EFFECT_WISH,
         .power = 0,
-        .type = TYPE_NORMAL,
+        .type = TYPE_STELLAR,
         .accuracy = 0,
         .pp = 10,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .target = MOVE_TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -8172,10 +8209,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Meteor Mash"),
         .description = COMPOUND_STRING(
             "Fires a meteor-like punch.\n"
-            "May raise Attack."),
+            "May raise Attack.\n"
+            "Can break medium obstacles."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 100,
-        .type = TYPE_STEEL,
+        .type = TYPE_STELLAR,
         .accuracy = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 85,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
@@ -8188,6 +8226,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .self = TRUE,
             .chance = 20,
         }),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 2,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -8513,14 +8553,16 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Cosmic Power"),
         .description = COMPOUND_STRING(
             "Raises Defense and Sp. Def\n"
-            "with a mystic power."),
+            "with a mystic power.\n"
+            "Lights up dark areas."),
         .effect = EFFECT_COSMIC_POWER,
         .power = 0,
-        .type = TYPE_PSYCHIC,
+        .type = TYPE_STELLAR,
         .accuracy = 0,
-        .pp = 20,
+        .pp = 5,
         .target = MOVE_TARGET_USER,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_SPDEF_UP_1 },
         .snatchAffected = TRUE,
@@ -9393,12 +9435,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Gravity"),
         .description = COMPOUND_STRING(
             "Gravity is intensified\n"
-            "negating levitation."),
+            "negating levitation.\n"
+            "Can push large boulders."),
         .effect = EFFECT_GRAVITY,
         .power = 0,
-        .type = TYPE_PSYCHIC,
+        .type = TYPE_STELLAR,
         .accuracy = 0,
         .pp = 5,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
+        .fieldMoveTier = 2,
         .target = MOVE_TARGET_ALL_BATTLERS,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -10355,14 +10400,17 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Aura Sphere"),
         .description = COMPOUND_STRING(
             "Attacks with an aura blast\n"
-            "that cannot be evaded."),
+            "that cannot be evaded.\n"
+            "Can break medium obstacles."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 80 : 90,
-        .type = TYPE_FIGHTING,
+        .type = TYPE_STELLAR,
         .accuracy = 0,
-        .pp = 20,
+        .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .pulseMove = TRUE,
         .ballisticMove = TRUE,
@@ -10693,13 +10741,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Vacuum Wave"),
         .description = COMPOUND_STRING(
-            "Whirls its fists to send\n"
-            "a wave that strikes first."),
+            "Sends an energy pulse that\n"
+            "strikes the opponent first.\n"
+            "Can break small objects."),
         .effect = EFFECT_HIT,
         .power = 40,
-        .type = TYPE_FIGHTING,
+        .type = TYPE_STELLAR,
         .accuracy = 100,
         .pp = 30,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
         .target = MOVE_TARGET_SELECTED,
         .priority = 1,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -11943,13 +11993,16 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Spacial Rend"),
         .description = COMPOUND_STRING(
             "Tears the foe, and space.\n"
-            "High critical-hit ratio."),
+            "High critical-hit ratio.\n"
+            "Can push large boulders."),
         .effect = EFFECT_HIT,
-        .power = 100,
-        .type = TYPE_DRAGON,
+        .power = 85,
+        .type = TYPE_STELLAR,
         .accuracy = 95,
         .criticalHitStage = 1,
-        .pp = 5,
+        .pp = 10,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
+        .fieldMoveTier = 2,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -12159,6 +12212,32 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_HoneClaws,
+    },
+
+    [MOVE_GUIDING_STAR] =
+    {
+        .name = COMPOUND_STRING("Guiding Star"),
+        .description = COMPOUND_STRING(
+            "Uses the light of a star to\n"
+            "increase Sp. Atk. and Accuracy.\n"
+            "Lighs up dark areas."),
+        .effect = EFFECT_SPATK_ACCURACY_UP,
+        .power = 0,
+        .type = TYPE_STELLAR,
+        .accuracy = 0,
+        .pp = 15,
+        .target = MOVE_TARGET_USER,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_ATK_UP_1 },
+        .snatchAffected = TRUE,
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_IMPROVE_CONDITION_PREVENT_NERVOUSNESS,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_GuidingStar,
     },
 
     [MOVE_WIDE_GUARD] =
@@ -12373,6 +12452,87 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_Telekinesis,
+    },
+
+    [MOVE_TRACTOR_BEAM] =
+    {
+        .name = COMPOUND_STRING("Tractor Beam"),
+        .description = COMPOUND_STRING(
+            "Makes the foe float. It is\n"
+            "easier to hit for 3 turns.\n"
+            "Can dig up buried items."),
+        .effect = EFFECT_TELEKINESIS_HIT,
+        .power = 70,
+        .type = TYPE_STELLAR,
+        .accuracy = 90,
+        .pp = 15,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .zMove = { .effect = Z_EFFECT_SPATK_UP_1 },
+        .contestEffect = CONTEST_EFFECT_SHIFT_JUDGE_ATTENTION,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_TractorBeam,
+    },
+
+    [MOVE_STELLAR_FLARE] =
+    {
+        .name = COMPOUND_STRING("Stellar Flare"),
+        .description = COMPOUND_STRING(
+            "A burst of energy from the\n"
+            "stars that decreases evasion.\n"
+            "Lights up dark areas."),
+        .effect = EFFECT_HIT,
+        .power = 80,
+        .type = TYPE_STELLAR,
+        .accuracy = 90,
+        .pp = 15,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
+        .target = MOVE_TARGET_BOTH,
+        .priority = 0,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_EVS_MINUS_1,
+            .chance = 100,
+        }),
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .zMove = { .effect = Z_EFFECT_SPATK_UP_1 },
+        .contestEffect = CONTEST_EFFECT_SHIFT_JUDGE_ATTENTION,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_StellarFlare,
+    },
+
+    [MOVE_COSMIC_RAY] =
+    {
+        .name = COMPOUND_STRING("Cosmic Ray"),
+        .description = COMPOUND_STRING(
+            "An otherwordly beam that\n"
+            "has a chance to confuse.\n"
+            "Produces some energy."),
+        .effect = EFFECT_HIT,
+        .power = 70,
+        .type = TYPE_STELLAR,
+        .accuracy = 100,
+        .pp = 15,
+        .target = MOVE_TARGET_BOTH,
+        .priority = 0,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_CONFUSION,
+            .chance = 20,
+        }),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
+        .fieldMoveTier = 2,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .zMove = { .effect = Z_EFFECT_SPATK_UP_1 },
+        .contestEffect = CONTEST_EFFECT_SHIFT_JUDGE_ATTENTION,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_CosmicRay,
     },
 
     [MOVE_MAGIC_ROOM] =
@@ -13138,7 +13298,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Knocks the foe away to end\n"
             "the battle.\n"
-            "Can push medium boulders."),
+            "Can push large boulders."),
         .effect = EFFECT_HIT_SWITCH_TARGET,
         .power = 60,
         .type = TYPE_FIGHTING,

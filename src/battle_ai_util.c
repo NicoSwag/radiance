@@ -2287,6 +2287,7 @@ bool32 IsAttackBoostMoveEffect(u32 effect)
     case EFFECT_ATTACK_UP:
     case EFFECT_ATTACK_UP_2:
     case EFFECT_ATTACK_ACCURACY_UP:
+    case EFFECT_SPATK_ACCURACY_UP:
     case EFFECT_ATTACK_SPATK_UP:
     case EFFECT_DRAGON_DANCE:
     case EFFECT_COIL:
@@ -2329,6 +2330,7 @@ bool32 IsStatRaisingEffect(u32 effect)
     case EFFECT_SHELL_SMASH:
     case EFFECT_SHIFT_GEAR:
     case EFFECT_ATTACK_ACCURACY_UP:
+    case EFFECT_SPATK_ACCURACY_UP:
     case EFFECT_ATTACK_SPATK_UP:
     case EFFECT_GROWTH:
     case EFFECT_COIL:
