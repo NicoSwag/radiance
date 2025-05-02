@@ -76,7 +76,8 @@ static const u8 sPsyshockDescription[] = _(
 
 static const u8 sLavaPlumeDescription[] = _(
     "Scarlet flames torch\n"
-    "everything around the user.");
+    "everything around the user.\n"
+    "Can burn medium objects.");
 
 static const u8 sShadowForceDescription[] = _(
     "Vanishes on the first turn\n"
@@ -275,7 +276,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Fire Punch"),
         .description = COMPOUND_STRING(
             "A fiery punch that may burn\n"
-            "the foe."),
+            "the foe.\n"
+            "Can break medium obstacles."),
         .effect = EFFECT_HIT,
         .power = 75,
         .type = TYPE_FIRE,
@@ -283,6 +285,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .punchingMove = TRUE,
@@ -1444,7 +1448,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ember"),
         .description = COMPOUND_STRING(
             "A weak fire attack that may\n"
-            "inflict a burn."),
+            "inflict a burn\n."
+            "Can burn small objects."),
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_FIRE,
@@ -1458,7 +1463,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .chance = 10,
         }),
         .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
-        .fieldMoveTier = 1,
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -1471,21 +1475,22 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Flamethrower"),
         .description = COMPOUND_STRING(
             "A powerful fire attack that\n"
-            "may inflict a burn."),
+            "may inflict a burn\n."
+            "Can burn medium objects."),
         .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95,
+        .power = 90,
         .type = TYPE_FIRE,
         .accuracy = 100,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_BURN,
             .chance = 10,
         }),
-        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
-        .fieldMoveTier = 2,
         .contestEffect = CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -3346,12 +3351,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Fire Blast"),
         .description = COMPOUND_STRING(
             "Incinerates everything it\n"
-            "strikes. May cause a burn."),
+            "strikes. May cause a burn.\n"
+            "Can burn large objects."),
         .effect = EFFECT_HIT,
-        .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 110 : 120,
+        .power = 110,
         .type = TYPE_FIRE,
         .accuracy = 85,
         .pp = 5,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 3,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -6349,12 +6357,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Sunny Day"),
         .description = COMPOUND_STRING(
             "Boosts the power of Fire-\n"
-            "type moves for 5 turns."),
+            "type moves for 5 turns.\n"
+            "Lights up dark areas."),
         .effect = EFFECT_SUNNY_DAY,
         .power = 0,
         .type = TYPE_FIRE,
         .accuracy = 0,
         .pp = 5,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .target = MOVE_TARGET_ALL_BATTLERS,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -6785,7 +6795,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Heat Wave"),
         .description = COMPOUND_STRING(
             "Exhales a hot breath on the\n"
-            "foe. May inflict a burn."),
+            "foe. May inflict a burn.\n"
+            "Can burn medium objects."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 95 : 100,
         .type = TYPE_FIRE,
@@ -6793,6 +6804,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 10,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .windMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
@@ -6885,12 +6898,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Will-O-Wisp"),
         .description = COMPOUND_STRING(
             "Inflicts a burn on the foe\n"
-            "with intense fire."),
+            "with intense fire.\n"
+            "Lights up dark areas."),
         .effect = EFFECT_WILL_O_WISP,
         .power = 0,
         .type = TYPE_FIRE,
         .accuracy = B_UPDATED_MOVE_DATA >= GEN_6 ? 85 : 75,
         .pp = 15,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -7497,7 +7512,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Eruption"),
         .description = COMPOUND_STRING(
             "The higher the user's HP,\n"
-            "the more damage caused."),
+            "the more damage caused.\n"
+            "Can burn large objects."),
         .effect = EFFECT_POWER_BASED_ON_USER_HP,
         .power = 150,
         .type = TYPE_FIRE,
@@ -7505,6 +7521,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 5,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 3,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .contestEffect = CONTEST_EFFECT_BETTER_WHEN_LATER,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
@@ -7884,7 +7902,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Blaze Kick"),
         .description = COMPOUND_STRING(
             "A kick with a high critical-\n"
-            "hit ratio. May cause a burn."),
+            "hit ratio. May cause a burn\n."
+            "Can break medium obstacles."),
         .effect = EFFECT_HIT,
         .power = 85,
         .type = TYPE_FIRE,
@@ -7893,6 +7912,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
@@ -8096,7 +8117,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Blast Burn"),
         .description = COMPOUND_STRING(
             "Powerful, but leaves the\n"
-            "user immobile the next turn."),
+            "user immobile the next turn.\n"
+            "Can burn large objects."),
         .effect = EFFECT_HIT,
         .power = 150,
         .type = TYPE_FIRE,
@@ -8104,6 +8126,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 5,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 3,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_RECHARGE,
@@ -8304,12 +8328,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Overheat"),
         .description = COMPOUND_STRING(
             "Allows a full-power attack,\n"
-            "but sharply lowers Sp. Atk."),
+            "but sharply lowers Sp. Atk.\n"
+            "Can burn down large objects."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 130 : 140,
         .type = TYPE_FIRE,
         .accuracy = 90,
         .pp = 5,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 3,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -11016,7 +11043,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Fire Fang"),
         .description = COMPOUND_STRING(
             "May cause flinching or\n"
-            "leave the foe with a burn."),
+            "leave the foe with a burn\n."
+            "Cuts down small obstacles."),
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_FIRE,
@@ -11024,6 +11052,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CUT,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .bitingMove = TRUE,
@@ -11326,6 +11355,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 15,
         .target = MOVE_TARGET_FOES_AND_ALLY,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_BURN,
@@ -11978,7 +12009,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Magma Storm"),
         .description = COMPOUND_STRING(
             "Traps the foe in a vortex\n"
-            "of fire for "BINDING_TURNS" turns."),
+            "of fire for "BINDING_TURNS" turns.\n"
+            "Can burn large objects."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 100 : 120,
         .type = TYPE_FIRE,
@@ -11986,6 +12018,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 5,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 3,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_WRAP,
@@ -12416,7 +12450,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Flame Burst"),
         .description = COMPOUND_STRING(
             "A bursting flame that does\n"
-            "damage to all foes."),
+            "damage to all foes\n."
+            "Can burn medium objects."),
         .effect = EFFECT_HIT,
         .power = 70,
         .type = TYPE_FIRE,
@@ -12424,6 +12459,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FLAME_BURST,
@@ -12582,7 +12619,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Flame Charge"),
         .description = COMPOUND_STRING(
             "Attacks in a cloak of\n"
-            "flames. Raises Speed."),
+            "flames. Raises Speed\n."
+            "Allows to climb rocky walls."),
         .effect = EFFECT_HIT,
         .power = 50,
         .type = TYPE_FIRE,
@@ -12592,6 +12630,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SPD_PLUS_1,
             .self = TRUE,
@@ -13125,7 +13164,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Incinerate"),
         .description = COMPOUND_STRING(
             "Burns up Berries and Gems\n"
-            "preventing their use."),
+            "preventing their use.\n"
+            "Can burn small objects."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 30,
         .type = TYPE_FIRE,
@@ -13133,6 +13173,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 15,
         .target = MOVE_TARGET_BOTH,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_INCINERATE,
@@ -15212,7 +15253,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Mystical Fire"),
         .description = COMPOUND_STRING(
             "Breathes a special, hot\n"
-            "fire. Lowers Sp. Atk."),
+            "fire. Lowers Sp. Atk.\n"
+            "Can burn down medium objects."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_7 ? 75 : 65,
         .type = TYPE_FIRE,
@@ -15220,6 +15262,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BURN,
+        .fieldMoveTier = 2,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_SP_ATK_MINUS_1,
@@ -16409,7 +16453,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Fire Lash"),
         .description = COMPOUND_STRING(
             "Whips the foe with fire\n"
-            "lowering its Defense."),
+            "lowering its Defense.\n"
+            "Creates bridges in some areas."),
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_FIRE,
@@ -16417,6 +16462,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_GRAPPLE,
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .makesContact = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
