@@ -149,7 +149,7 @@ Test_Msgbox:
 	.string "Test.$"
 
 Debug_EventScript_Script_2::
-	trainerbattle_no_intro TRAINER_MAY_RUSTBORO_TREECKO, Route104_Text_MayDefeat
+	removefieldmugshot
 	release
 	end
 

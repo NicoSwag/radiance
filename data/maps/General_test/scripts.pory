@@ -1,1 +1,13 @@
 mapscripts General_test_MapScripts {}
+
+
+script Test_CozmoDialogue
+{
+    lock
+    createfieldmugshot(MUGSHOT_COZMO, EMOTE_NORMAL)
+    speakername("Prof. Cozmo")
+    msgbox(format("Yo bitch what's uppppppp!!!"), MSGBOX_NPC)
+    removefieldmugshot
+    release
+    end
+}
