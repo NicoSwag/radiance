@@ -4214,6 +4214,15 @@ gBattleAnimMove_Telekinesis::
 gBattleAnimMove_TractorBeam::
 	loadspritegfx ANIM_TAG_SPOTLIGHT
 	loadspritegfx ANIM_TAG_TAG_HAND
+	loadspritegfx ANIM_TAG_RED_ORB_2
+	loadspritegfx ANIM_TAG_POISON_JAB
+	loadspritegfx ANIM_TAG_GRAY_SMOKE
+	loadspritegfx ANIM_TAG_WISP_FIRE
+	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT
+	loadspritegfx ANIM_TAG_THIN_RING
+	loadspritegfx ANIM_TAG_WATER_ORB
+	monbg ANIM_DEF_PARTNER
+	setalpha 8, 8
 	fadetobg BG_COSMIC
 	waitbgfadeout
 	createvisualtask AnimTask_StartSlidingBg, 2, 0, 128, 0, -1
@@ -4221,9 +4230,36 @@ gBattleAnimMove_TractorBeam::
 	createvisualtask AnimTask_CreateSpotlight, 0x2
 	createvisualtask AnimTask_HardwarePaletteFade, 0x2, 0xf8, 0x3, 0x0, 0xa, 0x0
 	waitforvisualfinish
-	playsewithpan SE_M_NIGHTMARE, SOUND_PAN_ATTACKER
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_ATTACKER
 	createsprite gSpotlightSpriteTemplate, ANIM_TARGET, 2, 0x0, 0xfff8
 	createvisualtask AnimTask_SwayMon, 5, 1, 24, 280, 1, ANIM_TARGET
+	delay 40
+	createsprite gPsyshockOrbSpriteTemplate, ANIM_TARGET, 2, 40, 40, 16
+	playsewithpan SE_M_SWIFT, SOUND_PAN_TARGET
+	delay 2
+	createsprite gPsyshockOrbSpriteTemplate, ANIM_TARGET, 2, -40, -40, 16
+	playsewithpan SE_M_SWIFT, SOUND_PAN_TARGET
+	delay 2
+	createsprite gPsyshockOrbSpriteTemplate, ANIM_TARGET, 2, 0, 40, 16
+	playsewithpan SE_M_SWIFT, SOUND_PAN_TARGET
+	delay 2
+	createsprite gPsyshockOrbSpriteTemplate, ANIM_TARGET, 2, 0, -40, 16
+	playsewithpan SE_M_SWIFT, SOUND_PAN_TARGET
+	delay 2
+	createsprite gPsyshockOrbSpriteTemplate, ANIM_TARGET, 2, 40, -20, 16
+	playsewithpan SE_M_SWIFT, SOUND_PAN_TARGET
+	delay 2
+	createsprite gPsyshockOrbSpriteTemplate, ANIM_TARGET, 2, 40, 20, 16
+	playsewithpan SE_M_SWIFT, SOUND_PAN_TARGET
+	delay 2
+	createsprite gPsyshockOrbSpriteTemplate, ANIM_TARGET, 2, -40, -20, 16
+	playsewithpan SE_M_SWIFT, SOUND_PAN_TARGET
+	delay 2
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 5, 0, 15, 1
+	createvisualtask AnimTask_BlendMonInAndOut, 5, ANIM_TARGET, RGB_WHITE, 12, 0, 1
+	createsprite gOceanOperaExpandingRingSpriteTemplate, ANIM_ATTACKER, 3, 8, 0, 8, 1, 0
+	playsewithpan SE_M_SWAGGER, SOUND_PAN_TARGET
+	delay 2
 	waitforvisualfinish
 	createvisualtask AnimTask_HardwarePaletteFade, 0x2, 0xf8, 0x3, 0xa, 0x0, 0x1
 	waitforvisualfinish
@@ -4233,6 +4269,8 @@ gBattleAnimMove_TractorBeam::
 	setarg 7, 0xFFFF
 	waitbgfadein
 	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
 	end
 
 
@@ -14819,6 +14857,80 @@ TripleAxelTurn2:
 TripleAxelEnd:
 	delay 4
 	playsewithpan SE_M_ICY_WIND, 0x3f
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
+
+gBattleAnimMove_CelestialRain::
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	fadetobg BG_COSMIC
+	waitbgfadeout
+	jumpifmoveturn 0, CelestialRainTurn0
+	jumpifmoveturn 1, CelestialRainTurn1
+	goto CelestialRainTurn2
+CelestialRainTurn0:
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_GOLD_STARS
+	loadspritegfx ANIM_TAG_CIRCLE_OF_LIGHT
+	loadspritegfx ANIM_TAG_THIN_RING
+	loadspritegfx ANIM_TAG_WATER_ORB
+	createsprite gMeteorMashStarSpriteTemplate, ANIM_TARGET, 3, -80, -64, 40, 32, 30
+	delay 20
+	createsprite gUproarRingSpriteTemplate, ANIM_ATTACKER, 3, 0, 0, 1, 0, 0x7FFF, 3
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
+	playsewithpan SE_M_HEAL_BELL, SOUND_PAN_TARGET
+	delay 4
+	goto CelestialRainEnd
+CelestialRainTurn1:
+	createvisualtask AnimTask_StartSlidingBg, 0x5, 0x0, 0xFC00, FALSE, 0xffff
+	waitbgfadein
+	loadspritegfx ANIM_TAG_ROCKS @Rocks
+	loadspritegfx ANIM_TAG_FAIRY_LOCK_CHAINS @Gray Colour
+	loadspritegfx ANIM_TAG_WATER_GUN @Sparkles Trail
+	loadspritegfx ANIM_TAG_FIRE_PLUME @Eruption
+	playsewithpan SE_FALL, SOUND_PAN_ATTACKER
+	call DracoMeteor1
+	delay 7
+	call DracoMeteor2
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, 40, 32 @; For Meteor 1
+	delay 7
+	playsewithpan SE_M_ROCK_THROW, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 4, 2
+	createsprite gDragonRageFirePlumeSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, -8, 32 @; For Meteor 2
+	goto CelestialRainEnd
+CelestialRainTurn2:
+	createvisualtask AnimTask_StartSlidingBg, 0x5, 0xf700, 0x0, TRUE, 0xffff @;Scroll right/left
+	waitbgfadein
+	loadspritegfx ANIM_TAG_METEOR @superpower
+	loadspritegfx ANIM_TAG_GOLD_RING @beam
+	loadspritegfx ANIM_TAG_SMALL_RED_EYE @red color
+	loadspritegfx ANIM_TAG_IMPACT @hit
+	createsprite gSunsteelStrikeSuperpowerTemplate, ANIM_TARGET, 2, 0x14
+	delay 0x14
+	createsprite gSunsteelStrikeRedImpactTemplate, ANIM_ATTACKER, 2, 0x0, 0x0, 0x1, 0x0
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 6, 0, 8, 1
+	playsewithpan SE_M_EXPLOSION, SOUND_PAN_TARGET
+	waitforvisualfinish
+	unloadspritegfx ANIM_TAG_METEOR @superpower
+	unloadspritegfx ANIM_TAG_GOLD_RING @beam
+	unloadspritegfx ANIM_TAG_SMALL_RED_EYE @red color
+	unloadspritegfx ANIM_TAG_IMPACT @hit
+	loadspritegfx ANIM_TAG_SMALL_EMBER @FireSpreadEffect
+	call FireSpreadEffect
+	delay 0x4
+	playsewithpan SE_M_FIRE_PUNCH, SOUND_PAN_TARGET
+	waitforvisualfinish
+CelestialRainEnd:
+	waitforvisualfinish
+	restorebg
+	waitbgfadeout
+	setarg 7, 0xFFFF
+	waitbgfadein
 	waitforvisualfinish
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff

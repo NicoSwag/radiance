@@ -749,6 +749,7 @@ extern const u8 gBattleAnimMove_CorrosiveGas[];
 extern const u8 gBattleAnimMove_Coaching[];
 extern const u8 gBattleAnimMove_FlipTurn[];
 extern const u8 gBattleAnimMove_TripleAxel[];
+extern const u8 gBattleAnimMove_CelestialRain[];
 extern const u8 gBattleAnimMove_DualWingbeat[];
 extern const u8 gBattleAnimMove_ScorchingSands[];
 extern const u8 gBattleAnimMove_JungleHealing[];

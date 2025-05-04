@@ -1453,7 +1453,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ember"),
         .description = COMPOUND_STRING(
             "A weak fire attack that may\n"
-            "inflict a burn\n."
+            "inflict a burn.\n"
             "Can burn small objects."),
         .effect = EFFECT_HIT,
         .power = 40,
@@ -1480,7 +1480,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Flamethrower"),
         .description = COMPOUND_STRING(
             "A powerful fire attack that\n"
-            "may inflict a burn\n."
+            "may inflict a burn.\n"
             "Can burn medium objects."),
         .effect = EFFECT_HIT,
         .power = 90,
@@ -6184,7 +6184,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Vital Throw"),
         .description = COMPOUND_STRING(
             "Makes the user's move last,\n"
-            "but it never misses\n."
+            "but it never misses.\n"
             "Can push large boulders."),
         .effect = EFFECT_HIT,
         .power = 70,
@@ -7939,7 +7939,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Blaze Kick"),
         .description = COMPOUND_STRING(
             "A kick with a high critical-\n"
-            "hit ratio. May cause a burn\n."
+            "hit ratio. May cause a burn.\n"
             "Can break medium obstacles."),
         .effect = EFFECT_HIT,
         .power = 85,
@@ -8209,7 +8209,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Meteor Mash"),
         .description = COMPOUND_STRING(
             "Fires a meteor-like punch.\n"
-            "May raise Attack.\n"
+            "May raise So. Atk.\n"
             "Can break medium obstacles."),
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 100,
@@ -8222,7 +8222,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .punchingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_ATK_PLUS_1,
+            .moveEffect = MOVE_EFFECT_SP_ATK_PLUS_1,
             .self = TRUE,
             .chance = 20,
         }),
@@ -11093,7 +11093,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Fire Fang"),
         .description = COMPOUND_STRING(
             "May cause flinching or\n"
-            "leave the foe with a burn\n."
+            "leave the foe with a burn.\n"
             "Cuts down small obstacles."),
         .effect = EFFECT_HIT,
         .power = 65,
@@ -12458,11 +12458,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Tractor Beam"),
         .description = COMPOUND_STRING(
-            "Makes the foe float. It is\n"
-            "easier to hit for 3 turns.\n"
+            "The foe is lifted and attacked,"
+            "making it easier to hit for a bit.\n"
             "Can dig up buried items."),
         .effect = EFFECT_TELEKINESIS_HIT,
-        .power = 70,
+        .power = 60,
         .type = TYPE_STELLAR,
         .accuracy = 90,
         .pp = 15,
@@ -12610,7 +12610,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Flame Burst"),
         .description = COMPOUND_STRING(
             "A bursting flame that does\n"
-            "damage to all foes\n."
+            "damage to all foes.\n"
             "Can burn medium objects."),
         .effect = EFFECT_HIT,
         .power = 70,
@@ -12779,7 +12779,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Flame Charge"),
         .description = COMPOUND_STRING(
             "Attacks in a cloak of\n"
-            "flames. Raises Speed\n."
+            "flames. Raises Speed.\n"
             "Allows to climb rocky walls."),
         .effect = EFFECT_HIT,
         .power = 50,
@@ -15846,7 +15846,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Power-Up Punch"),
         .description = COMPOUND_STRING(
             "A hard punch that raises\n"
-            "the user's Attack\n."
+            "the user's Attack.\n"
             "Can break small obstacles."),
         .effect = EFFECT_HIT,
         .power = 40,
@@ -19026,6 +19026,29 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_TripleAxel,
+    },
+
+    [MOVE_CELESTIAL_RAIN] =
+    {
+        .name = COMPOUND_STRING("Celestial Rain"),
+        .description = COMPOUND_STRING(
+            "An assault with celestial bodies\n"
+            "that get bigger with each hit."),
+        .effect = EFFECT_TRIPLE_KICK,
+        .power = 20,
+        .type = TYPE_STELLAR,
+        .accuracy = 85,
+        .pp = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .makesContact = TRUE,
+        .strikeCount = 3,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_CelestialRain,
     },
 
     [MOVE_DUAL_WINGBEAT] =
