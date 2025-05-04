@@ -2549,6 +2549,7 @@
 	.4byte \fieldeffectflag
 	.byte \fieldeffecttier
 	.endm
+
 	@ example_usage:
 	@ 	createfieldmugshot MUGSHOT_TEST, EMOTE_NORMAL
 	@ 	msgbox test
@@ -2562,8 +2563,8 @@
 	@ so be careful if you use them in your script too!
 	.macro createfieldmugshot id:req, emote=0
 	callnative CreateFieldMugshot
-	setorcopyvar VAR_TEMP_E, \id
-	setorcopyvar VAR_TEMP_F, \emote
+	.byte \id
+	.byte \emote
 	.endm
 
 	@ destroys a mugshot in the overworld, if there is one
