@@ -1,6 +1,7 @@
 {
   "group_order": [
     "gMapGroup_Radiance_Earth",
+    "gMapGroup_Radiance_Testing",
     "gMapGroup_TownsAndRoutes",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
@@ -37,9 +38,12 @@
     "gMapGroup_IndoorRoute124"
   ],
   "gMapGroup_Radiance_Earth": [
-    "Earth_Mountain_Top",
     "Earth_test",
+    "Earth_Mountain_Top",
     "Earth_Mountain_Side"
+  ],
+  "gMapGroup_Radiance_Testing": [
+    "General_test"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PetalburgCity",

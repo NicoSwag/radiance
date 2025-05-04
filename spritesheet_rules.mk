@@ -267,6 +267,10 @@ $(OBJEVENTGFXDIR)/people/man_5.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/people/devon_employee.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
+$(OBJEVENTGFXDIR)/people/cozmo.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+
 $(OBJEVENTGFXDIR)/people/maniac.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 

@@ -473,6 +473,10 @@ static const struct SpriteFrameImage sPicTable_DevonEmployee[] = {
     overworld_ascending_frames(gObjectEventPic_DevonEmployee, 2, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_Cozmo[] = {
+    overworld_ascending_frames(gObjectEventPic_Cozmo, 2, 4),
+};
+
 static const struct SpriteFrameImage sPicTable_AquaMemberM[] = {
     overworld_ascending_frames(gObjectEventPic_AquaMemberM, 2, 4),
 };
