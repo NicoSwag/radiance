@@ -2801,7 +2801,7 @@
       "MOVE_DOUBLE_EDGE",
       "MOVE_ENDEAVOR",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_COVET",
@@ -2984,7 +2984,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_EXPANDING_FORCE",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_COVET",
@@ -3417,7 +3417,7 @@
       "MOVE_LUNGE",
       "MOVE_ENDEAVOR",
       "MOVE_SKITTER_SMACK",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_AGILITY",
@@ -3539,7 +3539,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_SLUDGE_WAVE",
       "MOVE_SKITTER_SMACK",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_AGILITY",
@@ -4144,7 +4144,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_WHIRLPOOL",
       "MOVE_MUDDY_WATER",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_CLEAR_SMOG",
@@ -4286,7 +4286,7 @@
       "MOVE_WHIRLPOOL",
       "MOVE_MUDDY_WATER",
       "MOVE_FUTURE_SIGHT",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_CLEAR_SMOG",
@@ -6409,7 +6409,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_BELCH",
@@ -7985,7 +7985,7 @@
       "MOVE_SLUDGE_WAVE",
       "MOVE_SKITTER_SMACK",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ASTONISH",
@@ -8125,7 +8125,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_FIRE_PUNCH",
@@ -8269,7 +8269,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_FIRE_PUNCH",
@@ -8617,7 +8617,7 @@
       "MOVE_GRASSY_GLIDE",
       "MOVE_PSYCH_UP",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_POISON_POWDER",
@@ -8762,7 +8762,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -10686,7 +10686,7 @@
       "MOVE_CURSE",
       "MOVE_DRAGON_CHEER",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_HORN_DRILL",
@@ -12509,7 +12509,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -12794,7 +12794,7 @@
       "MOVE_HARD_PRESS",
       "MOVE_DRAGON_CHEER",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE",
+      "MOVE_EERIE_NOISE",
       "MOVE_UPPER_HAND"
     ],
     "EggMoves": [],
@@ -14347,7 +14347,7 @@
       "MOVE_FEATHER_DANCE",
       "MOVE_FUTURE_SIGHT",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_FEATHER_DANCE",
@@ -17022,7 +17022,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_DOUBLE_EDGE",
       "MOVE_SKITTER_SMACK",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_DOUBLE_EDGE",
@@ -17432,7 +17432,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_CURSE",
@@ -17710,7 +17710,7 @@
       "MOVE_LASH_OUT",
       "MOVE_DOUBLE_EDGE",
       "MOVE_FEATHER_DANCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_BRAVE_BIRD",
@@ -17889,7 +17889,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_BELCH",
@@ -18008,7 +18008,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_FUTURE_SIGHT",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_CURSE",
@@ -18165,7 +18165,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ALLY_SWITCH",
@@ -22923,7 +22923,7 @@
       "MOVE_WHIRLPOOL",
       "MOVE_FUTURE_SIGHT",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -26031,7 +26031,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_CONFUSE_RAY",
@@ -29395,7 +29395,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_AMNESIA",
@@ -29815,7 +29815,7 @@
       "MOVE_BREAKING_SWIPE",
       "MOVE_DRAGON_CHEER",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -32120,7 +32120,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ALLY_SWITCH",
@@ -33014,7 +33014,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_METEOR_BEAM",
       "MOVE_HARD_PRESS",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -33151,7 +33151,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_METEOR_BEAM",
       "MOVE_HARD_PRESS",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -33782,7 +33782,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_BREAKING_SWIPE",
       "MOVE_DRAGON_CHEER",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -34287,7 +34287,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_METEOR_BEAM",
       "MOVE_METAL_SOUND",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -34419,7 +34419,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_METEOR_BEAM",
       "MOVE_THROAT_CHOP",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -37010,7 +37010,7 @@
       "MOVE_DUAL_WINGBEAT",
       "MOVE_ENDEAVOR",
       "MOVE_SKITTER_SMACK",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -38107,7 +38107,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_FUTURE_SIGHT",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_CURSE",
@@ -38220,7 +38220,7 @@
       "MOVE_DOUBLE_EDGE",
       "MOVE_ENDEAVOR",
       "MOVE_FEATHER_DANCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_BRAVE_BIRD",
@@ -38323,7 +38323,7 @@
       "MOVE_DOUBLE_EDGE",
       "MOVE_FUTURE_SIGHT",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ALLY_SWITCH",
@@ -38840,7 +38840,7 @@
       "MOVE_METEOR_BEAM",
       "MOVE_METAL_SOUND",
       "MOVE_HARD_PRESS",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_GRAVITY",
@@ -41703,7 +41703,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_DOUBLE_EDGE",
       "MOVE_SKITTER_SMACK",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_DOUBLE_EDGE",
@@ -43376,7 +43376,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -43551,7 +43551,7 @@
       "MOVE_DOUBLE_EDGE",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -49278,7 +49278,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_FAKE_OUT",
@@ -49389,7 +49389,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_FAKE_OUT",
@@ -49510,7 +49510,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_FAKE_OUT",
@@ -49873,7 +49873,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -56374,7 +56374,7 @@
       "MOVE_SCORCHING_SANDS",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_COPYCAT",
@@ -57772,7 +57772,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_PETAL_BLIZZARD",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_COPYCAT",
@@ -58124,7 +58124,7 @@
       "MOVE_GRAVITY",
       "MOVE_PSYCH_UP",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_YAWN",
@@ -58258,7 +58258,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_EXPANDING_FORCE",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -58544,7 +58544,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_THROAT_CHOP",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -60230,7 +60230,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_SKITTER_SMACK",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ALLY_SWITCH",
@@ -60727,7 +60727,7 @@
       "MOVE_DOUBLE_EDGE",
       "MOVE_BREAKING_SWIPE",
       "MOVE_DRAGON_CHEER",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_DEFOG",
@@ -61011,7 +61011,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_SKITTER_SMACK",
       "MOVE_THROAT_CHOP",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -62200,7 +62200,7 @@
       "MOVE_WHIRLPOOL",
       "MOVE_TRIPLE_AXEL",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -63600,7 +63600,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_SKITTER_SMACK",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_AROMATIC_MIST",
@@ -65491,7 +65491,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_DREAM_EATER",
@@ -66340,7 +66340,7 @@
       "MOVE_PAIN_SPLIT",
       "MOVE_WHIRLPOOL",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ICE_FANG",
@@ -70398,7 +70398,7 @@
       "MOVE_SLUDGE_WAVE",
       "MOVE_THROAT_CHOP",
       "MOVE_METAL_SOUND",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ENDEAVOR",
@@ -70927,7 +70927,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_AFTER_YOU",
@@ -72264,7 +72264,7 @@
       "MOVE_GRAVITY",
       "MOVE_PSYCH_UP",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_EXTRASENSORY",
@@ -74401,7 +74401,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_THROAT_CHOP",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_BITE",
@@ -80701,7 +80701,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_SKITTER_SMACK",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_COSMIC_POWER",
@@ -83790,7 +83790,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ALLY_SWITCH",
@@ -84365,7 +84365,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_DOUBLE_EDGE",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -87893,7 +87893,7 @@
       "MOVE_PSYCH_UP",
       "MOVE_SLUDGE_WAVE",
       "MOVE_FUTURE_SIGHT",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -88881,7 +88881,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_METAL_SOUND",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -89249,7 +89249,7 @@
       "MOVE_ELECTROWEB",
       "MOVE_EXPANDING_FORCE",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE",
+      "MOVE_EERIE_NOISE",
       "MOVE_UPPER_HAND"
     ],
     "EggMoves": [
@@ -91145,7 +91145,7 @@
       "MOVE_BREAKING_SWIPE",
       "MOVE_CURSE",
       "MOVE_DRAGON_CHEER",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -91855,7 +91855,7 @@
       "MOVE_DUAL_WINGBEAT",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -92270,7 +92270,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_CURSE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_BELCH",
@@ -93686,7 +93686,7 @@
       },
       {
         "Level": 40,
-        "Move": "MOVE_BITTER_MALICE"
+        "Move": "MOVE_COLD_SPOT"
       },
       {
         "Level": 44,
@@ -93810,7 +93810,7 @@
       },
       {
         "Level": 46,
-        "Move": "MOVE_BITTER_MALICE"
+        "Move": "MOVE_COLD_SPOT"
       },
       {
         "Level": 52,
@@ -94022,7 +94022,7 @@
       "MOVE_FEATHER_DANCE",
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ROCK_SMASH",
@@ -95135,7 +95135,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_METEOR_BEAM",
       "MOVE_THROAT_CHOP",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -95278,7 +95278,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_METEOR_BEAM",
       "MOVE_THROAT_CHOP",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -95412,7 +95412,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_METEOR_BEAM",
       "MOVE_THROAT_CHOP",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -96507,7 +96507,7 @@
       "MOVE_FUTURE_SIGHT",
       "MOVE_EXPANDING_FORCE",
       "MOVE_ALLURING_VOICE",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -96636,7 +96636,7 @@
       "MOVE_EXPANDING_FORCE",
       "MOVE_SKITTER_SMACK",
       "MOVE_THROAT_CHOP",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -97083,7 +97083,7 @@
       "MOVE_SLUDGE_WAVE",
       "MOVE_THROAT_CHOP",
       "MOVE_METAL_SOUND",
-      "MOVE_PSYCHIC_NOISE"
+      "MOVE_EERIE_NOISE"
     ],
     "EggMoves": [
       "MOVE_ENDEAVOR",

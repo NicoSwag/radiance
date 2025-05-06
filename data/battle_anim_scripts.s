@@ -23989,6 +23989,39 @@ gBattleAnimMove_LeechLife::
 	blendoff
 	end
 
+gBattleAnimMove_VenomDrain::
+	loadspritegfx ANIM_TAG_NEEDLE
+	loadspritegfx ANIM_TAG_ORBS
+	delay 1
+	loadspritegfx ANIM_TAG_BLUE_STAR
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_POISON_BUBBLE
+	monbg ANIM_DEF_PARTNER
+	splitbgprio_foes ANIM_TARGET
+	setalpha 12, 8
+	delay 1
+	createsprite gLeechLifeNeedleSpriteTemplate, ANIM_ATTACKER, 2, -20, 15, 12
+	waitforvisualfinish
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
+	playsewithpan SE_M_ABSORB, SOUND_PAN_TARGET
+	delay 2
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 5, 5, 1
+	waitforvisualfinish
+	call PoisonBubblesEffect
+	waitforvisualfinish
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 7, RGB_BLACK
+	waitforvisualfinish
+	call AbsorbEffect
+	waitforvisualfinish
+	delay 15
+	call HealingEffect
+	waitforvisualfinish
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 7, 0, RGB_BLACK
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
 gBattleAnimMove_Synthesis::
 	loadspritegfx ANIM_TAG_SPARKLE_2
 	createvisualtask AnimTask_BlendColorCycle, 2, F_PAL_ATTACKER, 2, 2, 0, 16, RGB(27, 31, 18)

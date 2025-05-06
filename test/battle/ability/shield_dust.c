@@ -10,7 +10,7 @@ SINGLE_BATTLE_TEST("Shield Dust blocks secondary effects")
     PARAMETRIZE { move = MOVE_FAKE_OUT; }
     PARAMETRIZE { move = MOVE_ROCK_TOMB; }
     PARAMETRIZE { move = MOVE_SPIRIT_SHACKLE; }
-    PARAMETRIZE { move = MOVE_PSYCHIC_NOISE; }
+    PARAMETRIZE { move = MOVE_EERIE_NOISE; }
 
     GIVEN {
         ASSUME(MoveHasAdditionalEffectWithChance(MOVE_NUZZLE, MOVE_EFFECT_PARALYSIS, 100) == TRUE);
@@ -19,7 +19,7 @@ SINGLE_BATTLE_TEST("Shield Dust blocks secondary effects")
         ASSUME(MoveHasAdditionalEffectWithChance(MOVE_FAKE_OUT, MOVE_EFFECT_FLINCH, 100) == TRUE);
         ASSUME(MoveHasAdditionalEffectWithChance(MOVE_ROCK_TOMB, MOVE_EFFECT_SPD_MINUS_1, 100) == TRUE);
         ASSUME(MoveHasAdditionalEffectWithChance(MOVE_SPIRIT_SHACKLE, MOVE_EFFECT_PREVENT_ESCAPE, 100) == TRUE);
-        ASSUME(MoveHasAdditionalEffectWithChance(MOVE_PSYCHIC_NOISE, MOVE_EFFECT_PSYCHIC_NOISE, 100) == TRUE);
+        ASSUME(MoveHasAdditionalEffectWithChance(MOVE_EERIE_NOISE, MOVE_EFFECT_PSYCHIC_NOISE, 100) == TRUE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_VIVILLON) { Ability(ABILITY_SHIELD_DUST); }
     } WHEN {

@@ -507,7 +507,7 @@ static inline bool32 IsMoveSheerForceBoosted(u32 move)
         case MOVE_AURORA_BEAM:
         case MOVE_AXE_KICK:
         case MOVE_BARB_BARRAGE:
-        case MOVE_BITTER_MALICE:
+        case MOVE_COLD_SPOT:
         case MOVE_BLAZE_KICK:
         case MOVE_BLAZING_TORQUE:
         case MOVE_BLEAKWIND_STORM:
@@ -604,7 +604,7 @@ static inline bool32 IsMoveSheerForceBoosted(u32 move)
         case MOVE_WILDBOLT_STORM:
         case MOVE_ZING_ZAP:
         case MOVE_ELECTRO_SHOT:
-        case MOVE_PSYCHIC_NOISE:
+        case MOVE_EERIE_NOISE:
             return TRUE;
     }
     return FALSE;

@@ -145,6 +145,7 @@ extern const u8 gBattleAnimMove_DreamEater[];
 extern const u8 gBattleAnimMove_PoisonGas[];
 extern const u8 gBattleAnimMove_Barrage[];
 extern const u8 gBattleAnimMove_LeechLife[];
+extern const u8 gBattleAnimMove_VenomDrain[];
 extern const u8 gBattleAnimMove_LovelyKiss[];
 extern const u8 gBattleAnimMove_SkyAttack[];
 extern const u8 gBattleAnimMove_Transform[];
