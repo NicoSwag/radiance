@@ -281,13 +281,21 @@ extern const u8 gText_SelectorArrow3[];
 extern const u8 gText_YesNo[];
 
 // main menu/birch speech text
-extern const u8 gText_Birch_Welcome[];
+extern const u8 gText_Intro_AmIDreaming[];
+extern const u8 gText_Intro_YoungHuman[];
+extern const u8 gText_Intro_ThisIsYourSister[];
+extern const u8 gText_Intro_KnowMyself[];
+extern const u8 gText_Intro_ThatsWrong[];
+extern const u8 gText_Intro_ThatsWrongLeo[];
+extern const u8 gText_Intro_TwoSouls[];
+extern const u8 gText_Intro_MysteriousVoice[];
 extern const u8 gText_ThisIsAPokemon[];
 extern const u8 gText_Birch_MainSpeech[];
 extern const u8 gText_Birch_AndYouAre[];
 extern const u8 gText_Birch_BoyOrGirl[];
 extern const u8 gText_Birch_WhatsYourName[];
 extern const u8 gText_Birch_SoItsPlayer[];
+extern const u8 gText_Birch_SoItsRival[];
 extern const u8 gText_Birch_YourePlayer[];
 extern const u8 gText_Birch_AreYouReady[];
 

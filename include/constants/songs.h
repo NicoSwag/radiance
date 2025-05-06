@@ -551,8 +551,9 @@
 #define MUS_VS_LEADER_RADIANCE      613
 #define MUS_VAST_ICE_MOUNTAIN       614
 #define MUS_VS_ULTRA_BEAST          615
+#define MUS_DREAM                   616
 
-#define END_MUS                     MUS_VS_ULTRA_BEAST
+#define END_MUS                     MUS_DREAM
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 
