@@ -1167,3 +1167,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Earth_Mountain_Side/scripts.inc"
 
 	.include "data/maps/General_test/scripts.inc"
+
+	.include "data/maps/MossdeepCityPast/scripts.inc"

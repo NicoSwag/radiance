@@ -1692,3 +1692,41 @@ const u16 gTilesetPalettes_MountainPeak_Secondary[][16] =
 };
 
 const u32 gTilesetTiles_MountainPeak_Secondary[] = INCBIN_U32("data/tilesets/secondary/mountain_peak_secondary/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Mossdeep_Past[][16] =
+{
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/primary/mossdeep_past/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Mossdeep_Past[] = INCBIN_U32("data/tilesets/primary/mossdeep_past/tiles.4bpp.lz");
+
+const u16 gTilesetPalettes_Mossdeep_Past_Secondary[][16] =
+{
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/00.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/01.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/02.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/03.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/04.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/05.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/06.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/07.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/08.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/09.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/10.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/11.gbapal"),
+    INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/palettes/12.gbapal"),
+};
+
+const u32 gTilesetTiles_Mossdeep_Past_Secondary[] = INCBIN_U32("data/tilesets/secondary/mossdeep_past_secondary/tiles.4bpp.lz");

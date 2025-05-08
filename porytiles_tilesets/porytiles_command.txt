@@ -7,3 +7,9 @@
 
 # Secondary Mountain Peak
 ../porytiles-linux-amd64/porytiles compile-secondary -Wall -Wno-transparency-collapse -disable-attribute-generation -Wno-color-precision-loss -metatiles-primary-override=2048 -metatiles-total-override=4096 -o ../radiance/data/tilesets/secondary/mountain_peak_secondary ../radiance/porytiles_tilesets/mountain_peak_secondary ../radiance/porytiles_tilesets/mountain_peak ../radiance/include/constants/metatile_behaviors.h
+
+# Primary Mossdeep Past
+../porytiles-linux-amd64/porytiles compile-primary -Wall -Wno-transparency-collapse -disable-attribute-generation -metatiles-primary-override=2048 -metatiles-total-override=4096 -o ../radiance/data/tilesets/primary/mossdeep_past ../radiance/porytiles_tilesets/mossdeep_past ../radiance/include/constants/metatile_behaviors.h
+
+# Secondary Mossdeep Past
+../porytiles-linux-amd64/porytiles compile-secondary -Wall -Wno-transparency-collapse -disable-attribute-generation -Wno-color-precision-loss -metatiles-primary-override=2048 -metatiles-total-override=4096 -o ../radiance/data/tilesets/secondary/mossdeep_past_secondary ../radiance/porytiles_tilesets/mossdeep_past_secondary ../radiance/porytiles_tilesets/mossdeep_past ../radiance/include/constants/metatile_behaviors.h

@@ -1236,7 +1236,7 @@ static void TilesetAnim_MountainPeak(u16 timer)
     if (timer % 8 == 0) {
         QueueAnimTiles_MountainPeak_Waterfall(timer / 8);
     }
-    if (timer % 16 == 0)
+    if (timer % 16 == 1)
         QueueAnimTiles_MountainPeak_Flower(timer / 16);
 }
 
@@ -1264,7 +1264,7 @@ static void QueueAnimTiles_MountainPeak_PurpleFlower(u16 timer)
 
 static void TilesetAnim_MountainPeakSecondary(u16 timer)
 {
-    if (timer % 32 == 0) {
+    if (timer % 32 == 2) {
         QueueAnimTiles_MountainPeak_PurpleFlower(timer / 32);
     }
 }

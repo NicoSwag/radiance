@@ -1,5 +1,6 @@
 {
   "group_order": [
+    "gMapGroup_Radiance_Earth_Past",
     "gMapGroup_Radiance_Earth",
     "gMapGroup_Radiance_Testing",
     "gMapGroup_TownsAndRoutes",
@@ -36,6 +37,9 @@
     "gMapGroup_IndoorRoute123",
     "gMapGroup_IndoorRoute119",
     "gMapGroup_IndoorRoute124"
+  ],
+  "gMapGroup_Radiance_Earth_Past": [
+    "MossdeepCityPast"
   ],
   "gMapGroup_Radiance_Earth": [
     "Earth_test",

@@ -217,3 +217,9 @@ const u16 gMetatileAttributes_MountainPeak[] = INCBIN_U16("data/tilesets/primary
 
 const u16 gMetatiles_MountainPeak_Secondary[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/metatiles.bin");
 const u16 gMetatileAttributes_MountainPeak_Secondary[] = INCBIN_U16("data/tilesets/secondary/mountain_peak_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_Mossdeep_Past[] = INCBIN_U16("data/tilesets/primary/mossdeep_past/metatiles.bin");
+const u16 gMetatileAttributes_Mossdeep_Past[] = INCBIN_U16("data/tilesets/primary/mossdeep_past/metatile_attributes.bin");
+
+const u16 gMetatiles_Mossdeep_Past_Secondary[] = INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/metatiles.bin");
+const u16 gMetatileAttributes_Mossdeep_Past_Secondary[] = INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/metatile_attributes.bin");

@@ -5340,6 +5340,18 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/General_test/border.bin",
       "blockdata_filepath": "data/layouts/General_test/map.bin"
+    },
+    {
+      "id": "LAYOUT_MOSSDEEP_CITY_PAST",
+      "name": "MossdeepCityPast_Layout",
+      "width": 80,
+      "height": 80,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Mossdeep_Past",
+      "secondary_tileset": "gTileset_Mossdeep_Past_Secondary",
+      "border_filepath": "data/layouts/MossdeepCityPast/border.bin",
+      "blockdata_filepath": "data/layouts/MossdeepCityPast/map.bin"
     }
   ]
 }

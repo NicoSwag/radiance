@@ -859,3 +859,25 @@ const struct Tileset gTileset_MountainPeak_Secondary =
     .metatileAttributes = gMetatileAttributes_MountainPeak_Secondary,
     .callback = InitTilesetAnim_MountainPeakSecondary,
 };
+
+const struct Tileset gTileset_Mossdeep_Past =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Mossdeep_Past,
+    .palettes = gTilesetPalettes_Mossdeep_Past,
+    .metatiles = gMetatiles_Mossdeep_Past,
+    .metatileAttributes = gMetatileAttributes_Mossdeep_Past,
+    .callback = NULL,
+};
+
+const struct Tileset gTileset_Mossdeep_Past_Secondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_Mossdeep_Past_Secondary,
+    .palettes = gTilesetPalettes_Mossdeep_Past_Secondary,
+    .metatiles = gMetatiles_Mossdeep_Past_Secondary,
+    .metatileAttributes = gMetatileAttributes_Mossdeep_Past_Secondary,
+    .callback = NULL,
+};
