@@ -313,11 +313,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ice Punch"),
         .description = COMPOUND_STRING(
             "An icy punch that may\n"
-        #if B_USE_FROSTBITE == TRUE
-            "leave the foe with frostbite."),
-        #else
-            "freeze the foe."),
-        #endif
+            "leave the foe with frostbite.\n"
+            "Can break medium obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 75,
         .type = TYPE_ICE,
@@ -1516,7 +1515,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Mist"),
         .description = COMPOUND_STRING(
             "Creates a mist that stops\n"
-            "reduction of abilities."),
+            "reduction of abilities.\n"
+            "Allows to phase through grates."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PHASE,
         .effect = EFFECT_MIST,
         .power = 0,
         .type = TYPE_ICE,
@@ -1609,11 +1610,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ice Beam"),
         .description = COMPOUND_STRING(
             "Blasts the foe with an icy\n"
-        #if B_USE_FROSTBITE == TRUE
-            "beam. May cause frostbite."),
-        #else
-            "beam that may freeze it."),
-        #endif
+            "beam. May cause frostbite.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95,
         .type = TYPE_ICE,
@@ -1641,11 +1640,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Blizzard"),
         .description = COMPOUND_STRING(
             "Hits the foe with an icy\n"
-        #if B_USE_FROSTBITE == TRUE
-            "storm. May cause frostbite."),
-        #else
-            "storm that may freeze it."),
-        #endif
+            "storm. May cause frostbite.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = B_BLIZZARD_HAIL >= GEN_4 ? EFFECT_BLIZZARD : EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 110 : 120,
         .type = TYPE_ICE,
@@ -1723,7 +1720,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Aurora Beam"),
         .description = COMPOUND_STRING(
             "Fires a rainbow-colored\n"
-            "beam that may lower Attack."),
+            "beam that may lower Attack.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_ICE,
@@ -2453,7 +2452,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Earthquake"),
         .description = COMPOUND_STRING(
             "A powerful quake, but has\n"
-            "no effect on flying foes."),
+            "no effect on flying foes.\n"
+            "Can push big boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
+        .fieldMoveTier = 2,
         .effect = EFFECT_EARTHQUAKE,
         .power = 100,
         .type = TYPE_GROUND,
@@ -2502,7 +2504,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Dig"),
         .description = COMPOUND_STRING(
             "Digs underground the first\n"
-            "turn and strikes next turn."),
+            "turn and strikes next turn.\n"
+            "Can dig up buried items."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
         .effect = EFFECT_SEMI_INVULNERABLE,
         .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 80 : 60,
         .type = TYPE_GROUND,
@@ -3096,7 +3100,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Haze"),
         .description = COMPOUND_STRING(
             "Creates a black haze that\n"
-            "eliminates all stat changes."),
+            "eliminates all stat changes.\n"
+            "Allows to phase through gates."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PHASE,
         .effect = EFFECT_HAZE,
         .power = 0,
         .type = TYPE_ICE,
@@ -3386,10 +3392,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Bone Club"),
         .description = COMPOUND_STRING(
             "Clubs the foe with a bone.\n"
-            "May cause flinching."),
+            "May cause flinching.\n"
+            "Can break medium obstacles."),
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_GROUND,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 2,
         .accuracy = 85,
         .pp = 20,
         .target = MOVE_TARGET_SELECTED,
@@ -4203,7 +4212,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Bonemerang"),
         .description = COMPOUND_STRING(
             "Throws a bone boomerang\n"
-            "that strikes twice."),
+            "that strikes twice.\n"
+            "Can break small obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
         .effect = EFFECT_HIT,
         .power = 50,
         .type = TYPE_GROUND,
@@ -5098,7 +5109,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Mud-Slap"),
         .description = COMPOUND_STRING(
             "Hurls mud in the foe's face\n"
-            "to reduce its accuracy."),
+            "to reduce its accuracy.\n"
+            "Can push small boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_HIT,
         .power = 20,
         .type = TYPE_GROUND,
@@ -5290,7 +5303,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Icy Wind"),
         .description = COMPOUND_STRING(
             "A chilling attack that\n"
-            "lowers the foe's Speed."),
+            "lowers the foe's Speed.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_HIT,
         .power = 55,
         .type = TYPE_ICE,
@@ -5345,7 +5360,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Bone Rush"),
         .description = COMPOUND_STRING(
             "Strikes the foe with a bone\n"
-            "in hand 2 to 5 times."),
+            "in hand 2 to 5 times.\n"
+            "Can break small obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
         .effect = EFFECT_MULTI_HIT,
         .power = 25,
         .type = TYPE_GROUND,
@@ -7016,6 +7033,33 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {COMBO_STARTER_SUNNY_DAY},
         .battleAnimScript = gBattleAnimMove_WillOWisp,
+        .validApprenticeMove = TRUE,
+    },
+
+
+    [MOVE_FLASH_FREEZE] =
+    {
+        .name = COMPOUND_STRING("Flash Freeze"),
+        .description = COMPOUND_STRING(
+            "Inflicts frostbite instantly\n"
+            "with gelid ice.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
+        .effect = EFFECT_FLASH_FREEZE,
+        .power = 0,
+        .type = TYPE_ICE,
+        .accuracy = B_UPDATED_MOVE_DATA >= GEN_6 ? 85 : 75,
+        .pp = 15,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_ATK_UP_1 },
+        .magicCoatAffected = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_SUNNY_DAY},
+        .battleAnimScript = gBattleAnimMove_FlashFreeze,
         .validApprenticeMove = TRUE,
     },
 
@@ -8793,7 +8837,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Sand Tomb"),
         .description = COMPOUND_STRING(
             "Traps and hurts the foe in\n"
-            "quicksand for "BINDING_TURNS" turns."),
+            "quicksand for "BINDING_TURNS" turns.\n"
+            "Can dig up buried items."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_5 ? 35 : 15,
         .type = TYPE_GROUND,
@@ -8913,7 +8959,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Icicle Spear"),
         .description = COMPOUND_STRING(
             "Attacks the foe by firing\n"
-            "2 to 5 icicles in a row."),
+            "2 to 5 icicles in a row.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_MULTI_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_5 ? 25 : 10,
         .type = TYPE_ICE,
@@ -9127,7 +9175,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Mud Shot"),
         .description = COMPOUND_STRING(
             "Hurls mud at the foe and\n"
-            "reduces Speed."),
+            "reduces Speed.\n"
+            "Can push small boulders."),
+            .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_HIT,
         .power = 55,
         .type = TYPE_GROUND,
@@ -11063,7 +11113,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_AVALANCHE] =
     {
         .name = COMPOUND_STRING("Avalanche"),
-        .description = sRevengeDescription,
+        .description = COMPOUND_STRING(    
+            "An attack that gains power\n"
+            "if injured by the foe.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_REVENGE,
         .power = 60,
         .type = TYPE_ICE,
@@ -11085,7 +11139,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ice Shard"),
         .description = COMPOUND_STRING(
             "Hurls a chunk of ice that\n"
-            "always strike first."),
+            "always strike first.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_ICE,
@@ -11163,11 +11219,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ice Fang"),
         .description = COMPOUND_STRING(
             "May cause flinching or\n"
-        #if B_USE_FROSTBITE == TRUE
-            "leave the foe with frostbite."),
-        #else
-            "leave the foe frozen."),
-        #endif
+            "leave the foe with frostbite.\n"
+            "Cuts down small obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CUT,
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_ICE,
@@ -12578,12 +12632,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "The foe is lifted and attacked,"
             "making it easier to hit for a bit.\n"
             "Can dig up buried items."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
         .effect = EFFECT_TELEKINESIS_HIT,
         .power = 60,
         .type = TYPE_STELLAR,
         .accuracy = 90,
         .pp = 15,
-        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -13753,8 +13807,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Bulldoze"),
         .description = COMPOUND_STRING(
             "Stomps down on the ground.\n"
-            "Lowers Speed."),
+            "Lowers Speed.\n"
+            "Can push big boulders."),
         .effect = EFFECT_EARTHQUAKE,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
+        .fieldMoveTier = 2,
         .power = 60,
         .type = TYPE_GROUND,
         .accuracy = 100,
@@ -13777,7 +13834,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_FROST_BREATH] =
     {
         .name = COMPOUND_STRING("Frost Breath"),
-        .description = sStormThrowDescription,
+        .description = COMPOUND_STRING(    
+            "This attack always results\n"
+            "in a critical hit.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 60 : 40,
         .type = TYPE_ICE,
@@ -13901,7 +13962,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Drill Run"),
         .description = COMPOUND_STRING(
             "Spins its body like a drill.\n"
-            "High critical-hit ratio."),
+            "High critical-hit ratio.\n"
+            "Can dig up buried items."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_GROUND,
@@ -14381,7 +14444,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Glaciate"),
         .description = COMPOUND_STRING(
             "Blows very cold air at the\n"
-            "foe. It lowers their Speed."),
+            "foe. It lowers their Speed.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_ICE,
@@ -16223,7 +16288,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Shore Up"),
         .description = COMPOUND_STRING(
             "Restores the user's HP.\n"
-            "More HP in a sandstorm."),
+            "More HP in a sandstorm.\n"
+            "Can dig up buried items."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
         .effect = EFFECT_SHORE_UP,
         .power = 0,
         .type = TYPE_GROUND,
@@ -17194,7 +17261,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Stomping Tantrum"),
         .description = COMPOUND_STRING(
             "Stomps around angrily.\n"
-            "Stronger after a failure."),
+            "Stronger after a failure.\n"
+            "Can push big boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
+        .fieldMoveTier = 2,
         .effect = EFFECT_STOMPING_TANTRUM,
         .power = 75,
         .type = TYPE_GROUND,
@@ -19822,19 +19892,19 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "A spine-chilling resentment.\n"
             "May inflict frostbite.\n"
-            "Can freeze certain obstacles."),
+            "Can freeze certain tiles."),
         .effect = EFFECT_HIT,
         .power = 70,
         .type = TYPE_GHOST,
         .accuracy = 90,
-        .pp = 15,
+        .pp = 10,
         .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
-            .chance = 30,
+            .chance = 20,
         }),
         .battleAnimScript = gBattleAnimMove_BitterMalice,
     },
@@ -20252,7 +20322,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ice Spinner"),
         .description = COMPOUND_STRING(
             "Ice-covered feet hit a foe\n"
-            "and destroy the terrain."),
+            "and destroy the terrain.\n"
+            "Allows to climb rocky walls."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
         .effect = EFFECT_HIT_SET_REMOVE_TERRAIN,
         .power = 80,
         .type = TYPE_ICE,
@@ -20667,12 +20739,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Snowscape"),
         .description = COMPOUND_STRING(
             "Summons a snowstorm that\n"
-            "lasts for five turns."),
+            "lasts for five turns.\n"
+            "Can freeze certain tiles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_FREEZE,
         .effect = EFFECT_SNOWSCAPE,
         .power = 0,
         .type = TYPE_ICE,
         .accuracy = 0,
-        .pp = 10,
+        .pp = 5,
         .target = MOVE_TARGET_ALL_BATTLERS,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,

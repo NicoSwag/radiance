@@ -4887,6 +4887,28 @@ BattleScript_EffectWillOWisp::
 	seteffectprimary MOVE_EFFECT_BURN
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectFlashFreeze::
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifsubstituteblocks BattleScript_ButItFailed
+	jumpifstatus BS_TARGET, STATUS1_FROSTBITE, BattleScript_AlreadyFrozen
+	jumpiftype BS_TARGET, TYPE_ICE, BattleScript_NotAffected
+	jumpifability BS_TARGET, ABILITY_MAGMA_ARMOR, BattleScript_MagmaArmorPrevents
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_AbilityProtectsDoesntAffect
+	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_AbilityProtectsDoesntAffect
+	jumpifflowerveil BattleScript_FlowerVeilProtects
+	jumpifleafguardprotected BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
+	jumpifshieldsdown BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_ButItFailed
+	jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_MistyTerrainPrevents
+	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
+	jumpifsafeguard BattleScript_SafeguardProtected
+	attackanimation
+	waitanimation
+	seteffectprimary MOVE_EFFECT_FROSTBITE
+	goto BattleScript_MoveEnd
+
 BattleScript_WaterVeilPrevents::
 	call BattleScript_AbilityPopUp
 	copybyte gEffectBattler, gBattlerTarget
@@ -4894,10 +4916,24 @@ BattleScript_WaterVeilPrevents::
 	call BattleScript_BRNPrevention
 	goto BattleScript_MoveEnd
 
+BattleScript_MagmaArmorPrevents::
+	call BattleScript_AbilityPopUp
+	copybyte gEffectBattler, gBattlerTarget
+	setbyte cMULTISTRING_CHOOSER, B_MSG_ABILITY_PREVENTS_MOVE_STATUS
+	call BattleScript_FRZPrevention
+	goto BattleScript_MoveEnd
+
 BattleScript_AlreadyBurned::
 	setalreadystatusedmoveattempt BS_ATTACKER
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_PKMNALREADYHASBURN
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+	BattleScript_AlreadyFrozen::
+	setalreadystatusedmoveattempt BS_ATTACKER
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PKMNALREADYFROSTBITTEN
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
@@ -8265,6 +8301,12 @@ BattleScript_ItemNoStatLoss::
 BattleScript_BRNPrevention::
 	pause B_WAIT_TIME_SHORT
 	printfromtable gBRNPreventionStringIds
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_FRZPrevention::
+	pause B_WAIT_TIME_SHORT
+	printfromtable gFRZPreventionStringIds
 	waitmessage B_WAIT_TIME_LONG
 	return
 

@@ -900,6 +900,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_FLASH_FREEZE] =
+    {
+        .battleScript = BattleScript_EffectFlashFreeze,
+        .battleTvScore = 5,
+        .encourageEncore = TRUE,
+    },
+
     [EFFECT_MEMENTO] =
     {
         .battleScript = BattleScript_EffectMemento,

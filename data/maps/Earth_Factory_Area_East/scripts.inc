@@ -1,0 +1,3 @@
+Earth_Factory_Area_East_MapScripts::
+	.byte 0
+

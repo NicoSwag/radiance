@@ -1442,6 +1442,7 @@ bool32 IsNonVolatileStatusMoveEffect(u32 moveEffect)
     case EFFECT_POISON:
     case EFFECT_PARALYZE:
     case EFFECT_WILL_O_WISP:
+    case EFFECT_FLASH_FREEZE:
     case EFFECT_YAWN:
         return TRUE;
     default:
@@ -3448,6 +3449,7 @@ bool32 PartnerMoveEffectIsStatusSameTarget(u32 battlerAtkPartner, u32 battlerDef
        || partnerEffect == EFFECT_TOXIC
        || partnerEffect == EFFECT_PARALYZE
        || partnerEffect == EFFECT_WILL_O_WISP
+       || partnerEffect == EFFECT_FLASH_FREEZE
        || partnerEffect == EFFECT_YAWN))
         return TRUE;
     return FALSE;
@@ -4274,6 +4276,7 @@ u32 IncreaseSubstituteMoveScore(u32 battlerAtk, u32 battlerDef, u32 move)
      || HasMoveEffect(battlerDef, EFFECT_POISON)
      || HasMoveEffect(battlerDef, EFFECT_PARALYZE)
      || HasMoveEffect(battlerDef, EFFECT_WILL_O_WISP)
+     || HasMoveEffect(battlerDef, EFFECT_FLASH_FREEZE)
      || HasMoveEffect(battlerDef, EFFECT_CONFUSE)
      || HasMoveEffect(battlerDef, EFFECT_LEECH_SEED))
         scoreIncrease += GOOD_EFFECT;
