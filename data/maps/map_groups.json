@@ -44,7 +44,20 @@
   "gMapGroup_Radiance_Earth": [
     "Earth_test",
     "Earth_Mountain_Top",
-    "Earth_Mountain_Side"
+    "Earth_Mountain_Side",
+    "Earth_Forest_Entrance",
+    "Earth_Frozen_Crevice",
+    "Earth_Frozen_Crevice_East",
+    "Earth_Marble_Plains",
+    "Earth_Marble_Plains_West",
+    "Earth_Factory_Area_West",
+    "Earth_Factory_Area_East",
+    "Earth_Mossdeep_Ruins_West",
+    "Earth_Mossdeep_Ruins_East",
+    "Earth_Ice_Floes_West",
+    "Earth_Ice_Floes_East",
+    "Earth_Marble_Plains_North",
+    "Earth_Marble_Plains_North_West"
   ],
   "gMapGroup_Radiance_Testing": [
     "General_test"

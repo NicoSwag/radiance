@@ -1169,3 +1169,29 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/General_test/scripts.inc"
 
 	.include "data/maps/MossdeepCityPast/scripts.inc"
+
+	.include "data/maps/Earth_Forest_Entrance/scripts.inc"
+
+	.include "data/maps/Earth_Frozen_Crevice/scripts.inc"
+
+	.include "data/maps/Earth_Frozen_Crevice_East/scripts.inc"
+
+	.include "data/maps/Earth_Marble_Plains/scripts.inc"
+
+	.include "data/maps/Earth_Marble_Plains_West/scripts.inc"
+
+	.include "data/maps/Earth_Factory_Area_West/scripts.inc"
+
+	.include "data/maps/Earth_Factory_Area_East/scripts.inc"
+
+	.include "data/maps/Earth_Mossdeep_Ruins_West/scripts.inc"
+
+	.include "data/maps/Earth_Mossdeep_Ruins_East/scripts.inc"
+
+	.include "data/maps/Earth_Ice_Floes_West/scripts.inc"
+
+	.include "data/maps/Earth_Ice_Floes_East/scripts.inc"
+
+	.include "data/maps/Earth_Marble_Plains_North/scripts.inc"
+
+	.include "data/maps/Earth_Marble_Plains_North_West/scripts.inc"

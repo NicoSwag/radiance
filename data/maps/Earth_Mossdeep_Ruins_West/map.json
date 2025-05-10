@@ -1,0 +1,54 @@
+{
+  "id": "MAP_EARTH_MOSSDEEP_RUINS_WEST",
+  "name": "Earth_Mossdeep_Ruins_West",
+  "layout": "LAYOUT_EARTH_MOSSDEEP_RUINS_WEST",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_EARTH_MARBLE_PLAINS",
+      "offset": 50,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_EARTH_MOSSDEEP_RUINS_EAST",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_EARTH_FROZEN_CREVICE",
+      "offset": 0,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_EARTH_FROZEN_CREVICE_EAST",
+      "offset": 84,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_EARTH_MARBLE_PLAINS_NORTH",
+      "offset": -20,
+      "direction": "left"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}
