@@ -2456,7 +2456,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rock Throw"),
         .description = COMPOUND_STRING(
             "Throws small rocks to\n"
-            "strike the foe."),
+            "strike the foe.\n"
+            "Can push small boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_HIT,
         .power = 50,
         .type = TYPE_ROCK,
@@ -3671,7 +3673,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Distracts the foe.\n"
             "May lower accuracy.\n"
-            "Allows to push small boulders."),
+            "Can push small boulders."),
         .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_ACCURACY_DOWN,
         .power = 0,
@@ -4319,7 +4321,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rock Slide"),
         .description = COMPOUND_STRING(
             "Large boulders are hurled.\n"
-            "May cause flinching."),
+            "May cause flinching.\n"
+            "Allows to push large boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 75,
         .type = TYPE_ROCK,
@@ -5505,7 +5510,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_ROCK,
         .accuracy = 0,
-        .pp = 10,
+        .pp = 5,
         .target = MOVE_TARGET_ALL_BATTLERS,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -5603,7 +5608,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rollout"),
         .description = COMPOUND_STRING(
             "An attack lasting 5 turns\n"
-            "with rising intensity."),
+            "with rising intensity.\n"
+            "Can push small boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_ROLLOUT,
         .power = 30,
         .type = TYPE_ROCK,
@@ -10657,7 +10664,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rock Polish"),
         .description = COMPOUND_STRING(
             "Polishes the body to\n"
-            "sharply raise Speed."),
+            "sharply raise Speed.\n"
+            "Allows to climb rocky walls."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
         .effect = EFFECT_SPEED_UP_2,
         .power = 0,
         .type = TYPE_ROCK,
@@ -11521,7 +11530,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rock Climb"),
         .description = COMPOUND_STRING(
             "A charging attack that may\n"
-            "confuse the foe."),
+            "confuse the foe.\n"
+            "Allows to climb rocky walls."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
         .effect = EFFECT_HIT,
         .power = 90,
         .type = TYPE_NORMAL,
@@ -11718,6 +11729,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Rock Wrecker"),
         .description = sHyperBeamDescription,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 3,
         .effect = EFFECT_HIT,
         .power = 150,
         .type = TYPE_ROCK,
@@ -12177,7 +12190,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Head Smash"),
         .description = COMPOUND_STRING(
             "A life-risking headbutt that\n"
-            "seriously hurts the user."),
+            "seriously hurts the user.\n"
+            "Can be used to shake trees."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SHAKE,
         .effect = EFFECT_HIT,
         .power = 150,
         .type = TYPE_ROCK,
@@ -12694,7 +12709,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Makes the foe float. It is\n"
             "easier to hit for 3 turns.\n"
-            "Allows to push small boulders."),
+            "Can push small boulders."),
         .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_TELEKINESIS,
         .power = 0,
@@ -17408,7 +17423,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Accelerock"),
         .description = COMPOUND_STRING(
             "Hits with a high-speed\n"
-            "rock that always goes first."),
+            "rock that always goes first.\n"
+            "Allows to climb rocky walls."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_ROCK,
