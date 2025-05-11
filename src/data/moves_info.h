@@ -1686,7 +1686,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Psybeam"),
         .description = COMPOUND_STRING(
             "Fires a peculiar ray that\n"
-            "may confuse the foe."),
+            "may confuse the foe.\n"
+            "Produces some energy."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_PSYCHIC,
@@ -2683,7 +2686,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Agility"),
         .description = COMPOUND_STRING(
             "Relaxes the body to sharply\n"
-            "boost Speed."),
+            "boost Speed.\n"
+            "Allows to climb rocky walls."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
         .effect = EFFECT_SPEED_UP_2,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -2753,8 +2758,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Teleport"),
         .description = COMPOUND_STRING(
-            "A psychic move for fleeing\n"
-            "from battle instantly."),
+            "A psychic move for switching out\n"
+            "in battle at the end of a turn.\n"
+            "Brings the user to a safe spot."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_TELEPORT,
         .effect = EFFECT_TELEPORT,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -3099,7 +3106,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Light Screen"),
         .description = COMPOUND_STRING(
             "Creates a wall of light that\n"
-            "lowers Sp. Atk damage."),
+            "lowers Sp. Atk damage.\n"
+            "Lights up dark areas."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .effect = EFFECT_LIGHT_SCREEN,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -3153,7 +3162,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Reflect"),
         .description = COMPOUND_STRING(
             "Creates a wall of light that\n"
-            "weakens physical attacks."),
+            "weakens physical attacks.\n"
+            "Lights up dark areas."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .effect = EFFECT_REFLECT,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -3659,11 +3670,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Kinesis"),
         .description = COMPOUND_STRING(
             "Distracts the foe.\n"
-            "May lower accuracy."),
+            "May lower accuracy.\n"
+            "Allows to push small boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_ACCURACY_DOWN,
         .power = 0,
         .type = TYPE_PSYCHIC,
-        .accuracy = 80,
+        .accuracy = 100,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -4099,7 +4112,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Psywave"),
         .description = COMPOUND_STRING(
             "Attacks with a psychic\n"
-            "wave of varying intensity."),
+            "wave of varying intensity.\n"
+            "Produces a little energy."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
         .effect = EFFECT_PSYWAVE,
         .power = 1,
         .type = TYPE_PSYCHIC,
@@ -8007,7 +8022,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Luster Purge"),
         .description = COMPOUND_STRING(
             "Attacks with a burst of\n"
-            "light. May lower Sp. Def."),
+            "light. May lower Sp. Def.\n"
+            "Lights up dark areas."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .effect = EFFECT_HIT,
         .power = (B_UPDATED_MOVE_DATA >= GEN_9) ? 95 : 70,
         .type = TYPE_PSYCHIC,
@@ -9411,7 +9428,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 0,
-        .pp = 20,
+        .pp = 10,
         .target = MOVE_TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -9664,7 +9681,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Miracle Eye"),
         .description = COMPOUND_STRING(
             "Negate evasiveness and\n"
-            "Dark-type's immunities."),
+            "Dark-type's immunities.\n"
+            "Lights up dark areas."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .effect = EFFECT_MIRACLE_EYE,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -10091,7 +10110,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Psycho Shift"),
         .description = COMPOUND_STRING(
             "Transfers status problems\n"
-            "to the foe."),
+            "to the foe.\n"
+            "Produces some energy."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
+        .fieldMoveTier = 2,
         .effect = EFFECT_PSYCHO_SHIFT,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -12671,7 +12693,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Telekinesis"),
         .description = COMPOUND_STRING(
             "Makes the foe float. It is\n"
-            "easier to hit for 3 turns."),
+            "easier to hit for 3 turns.\n"
+            "Allows to push small boulders."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PUSH,
         .effect = EFFECT_TELEKINESIS,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -12971,7 +12995,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Hurls an orb that does more\n"
             "damage to slower foes.\n"
-            "Produces a bit of energy."),
+            "Produces a little energy."),
         .effect = EFFECT_ELECTRO_BALL,
         .power = 1,
         .type = TYPE_ELECTRIC,
@@ -13315,12 +13339,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Stored Power"),
         .description = COMPOUND_STRING(
             "The higher the user's stats\n"
-            "the more damage caused."),
+            "the more damage caused.\n"
+            "Produces a little energy."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
         .effect = EFFECT_STORED_POWER,
         .power = 20,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
-        .pp = 10,
+        .pp = 5,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
@@ -13363,7 +13389,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Ally Switch"),
         .description = COMPOUND_STRING(
             "The user switches places\n"
-            "with its partner."),
+            "with its partner.\n"
+            "Allows to phase through grates."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_PHASE,
         .effect = EFFECT_ALLY_SWITCH,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -16828,12 +16856,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Psychic Terrain"),
         .description = COMPOUND_STRING(
             "The ground turns weird for\n"
-            "5 turns. Blocks priority."),
+            "5 turns. Blocks priority.\n"
+            "Produces some energy."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
+        .fieldMoveTier = 2,
         .effect = EFFECT_PSYCHIC_TERRAIN,
         .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 0,
-        .pp = 10,
+        .pp = 5,
         .target = MOVE_TARGET_ALL_BATTLERS,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -18180,7 +18211,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Magic Powder"),
         .description = COMPOUND_STRING(
             "Magic powder changes the\n"
-            "target into a Psychic-type."),
+            "target into a Psychic-type.\n."
+            "Causes plants to magically grow."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_GROW,
         .effect = EFFECT_SOAK,
         .power = 0,
         .type = TYPE_PSYCHIC,
