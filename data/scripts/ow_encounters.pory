@@ -1,5 +1,6 @@
 script HandleOverworldPokemonEncounter {
-	lock
+	lockall
+    hidefollower(0)
 	callnative(GetInteractedEncounterSpecies_Script)
     callnative(GetInteractedEncounterLevel_Script)
     setwildbattleow
