@@ -499,10 +499,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Cut"),
         .description = COMPOUND_STRING(
             "Cuts the foe with sharp\n"
-            "scythes, claws, etc."),
+            "scythes, claws, etc.\n"
+            "Cuts down big obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CUT,
+        .fieldMoveTier = 3,
         .effect = EFFECT_HIT,
         .power = 50,
-        .type = TYPE_NORMAL,
+        .type = TYPE_STEEL,
         .accuracy = 95,
         .pp = 30,
         .target = MOVE_TARGET_SELECTED,
@@ -1560,7 +1563,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Water Gun"),
         .description = COMPOUND_STRING(
             "Squirts water to attack\n"
-            "the foe."),
+            "the foe.\n"
+            "Produces a little water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_WATER,
@@ -1581,7 +1586,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Hydro Pump"),
         .description = COMPOUND_STRING(
             "Blasts water at high power\n"
-            "to strike the foe."),
+            "to strike the foe.\n"
+            "Produces a lot of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
+        .fieldMoveTier = 3,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 110 : 120,
         .type = TYPE_WATER,
@@ -1603,7 +1611,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Surf"),
         .description = COMPOUND_STRING(
             "Creates a huge wave, then\n"
-            "crashes it down on the foe."),
+            "crashes it down on the foe.\n"
+            "Allows to cross bodies of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SURF,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95,
         .type = TYPE_WATER,
@@ -1715,7 +1725,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Bubble Beam"),
         .description = COMPOUND_STRING(
             "Forcefully sprays bubbles\n"
-            "that may lower Speed."),
+            "that may lower Speed.\n"
+            "Produces some water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_WATER,
@@ -3490,7 +3503,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Waterfall"),
         .description = COMPOUND_STRING(
             "Charges the foe with speed\n"
-            "to climb waterfalls."),
+            "to climb waterfalls.\n"
+            "Allows to cross bodies of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SURF,
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_WATER,
@@ -4008,7 +4023,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Bubble"),
         .description = COMPOUND_STRING(
             "An attack using bubbles.\n"
-            "May lower the foe's Speed."),
+            "May lower the foe's Speed.\n"
+            "Produces a little water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 40 : 20,
         .type = TYPE_WATER,
@@ -4193,7 +4210,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Crabhammer"),
         .description = COMPOUND_STRING(
             "Hammers with a pincer. Has a\n"
-            "high critical-hit ratio."),
+            "high critical-hit ratio.\n"
+            "Can break large obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 3,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 100 : 90,
         .type = TYPE_WATER,
@@ -5206,7 +5226,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Octazooka"),
         .description = COMPOUND_STRING(
             "Fires a lump of ink to\n"
-            "damage and cut accuracy."),
+            "damage and cut accuracy.\n"
+            "Produces some water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_WATER,
@@ -6285,11 +6308,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Iron Tail"),
         .description = COMPOUND_STRING(
             "Attacks with a rock-hard\n"
-            "tail. May lower Defense."),
+            "tail. May lower Defense.\n"
+            "Can break medium obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 100,
         .type = TYPE_STEEL,
-        .accuracy = 75,
+        .accuracy = 85,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -6312,7 +6338,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Metal Claw"),
         .description = COMPOUND_STRING(
             "A claw attack that may\n"
-            "raise the user's Attack."),
+            "raise the user's Attack.\n"
+            "Cuts down medium obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CUT,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 50,
         .type = TYPE_STEEL,
@@ -6526,7 +6555,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rain Dance"),
         .description = COMPOUND_STRING(
             "Boosts the power of Water-\n"
-            "type moves for 5 turns."),
+            "type moves for 5 turns.\n"
+            "Produces a lot of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
+        .fieldMoveTier = 3,
         .effect = EFFECT_RAIN_DANCE,
         .power = 0,
         .type = TYPE_WATER,
@@ -6807,6 +6839,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Traps and hurts the foe in\n"
             "a whirlpool for "BINDING_TURNS" turns."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SURF,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_5 ? 35 : 15,
         .type = TYPE_WATER,
@@ -7922,7 +7955,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Dive"),
         .description = COMPOUND_STRING(
             "Dives underwater the first\n"
-            "turn and strikes next turn."),
+            "turn and strikes next turn.\n"
+            "Allows to cross bodies of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SURF,
         .effect = EFFECT_SEMI_INVULNERABLE,
         .power = B_UPDATED_MOVE_DATA >= GEN_4 ? 80 : 60,
         .type = TYPE_WATER,
@@ -8384,7 +8419,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Hydro Cannon"),
         .description = COMPOUND_STRING(
             "Powerful, but leaves the\n"
-            "user immobile the next turn."),
+            "user immobile the next turn.\n"
+            "Produces a lot of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
+        .fieldMoveTier = 3,
         .effect = EFFECT_HIT,
         .power = 150,
         .type = TYPE_WATER,
@@ -8789,7 +8827,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Water Spout"),
         .description = COMPOUND_STRING(
             "Inflicts more damage if the\n"
-            "user's HP is high."),
+            "user's HP is high.\n"
+            "Produces a lot of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
+        .fieldMoveTier = 3,
         .effect = EFFECT_POWER_BASED_ON_USER_HP,
         .power = 150,
         .type = TYPE_WATER,
@@ -8973,7 +9014,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Muddy Water"),
         .description = COMPOUND_STRING(
             "Attacks with muddy water.\n"
-            "May lower accuracy."),
+            "May lower accuracy.\n"
+            "Allows to cross bodies of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SURF,
         .effect = EFFECT_HIT,
         .power = B_UPDATED_MOVE_DATA >= GEN_6 ? 90 : 95,
         .type = TYPE_WATER,
@@ -9404,7 +9447,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Water Sport"),
         .description = COMPOUND_STRING(
             "The user becomes soaked to\n"
-            "raise resistance to fire."),
+            "raise resistance to fire.\n"
+            "Produces a little water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
         .effect = EFFECT_WATER_SPORT,
         .power = 0,
         .type = TYPE_WATER,
@@ -9557,7 +9602,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Water Pulse"),
         .description = COMPOUND_STRING(
             "Attacks with ultrasonic\n"
-            "waves. May confuse the foe."),
+            "waves. May confuse the foe.\n"
+            "Produces some water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
+        .fieldMoveTier = 2,
         .effect = EFFECT_HIT,
         .power = 60,
         .type = TYPE_WATER,
@@ -9769,7 +9817,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Gyro Ball"),
         .description = COMPOUND_STRING(
             "A high-speed spin that does\n"
-            "more damage to faster foes."),
+            "more damage to faster foes.\n"
+            "Allows to climb rocky walls."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
+        .effect = EFFECT_SPEED_UP_2,
         .effect = EFFECT_GYRO_BALL,
         .power = 1,
         .type = TYPE_STEEL,
@@ -9815,7 +9866,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Brine"),
         .description = COMPOUND_STRING(
             "Does double damage to foes\n"
-            "with half HP."),
+            "with half HP.\n"
+            "Corrodes metal objects."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CORRODE,
         .effect = EFFECT_BRINE,
         .power = 65,
         .type = TYPE_WATER,
@@ -10530,7 +10583,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Aqua Ring"),
         .description = COMPOUND_STRING(
             "Forms a veil of water\n"
-            "that restores HP."),
+            "that restores HP.\n"
+            "Produces a little water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
         .effect = EFFECT_AQUA_RING,
         .power = 0,
         .type = TYPE_WATER,
@@ -11188,7 +11243,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Bullet Punch"),
         .description = COMPOUND_STRING(
             "Punches as fast as a bul-\n"
-            "let. It always hits first."),
+            "let. It always hits first.\n"
+            "Can break small obstacles."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_BREAK,
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_STEEL,
@@ -11484,7 +11541,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = 65,
         .type = TYPE_STEEL,
-        .accuracy = 85,
+        .accuracy = 90,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -11505,7 +11562,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Flash Cannon"),
         .description = COMPOUND_STRING(
             "Releases a blast of light\n"
-            "that may lower Sp. Def."),
+            "that may lower Sp. Def.\n"
+            "Lights up dark areas."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_STEEL,
@@ -11812,11 +11871,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Iron Head"),
         .description = COMPOUND_STRING(
             "Slams the foe with a hard\n"
-            "head. May cause flinching."),
+            "head. May cause flinching.\n"
+            "Can be used to shake trees."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SHAKE,
         .effect = EFFECT_HIT,
         .power = 80,
         .type = TYPE_STEEL,
-        .accuracy = 100,
+        .accuracy = 95,
         .pp = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
@@ -12095,7 +12156,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Aqua Jet"),
         .description = COMPOUND_STRING(
             "Strikes first by dashing\n"
-            "at the foe at a high speed."),
+            "at the foe at a high speed.\n"
+            "Allows to cross bodies of water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_SURF,
         .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_WATER,
@@ -13033,7 +13096,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Soak"),
         .description = COMPOUND_STRING(
             "Sprays water at the foe\n"
-            "making it Water-type."),
+            "making it Water-type.\n"
+            "Produces a little water."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_HOSE,
         .effect = EFFECT_SOAK,
         .power = 0,
         .type = TYPE_WATER,
@@ -18808,12 +18873,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Life Dew"),
         .description = COMPOUND_STRING(
             "Scatters water to restore\n"
-            "the HP of itself and allies."),
+            "the HP of itself and allies.\n"
+            "Causes plants to magically grow."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_GROW,
         .effect = EFFECT_JUNGLE_HEALING,
         .power = 0,
         .type = TYPE_WATER,
         .accuracy = 0,
-        .pp = 10,
+        .pp = 5,
         .target = MOVE_TARGET_ALL_BATTLERS,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -18979,7 +19046,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Steel Roller"),
         .description = COMPOUND_STRING(
             "Destroys terrain. Fails if\n"
-            "ground isn't terrain."),
+            "ground isn't terrain.\n"
+            "Can dig up buried items."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_DIG,
         .effect = EFFECT_HIT_SET_REMOVE_TERRAIN,
         .power = 130,
         .type = TYPE_STEEL,
