@@ -9820,7 +9820,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "more damage to faster foes.\n"
             "Allows to climb rocky walls."),
         .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
-        .effect = EFFECT_SPEED_UP_2,
         .effect = EFFECT_GYRO_BALL,
         .power = 1,
         .type = TYPE_STEEL,
