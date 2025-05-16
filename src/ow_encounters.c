@@ -60,8 +60,8 @@
         Free(*ptr__);                  \
 })
 
-#define ENCOUNTER_LOC_AMETHYST_MOUNTAINS 		0
-#define ENCOUNTER_LOC_LITTLECOVE_NORTH 		1
+#define ENCOUNTER_LOC_AMETHYST_HIGHLANDS 	0
+#define ENCOUNTER_LOC_SILENT_VALLEY 		1
 #define ENCOUNTER_LOC_B3_WATER 				2
 #define ENCOUNTER_LOC_A2_CAVE 				3
 #define ENCOUNTER_LOC_A2_WATER 				4
@@ -71,7 +71,7 @@
 #define MAX_SPECIES_IN_TABLE 10
 const u16 WildEncounterTable[][MAX_SPECIES_IN_TABLE][2] =
 {
-	[ENCOUNTER_LOC_AMETHYST_MOUNTAINS] = {
+	[ENCOUNTER_LOC_AMETHYST_HIGHLANDS] = {
 		{SPECIES_GLIMMET,		25},
 		{SPECIES_SABLEYE,		20},
 		{SPECIES_SNEASEL,		20},
@@ -80,15 +80,12 @@ const u16 WildEncounterTable[][MAX_SPECIES_IN_TABLE][2] =
 		{SPECIES_TEDDIURSA,		5},
 	},
 
-	[ENCOUNTER_LOC_LITTLECOVE_NORTH] = {
-		{SPECIES_SURSKIT,		16},
-		{SPECIES_LOTAD,			12},
-		{SPECIES_SENTRET,		12},
-		{SPECIES_WINGULL,		12},
-		{SPECIES_BUIZEL,		16},
-		{SPECIES_SHINX,			12},
-		{SPECIES_PIKIPEK,		16},
-		{SPECIES_MUNCHLAX,		 4},
+	[ENCOUNTER_LOC_SILENT_VALLEY] = {
+		{SPECIES_SNEASEL,		35},
+		{SPECIES_SWINUB,		25},
+		{SPECIES_ZIGZAGOON_GALAR,		25},
+		{SPECIES_TEDDIURSA,		10},
+		{SPECIES_VULPIX_ALOLA,		5},
 	},
 
 	[ENCOUNTER_LOC_B3_WATER] = {
@@ -187,6 +184,10 @@ u16 GetWildEncounterLevel(u16 localId){
 		case 0:
 			minLevel = 3;
 			maxLevel = 5;
+			break;
+		case 1:
+			minLevel = 3;
+			maxLevel = 6;
 			break;
 		default:
 			minLevel = 1;
