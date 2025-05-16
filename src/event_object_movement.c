@@ -2694,10 +2694,10 @@ void RemoveObjectEventsOutsideView(void)
 
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *objectEvent)
 {
-    s16 left =   gSaveBlock1Ptr->pos.x - 7;
-    s16 right =  gSaveBlock1Ptr->pos.x + 22;
-    s16 top =    gSaveBlock1Ptr->pos.y - 5;
-    s16 bottom = gSaveBlock1Ptr->pos.y + 21;
+    s16 left =   gSaveBlock1Ptr->pos.x - 4;
+    s16 right =  gSaveBlock1Ptr->pos.x + 19;
+    s16 top =    gSaveBlock1Ptr->pos.y - 2;
+    s16 bottom = gSaveBlock1Ptr->pos.y + 18;
 
     if (objectEvent->currentCoords.x >= left && objectEvent->currentCoords.x <= right
      && objectEvent->currentCoords.y >= top && objectEvent->currentCoords.y <= bottom)
