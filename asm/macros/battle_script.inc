@@ -2599,3 +2599,8 @@
 	.macro givematerial
 	callnative BS_GiveMaterial
 	.endm
+
+	.macro jumpifnowhiteout jumpInstr:req
+	callnative BS_JumpIfNoWhiteOut
+	.4byte \jumpInstr
+	.endm
