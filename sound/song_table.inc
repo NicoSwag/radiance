@@ -618,6 +618,7 @@ gSongTable::
 	song mus_vast_ice_mountain, 0, 0
 	song mus_vs_ultra_beast, 0, 0
 	song mus_dream, 0, 0
+	song mus_treeshroud_forest, 0, 0
 
 	.align 2
 dummy_song_header:

@@ -4092,6 +4092,7 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     X(MUS_VAST_ICE_MOUNTAIN)\
     X(MUS_VS_ULTRA_BEAST)\
     X(MUS_DREAM)\
+    X(MUS_TREESHROUD_FOREST)\
 
 #define SOUND_LIST_SE \
     X(SE_USE_ITEM) \
