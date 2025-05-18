@@ -3019,9 +3019,20 @@ void BtlController_HandleBattleAnimation(u32 battler, bool32 ignoreSE, bool32 up
     }
 }
 
+u8 returnBattleSpeedScale(void){
+     if (gBattleTypeFlags & BATTLE_TYPE_IMPORTANT || FlagGet(FLAG_PREVENT_RUNNING))
+        return gSaveBlock2Ptr->optionsImportantBattleSpeed;
+    else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+        return gSaveBlock2Ptr->optionsTrainerBattleSpeed;
+    else
+        return gSaveBlock2Ptr->optionsWildBattleSpeed;
+}
+
+
 u32 Rogue_GetBattleSpeedScale(bool32 forHealthbar)
 {
-    u8 battleSceneOption = VarGet(B_BATTLE_SPEED); // Originally GetBattleSceneOption() with a saveblock stored value;
+    u8 battleSceneOption = returnBattleSpeedScale();
+    VarGet(B_BATTLE_SPEED); // Originally GetBattleSceneOption() with a saveblock stored value;
 
     // Hold L to slow down
     if(JOY_HELD(L_BUTTON))
@@ -3038,8 +3049,6 @@ u32 Rogue_GetBattleSpeedScale(bool32 forHealthbar)
             return 1;
 
         // When battle anims are turned off, it's a bit too hard to read text, so force running at normal speed
-        if(!forHealthbar && battleSceneOption == OPTIONS_BATTLE_SCENE_DISABLED && InBattleRunningActions())
-            return 1;
     }
 
     // We don't need to speed up health bar anymore as that passively happens now
@@ -3058,10 +3067,7 @@ u32 Rogue_GetBattleSpeedScale(bool32 forHealthbar)
         return forHealthbar ? 1 : 4;
 
     // Print text at a readable speed still
-    case OPTIONS_BATTLE_SCENE_DISABLED:
-        if(gBattleStruct->hasBattleInputStarted)
-            return forHealthbar ? 10 : 1;
-        else
+
             return 4;
     }
 

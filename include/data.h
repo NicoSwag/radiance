@@ -299,4 +299,17 @@ static inline const bool32 GetTrainerAIFlagsFromId(u16 trainerId)
     return gTrainers[difficulty][sanitizedTrainerId].aiFlags;
 }
 
+static inline const bool32 IsTrainerImportant(u16 trainerId)
+{
+    u32 sanitizedTrainerId = SanitizeTrainerId(trainerId);
+    enum DifficultyLevel difficulty = GetTrainerDifficultyLevel(sanitizedTrainerId);
+    
+    switch (gTrainers[difficulty][sanitizedTrainerId].trainerClass){
+        case TRAINER_CLASS_LEADER:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
 #endif // GUARD_DATA_H

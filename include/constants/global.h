@@ -159,8 +159,7 @@
 #define OPTIONS_BATTLE_SCENE_2X         1
 #define OPTIONS_BATTLE_SCENE_3X         2
 #define OPTIONS_BATTLE_SCENE_4X         3
-#define OPTIONS_BATTLE_SCENE_DISABLED   4
-#define OPTIONS_BATTLE_SCENE_COUNT      5
+#define OPTIONS_BATTLE_SCENE_COUNT      4
 
 #define DIR_NONE        0
 #define DIR_SOUTH       1
