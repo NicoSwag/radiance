@@ -2114,7 +2114,9 @@ void UpdateHealthboxAttribute(u8 healthboxSpriteId, struct Pokemon *mon, u8 elem
 
 s32 MoveBattleBar(u8 battlerId, u8 healthboxSpriteId, u8 whichBar, u8 unused)
 {
-    s32 currentBarValue;
+    u32 s;
+    u32 speedScale = Rogue_GetBattleSpeedScale(TRUE);
+    s32 currentBarValue = 0;
 
     if (whichBar == HEALTH_BAR) // health bar
     {
