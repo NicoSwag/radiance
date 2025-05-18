@@ -881,3 +881,14 @@ const struct Tileset gTileset_Mossdeep_Past_Secondary =
     .metatileAttributes = gMetatileAttributes_Mossdeep_Past_Secondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_GleamingForest_Secondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_GleamingForest_Secondary,
+    .palettes = gTilesetPalettes_GleamingForest_Secondary,
+    .metatiles = gMetatiles_GleamingForest_Secondary,
+    .metatileAttributes = gMetatileAttributes_GleamingForest_Secondary,
+    .callback = NULL,
+};

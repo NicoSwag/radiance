@@ -57,7 +57,8 @@
     "Earth_Ice_Floes_West",
     "Earth_Ice_Floes_East",
     "Earth_Marble_Plains_North",
-    "Earth_Marble_Plains_North_West"
+    "Earth_Marble_Plains_North_West",
+    "Earth_Gleaming_Forest"
   ],
   "gMapGroup_Radiance_Testing": [
     "General_test"

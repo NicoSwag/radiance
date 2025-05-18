@@ -223,3 +223,6 @@ const u16 gMetatileAttributes_Mossdeep_Past[] = INCBIN_U16("data/tilesets/primar
 
 const u16 gMetatiles_Mossdeep_Past_Secondary[] = INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/metatiles.bin");
 const u16 gMetatileAttributes_Mossdeep_Past_Secondary[] = INCBIN_U16("data/tilesets/secondary/mossdeep_past_secondary/metatile_attributes.bin");
+
+const u16 gMetatiles_GleamingForest_Secondary[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/metatiles.bin");
+const u16 gMetatileAttributes_GleamingForest_Secondary[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/metatile_attributes.bin");

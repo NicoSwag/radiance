@@ -5508,6 +5508,18 @@
       "secondary_tileset": "gTileset_MountainPeak_Secondary",
       "border_filepath": "data/layouts/Earth_Marble_Plains_North_West/border.bin",
       "blockdata_filepath": "data/layouts/Earth_Marble_Plains_North_West/map.bin"
+    },
+    {
+      "id": "LAYOUT_EARTH_GLEAMING_FOREST",
+      "name": "Earth_Gleaming_Forest_Layout",
+      "width": 63,
+      "height": 76,
+      "border_width": 3,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MountainPeak",
+      "secondary_tileset": "gTileset_GleamingForest_Secondary",
+      "border_filepath": "data/layouts/Earth_Gleaming_Forest/border.bin",
+      "blockdata_filepath": "data/layouts/Earth_Gleaming_Forest/map.bin"
     }
   ]
 }

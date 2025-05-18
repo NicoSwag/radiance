@@ -1195,3 +1195,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Earth_Marble_Plains_North/scripts.inc"
 
 	.include "data/maps/Earth_Marble_Plains_North_West/scripts.inc"
+
+	.include "data/maps/Earth_Gleaming_Forest/scripts.inc"
