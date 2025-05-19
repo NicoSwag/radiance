@@ -890,5 +890,5 @@ const struct Tileset gTileset_GleamingForest_Secondary =
     .palettes = gTilesetPalettes_GleamingForest_Secondary,
     .metatiles = gMetatiles_GleamingForest_Secondary,
     .metatileAttributes = gMetatileAttributes_GleamingForest_Secondary,
-    .callback = NULL,
+    .callback = InitTilesetAnim_GleamingForestSecondary,
 };

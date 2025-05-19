@@ -1269,6 +1269,61 @@ static void TilesetAnim_MountainPeakSecondary(u16 timer)
     }
 }
 
+
+
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame0[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/0.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame1[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/1.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame2[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/2.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame3[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/3.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame4[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/4.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame5[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/5.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame6[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/6.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame7[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/7.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame8[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/8.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame9[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/9.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame10[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/10.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame11[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/11.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame12[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/12.4bpp");
+const u16 gTilesetAnims_GleamingForest_Crystal_Frame13[] = INCBIN_U16("data/tilesets/secondary/gleaming_forest_secondary/anim/crystal/13.4bpp");
+
+const u16 *const gTilesetAnims_GleamingForest_Crystal[] = {
+    gTilesetAnims_GleamingForest_Crystal_Frame0,
+    gTilesetAnims_GleamingForest_Crystal_Frame1,
+    gTilesetAnims_GleamingForest_Crystal_Frame2,
+    gTilesetAnims_GleamingForest_Crystal_Frame3,
+    gTilesetAnims_GleamingForest_Crystal_Frame4,
+    gTilesetAnims_GleamingForest_Crystal_Frame5,
+    gTilesetAnims_GleamingForest_Crystal_Frame6,
+    gTilesetAnims_GleamingForest_Crystal_Frame7,
+    gTilesetAnims_GleamingForest_Crystal_Frame8,
+    gTilesetAnims_GleamingForest_Crystal_Frame9,
+    gTilesetAnims_GleamingForest_Crystal_Frame10,
+    gTilesetAnims_GleamingForest_Crystal_Frame11,
+    gTilesetAnims_GleamingForest_Crystal_Frame12,
+    gTilesetAnims_GleamingForest_Crystal_Frame13,
+    gTilesetAnims_GleamingForest_Crystal_Frame0,
+    gTilesetAnims_GleamingForest_Crystal_Frame0,
+};
+static void QueueAnimTiles_GleamingForest_Crystal(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_GleamingForest_Crystal);
+    AppendTilesetAnimToBuffer(gTilesetAnims_GleamingForest_Crystal[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(512)), 24 * TILE_SIZE_4BPP);
+}
+
+
+
+static void TilesetAnim_GleamingForestSecondary(u16 timer)
+{
+    if (timer % 8 == 2) {
+        QueueAnimTiles_GleamingForest_Crystal(timer / 8);
+    }
+}
+
+
+
+
+
+
 void InitTilesetAnim_MountainPeak(void)
 {
     sPrimaryTilesetAnimCounter = 0;
@@ -1281,4 +1336,11 @@ void InitTilesetAnim_MountainPeakSecondary(void)
     sSecondaryTilesetAnimCounter = 0;
     sSecondaryTilesetAnimCounterMax = 256;
     sSecondaryTilesetAnimCallback = TilesetAnim_MountainPeakSecondary;
+}
+
+void InitTilesetAnim_GleamingForestSecondary(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = 256;
+    sSecondaryTilesetAnimCallback = TilesetAnim_GleamingForestSecondary;
 }

@@ -62,7 +62,7 @@
 
 #define ENCOUNTER_LOC_AMETHYST_HIGHLANDS 	0
 #define ENCOUNTER_LOC_SILENT_VALLEY 		1
-#define ENCOUNTER_LOC_B3_WATER 				2
+#define ENCOUNTER_GLEAMING_FOREST 			2
 #define ENCOUNTER_LOC_A2_CAVE 				3
 #define ENCOUNTER_LOC_A2_WATER 				4
 #define ENCOUNTER_LOC_NONE					5
@@ -75,7 +75,7 @@ const u16 WildEncounterTable[][MAX_SPECIES_IN_TABLE][2] =
 		{SPECIES_GLIMMET,		25},
 		{SPECIES_SABLEYE,		25},
 		{SPECIES_SNEASEL,		25},
-		{SPECIES_BUDEW,		15},
+		{SPECIES_ODDISH,		15},
 		{SPECIES_SWINUB,		15},
 		{SPECIES_TEDDIURSA,		5},
 	},
@@ -89,14 +89,15 @@ const u16 WildEncounterTable[][MAX_SPECIES_IN_TABLE][2] =
 		{SPECIES_CUTIEFLY,		5},
 	},
 
-	[ENCOUNTER_LOC_B3_WATER] = {
+	[ENCOUNTER_GLEAMING_FOREST] = {
 		
-		{SPECIES_STARYU,		25},
-		{SPECIES_TENTACOOL,		25},
-		{SPECIES_SKRELP,		20},
-		{SPECIES_TYNAMO,		15},
-		{SPECIES_FEEBAS,		10},
-		{SPECIES_RELICANTH,		5},
+		{SPECIES_MORELULL,		25},
+		{SPECIES_GLIMMET,		20},
+		{SPECIES_ODDISH,		15},
+		{SPECIES_CUTIEFLY,		15},
+		{SPECIES_VOLBEAT,		10},
+		{SPECIES_ILLUMISE,		10},
+		{SPECIES_SNOVER,		5},
 	},
 
 	[ENCOUNTER_LOC_A2_CAVE] = {
@@ -187,6 +188,10 @@ u16 GetWildEncounterLevel(u16 localId){
 			maxLevel = 5;
 			break;
 		case 1:
+			minLevel = 3;
+			maxLevel = 6;
+			break;
+		case 2:
 			minLevel = 3;
 			maxLevel = 6;
 			break;

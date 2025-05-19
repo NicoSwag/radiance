@@ -1,1 +1,5 @@
-mapscripts Earth_Gleaming_Forest_MapScripts {}
+mapscripts Earth_Gleaming_Forest_MapScripts {	
+    MAP_SCRIPT_ON_LOAD {
+		callnative(ClearAllWildEncounters)
+	}
+}
