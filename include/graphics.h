@@ -1495,6 +1495,8 @@ extern const u32 gItemIconPalette_DragonTMHM[];
 extern const u32 gItemIconPalette_DarkTMHM[];
 extern const u32 gItemIconPalette_SteelTMHM[];
 extern const u32 gItemIconPalette_FairyTMHM[];
+extern const u32 gItemIconPalette_StellarTMHM[];
+extern const u32 gItemIconPalette_SoundTMHM[];
 // Charms
 extern const u32 gItemIcon_OvalCharm[];
 extern const u32 gItemIconPalette_OvalCharm[];

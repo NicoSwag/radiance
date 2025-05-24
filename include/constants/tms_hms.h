@@ -2,56 +2,106 @@
 #define GUARD_CONSTANTS_TMS_HMS_H
 
 #define FOREACH_TM(F) \
-    F(FOCUS_PUNCH) \
+    F(HIGH_JUMP_KICK) \
     F(DRAGON_CLAW) \
     F(WATER_PULSE) \
     F(CALM_MIND) \
     F(ROAR) \
     F(TOXIC) \
-    F(HAIL) \
+    F(SNARL) \
     F(BULK_UP) \
-    F(BULLET_SEED) \
-    F(HIDDEN_POWER) \
+    F(TRAILBLAZE) \
+    F(ROOST) \
     F(SUNNY_DAY) \
     F(TAUNT) \
     F(ICE_BEAM) \
-    F(BLIZZARD) \
-    F(HYPER_BEAM) \
+    F(AGILITY) \
+    F(ALLY_SWITCH) \
     F(LIGHT_SCREEN) \
     F(PROTECT) \
     F(RAIN_DANCE) \
     F(GIGA_DRAIN) \
-    F(SAFEGUARD) \
-    F(FRUSTRATION) \
-    F(SOLAR_BEAM) \
-    F(IRON_TAIL) \
+    F(SNOWSCAPE) \
+    F(HAZE) \
+    F(GUIDING_STAR) \
     F(THUNDERBOLT) \
-    F(THUNDER) \
-    F(EARTHQUAKE) \
+    F(SOAK) \
+    F(GYRO_BALL) \
+    F(CURSE) \
     F(RETURN) \
     F(DIG) \
     F(PSYCHIC) \
     F(SHADOW_BALL) \
     F(BRICK_BREAK) \
-    F(DOUBLE_TEAM) \
+    F(BATON_PASS) \
     F(REFLECT) \
-    F(SHOCK_WAVE) \
+    F(CHARGE_BEAM) \
     F(FLAMETHROWER) \
     F(SLUDGE_BOMB) \
     F(SANDSTORM) \
-    F(FIRE_BLAST) \
-    F(ROCK_TOMB) \
+    F(GRAVITY) \
+    F(GRASS_KNOT) \
     F(AERIAL_ACE) \
-    F(TORMENT) \
+    F(FLING) \
     F(FACADE) \
-    F(SECRET_POWER) \
+    F(REVERSAL) \
     F(REST) \
-    F(ATTRACT) \
-    F(THIEF) \
-    F(STEEL_WING) \
+    F(ENDURE) \
+    F(ELECTRIC_TERRAIN) \
+    F(ENTRAINMENT) \
     F(SKILL_SWAP) \
     F(SNATCH) \
-    F(OVERHEAT)
+    F(FLASH) \
+    F(MISTY_TERRAIN) \
+    F(EERIE_SPELL) \
+    F(FLY) \
+    F(EARTHQUAKE) \
+    F(FOLLOW_ME) \
+    F(THUNDER_WAVE) \
+    F(FIRE_SPIN) \
+    F(GRASSY_TERRAIN) \
+    F(BREAKING_SWIPE) \
+    F(ALLURING_VOICE) \
+    F(FROST_BREATH) \
+    F(INCINERATE) \
+    F(AURA_SPHERE) \
+    F(PSYCHIC_TERRAIN) \
+    F(FLASH_FREEZE) \
+    F(EERIE_NOISE) \
+    F(SIMPLE_BEAM) \
+    F(LEECH_LIFE) \
+    F(SLEEP_TALK) \
+    F(CUT) \
+    F(DAZZLING_GLEAM) \
+    F(TRICK) \
+    F(SURF) \
+    F(SUBSTITUTE) \
+    F(VENOSHOCK) \
+    F(KNOCK_OFF) \
+    F(SWORDS_DANCE) \
+    F(SIGNAL_BEAM) \
+    F(LOW_SWEEP) \
+    F(WORK_UP) \
+    F(ROCK_CLIMB) \
+    F(DRILL_RUN) \
+    F(EXPLOSION) \
+    F(BUG_BITE) \
+    F(DUAL_WINGBEAT) \
+    F(SMACK_DOWN) \
+    F(POISON_TAIL) \
+    F(STRENGTH) \
+    F(METAL_CLAW) \
+    F(STRUGGLE_BUG) \
+    F(HEADBUTT) \
+    F(IRON_TAIL) \
+    F(WATERFALL) \
+    F(ROCK_SMASH) \
+    F(RAPID_SPIN) \
+    F(WEATHER_BALL) \
+    F(FALSE_SWIPE) \
+    F(WILL_O_WISP) \
+    F(SWIFT) \
+    F(INFESTATION) \
 
 #define FOREACH_HM(F) \
     F(CUT) \
