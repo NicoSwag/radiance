@@ -9253,13 +9253,9 @@ static inline u32 CalcMoveBasePower(struct DamageCalculationData *damageCalcData
         if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_TERRAIN_ANY))
             basePower *= 2;
         break;
-    case EFFECT_EXPANDING_FORCE:
-        if (IsBattlerTerrainAffected(battlerAtk, STATUS_FIELD_PSYCHIC_TERRAIN))
-            basePower = uq4_12_multiply(basePower, UQ_4_12(1.5));
-        break;
     case EFFECT_RISING_VOLTAGE:
         if (IsBattlerTerrainAffected(battlerDef, STATUS_FIELD_ELECTRIC_TERRAIN))
-            basePower *= 2;
+            basePower *= 1.5;
         break;
     case EFFECT_BEAT_UP:
         if (B_BEAT_UP >= GEN_5)
@@ -9718,6 +9714,10 @@ static inline u32 CalcAttackStat(struct DamageCalculationData *damageCalcData, u
         if (IsBattleMovePhysical(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
+    case ABILITY_STARCHILD:
+        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.2 + 1;
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(finalModifier));
+        break;
     case ABILITY_SLOW_START:
         if (gDisableStructs[battlerAtk].slowStartTimer != 0)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
@@ -10002,6 +10002,10 @@ static inline u32 CalcDefenseStat(struct DamageCalculationData *damageCalcData, 
             if (damageCalcData->updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
         }
+        break;
+    case ABILITY_STARCHILD: 
+        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.2 + 1;
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(finalModifier));
         break;
     case ABILITY_FLOWER_GIFT:
         if (gBattleMons[battlerDef].species == SPECIES_CHERRIM_SUNSHINE && IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN) && !usesDefStat)

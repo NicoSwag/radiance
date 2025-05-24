@@ -5756,7 +5756,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 37,
         .baseSpAttack  = 29,
         .baseSpDefense = 31,
-        .types = MON_TYPES(TYPE_PSYCHIC),
+        .types = MON_TYPES(TYPE_STELLAR),
         .catchRate = 45,
         .expYield = 40,
         .evYield_HP = 1,
@@ -5765,7 +5765,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_UNAWARE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_STARCHILD, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Cosmog"),
         .cryId = CRY_COSMOG,
@@ -5774,10 +5774,10 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .height = 2,
         .weight = 1,
         .description = COMPOUND_STRING(
-            "In ages past, it was called the child of\n"
-            "the stars. It's said to be a Pokémon from\n"
-            "another world, but no specific details\n"
-            "are known."),
+            "A mysterious creature hailing from the\n"
+            "depths of space. It appears quite weak,\n"
+            "but it holds strange powers. It is unknown\n"
+            "whether it is a Pokémon or something else."),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -5808,12 +5808,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gShinyOverworldPalette_Cosmog
         )
         .isLegendary = TRUE,
-        .tmIlliterate = TRUE,
-        .isFrontierBanned = TRUE,
-        .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCosmogLevelUpLearnset,
         .teachableLearnset = sCosmogTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 43, SPECIES_COSMOEM}),
     },
 
     [SPECIES_COSMOEM] =
@@ -5824,7 +5820,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 37,
         .baseSpAttack  = 29,
         .baseSpDefense = 131,
-        .types = MON_TYPES(TYPE_PSYCHIC),
+        .types = MON_TYPES(TYPE_STELLAR),
         .catchRate = 45,
         .expYield = 140,
         .evYield_Defense = 1,
@@ -5834,19 +5830,19 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_COMATOSE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Cosmoem"),
         .cryId = CRY_COSMOEM,
         .natDexNum = NATIONAL_DEX_COSMOEM,
-        .categoryName = _("Protostar"),
+        .categoryName = _("Cosmic Egg"),
         .height = 1,
         .weight = 9999,
         .description = COMPOUND_STRING(
-            "Motionless as if dead, its body is faintly\n"
-            "warm to the touch. There's something\n"
-            "accumulating around the black core\n"
-            "within its hard shell."),
+            "After reabsorbing its former power,\n"
+            "Cosmog evolved and went to sleep.\n"
+            "Soon it will awaken, heralding a new\n"
+            "age for humanity."),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -5882,8 +5878,6 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCosmoemLevelUpLearnset,
         .teachableLearnset = sCosmoemTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL_DAY, 53, SPECIES_SOLGALEO},
-                                {EVO_LEVEL_NIGHT, 53, SPECIES_LUNALA}),
     },
 
     [SPECIES_SOLGALEO] =
@@ -5894,7 +5888,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 97,
         .baseSpAttack  = 113,
         .baseSpDefense = 89,
-        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_STEEL),
+        .types = MON_TYPES(TYPE_STELLAR, TYPE_STEEL),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
         .evYield_Attack = 3,
@@ -5908,14 +5902,14 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .speciesName = _("Solgaleo"),
         .cryId = CRY_SOLGALEO,
         .natDexNum = NATIONAL_DEX_SOLGALEO,
-        .categoryName = _("Sunne"),
+        .categoryName = _("Sun"),
         .height = 34,
         .weight = 2300,
         .description = COMPOUND_STRING(
-            "It is said to live in another world.\n"
-            "The intense light it radiates from the\n"
-            "surface of its body can make the darkest\n"
-            "of nights light up like midday."),
+            "After absorbing the energy of the Sun,\n"
+            "Solgaleo holds the power to defeat the\n"
+            "Radiance. Its light can make the darkest\n"
+            "night light up like midday."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 405,
@@ -5959,7 +5953,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseSpeed     = 97,
         .baseSpAttack  = 137,
         .baseSpDefense = 107,
-        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_GHOST),
+        .types = MON_TYPES(TYPE_STELLAR, TYPE_GHOST),
         .catchRate = 45,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
         .evYield_SpAttack = 3,
@@ -5973,14 +5967,14 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .speciesName = _("Lunala"),
         .cryId = CRY_LUNALA,
         .natDexNum = NATIONAL_DEX_LUNALA,
-        .categoryName = _("Moone"),
+        .categoryName = _("Moon"),
         .height = 40,
         .weight = 1200,
         .description = COMPOUND_STRING(
-            "When its third eye activates, away it flies\n"
-            "to another world. This Pokémon devours\n"
-            "light, drawing the moonless dark veil of\n"
-            "night over the brightness of day."),
+            "After absorbing the energy of the Moon,\n"
+            "Lunala holds the power to control the\n"
+            "Radiance. Its veil of darkness can shroud\n"
+            "even the brightest of days."),
         .pokemonScale = 256,
         .pokemonOffset = 0,
         .trainerScale = 411,

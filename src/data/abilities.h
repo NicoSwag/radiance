@@ -2409,6 +2409,15 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
             .cantBeSwapped = TRUE,
             .cantBeTraced = TRUE,
         },
+        [ABILITY_STARCHILD] =
+        {
+            .name = _("Starchild"),
+            .description = COMPOUND_STRING("Increases all stats by 20% for each Cosmog Piece found."),
+            .aiRating = 10,
+            .cantBeCopied = TRUE,
+            .cantBeSwapped = TRUE,
+            .cantBeTraced = TRUE,
+        },
     #else
         [ABILITY_NONE] =
         {

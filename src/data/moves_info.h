@@ -18945,8 +18945,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Expanding Force"),
         .description = COMPOUND_STRING(
-            "Power goes up and damages\n"
-            "all foes on Psychic Terrain."),
+            "Damages all foes on\n"
+            "Psychic Terrain.\n"
+            "Produces a lot of energy."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
+        .fieldMoveTier = 2,
         .effect = EFFECT_EXPANDING_FORCE,
         .power = 80,
         .type = TYPE_PSYCHIC,
@@ -19089,12 +19092,14 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Grassy Glide"),
         .description = COMPOUND_STRING(
             "Gliding on ground, hits. Goes\n"
-            "first on Grassy Terrain."),
+            "first on Grassy Terrain.\n"
+            "Allows to climb rocky walls."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
         .effect = EFFECT_GRASSY_GLIDE,
         .power = B_UPDATED_MOVE_DATA >= GEN_9 ? 55 : 70,
         .type = TYPE_GRASS,
         .accuracy = 100,
-        .pp = 20,
+        .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -19111,13 +19116,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Rising Voltage"),
         .description = COMPOUND_STRING(
-            "This move's power doubles\n"
+            "This move's power goes up\n"
             "when on Electric Terrain."),
         .effect = EFFECT_RISING_VOLTAGE,
         .power = 70,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
-        .pp = 20,
+        .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,

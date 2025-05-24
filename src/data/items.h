@@ -11820,19 +11820,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_IRON_TAIL,
     },
 
-    [ITEM_TM_WATERFALL] =
+    [ITEM_TM_ROCK_SLIDE] =
     {
         .name = _("TM93"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Attacks the foe\n"
-            "with enough power\n"
-            "to climb waterfalls."),
+            "Large boulders are\n"
+            "hurled. May cause\n"
+            "flinching."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_WATERFALL,
+        .secondaryId = MOVE_ROCK_SLIDE,
     },
 
     [ITEM_TM_ROCK_SMASH] =
@@ -11880,19 +11880,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_WEATHER_BALL,
     },
 
-    [ITEM_TM_FALSE_SWIPE] =
+    [ITEM_TM_TERRAIN_PULSE] =
     {
         .name = _("TM97"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "An attack that\n"
-            "leaves the foe\n"
-            "with at least 1 HP."),
+            "Type and power\n"
+            "changes depending\n"
+            "on the terrain."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_FALSE_SWIPE,
+        .secondaryId = MOVE_TERRAIN_PULSE,
     },
 
     [ITEM_TM_WILL_O_WISP] =

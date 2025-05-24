@@ -94,11 +94,11 @@
     F(STRUGGLE_BUG) \
     F(HEADBUTT) \
     F(IRON_TAIL) \
-    F(WATERFALL) \
+    F(ROCK_SLIDE) \
     F(ROCK_SMASH) \
     F(RAPID_SPIN) \
     F(WEATHER_BALL) \
-    F(FALSE_SWIPE) \
+    F(TERRAIN_PULSE) \
     F(WILL_O_WISP) \
     F(SWIFT) \
     F(INFESTATION) \
