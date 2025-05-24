@@ -143,14 +143,16 @@ Debug_EventScript_Script_1::
 	end
 
 Test_Name:
-	.string "Test$"
+	.string "Cosmog$"
 
 Test_Msgbox:
+	.string "{CREATE_MUGSHOT MUGSHOT_COSMOG EMOTE_NORMAL}"
 	.string "Test.$"
 
 Debug_EventScript_Script_2::
-	removefieldmugshot
-	release
+ 	speakername Test_Name
+	msgbox Test_Msgbox
+	closemessage
 	end
 
 Debug_EventScript_Script_3::

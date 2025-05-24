@@ -3622,6 +3622,25 @@ static void CancellerProtean(u32 *effect)
     }
 }
 
+static void CancellerTypeBoost(u32 *effect)
+{
+    u32 battlerAbility = GetBattlerAbility(gBattlerAttacker);
+    u32 moveType = GetBattleMoveType(gCurrentMove);
+            if (gBattleMons[gBattlerAttacker].hp <= (gBattleMons[gBattlerAttacker].maxHP / 3) &&
+            ((moveType == TYPE_FIRE && battlerAbility == ABILITY_BLAZE) || 
+             (moveType == TYPE_WATER && battlerAbility == ABILITY_TORRENT) || 
+             (moveType == TYPE_GRASS && battlerAbility == ABILITY_OVERGROW) || 
+             (moveType == TYPE_BUG && battlerAbility == ABILITY_SWARM)))
+            {
+                gBattlerAbility = gBattlerAttacker;
+                BattleScriptPushCursor();
+                PrepareStringBattle(STRINGID_EMPTYSTRING3, gBattlerAttacker);
+                gBattleCommunication[MSG_DISPLAY] = 1;
+                gBattlescriptCurrInstr = BattleScript_TypeAbilityActivates;
+                *effect = 1;
+            }
+}
+
 static void CancellerPsychicTerrain(u32 *effect)
 {
     if (gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN
@@ -3823,6 +3842,7 @@ static const MoveSuccessOrderCancellers sMoveSuccessOrderCancellers[] =
     [CANCELLER_DYNAMAX_BLOCKED] = CancellerDynamaxBlocked,
     [CANCELLER_POWDER_STATUS] = CancellerPowderStatus,
     [CANCELLER_PROTEAN] = CancellerProtean,
+    [CANCELLER_TYPE_BOOST] = CancellerTypeBoost,
     [CANCELLER_PSYCHIC_TERRAIN] = CancellerPsychicTerrain,
     [CANCELLER_EXPLODING_DAMP] = CancellerExplodingDamp,
     [CANCELLER_MULTIHIT_MOVES] = CancellerMultihitMoves,

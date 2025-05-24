@@ -6,6 +6,9 @@ static const u16 sFieldMugshotPal_TestAlt[] = INCBIN_U16("graphics/field_mugshot
 static const u32 sFieldMugshotGfx_Cozmo[] = INCBIN_U32("graphics/field_mugshots/cozmo/normal.4bpp.lz");
 static const u16 sFieldMugshotPal_Cozmo[] = INCBIN_U16("graphics/field_mugshots/cozmo/normal.gbapal");
 
+static const u32 sFieldMugshotGfx_Cosmog[] = INCBIN_U32("graphics/field_mugshots/cosmog/normal.4bpp.lz");
+static const u16 sFieldMugshotPal_Cosmog[] = INCBIN_U16("graphics/field_mugshots/cosmog/normal.gbapal");
+
 struct MugshotGfx
 {
     const u32 *gfx;
@@ -36,6 +39,15 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_Cozmo,
             .pal = sFieldMugshotPal_Cozmo,
+        }, 
+    },
+
+    [MUGSHOT_COSMOG] = 
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_Cosmog,
+            .pal = sFieldMugshotPal_Cosmog,
         }, 
     },
 

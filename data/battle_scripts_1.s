@@ -8421,6 +8421,13 @@ BattleScript_ProteanActivates::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_TypeAbilityActivates::
+	pause B_WAIT_TIME_SHORTEST
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_MOVEPOWERSUP
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_TeraShellDistortingTypeMatchups::
 	pause B_WAIT_TIME_SHORTEST
 	call BattleScript_AbilityPopUpScripting
