@@ -9715,7 +9715,7 @@ static inline u32 CalcAttackStat(struct DamageCalculationData *damageCalcData, u
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_STARCHILD:
-        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.2 + 1;
+        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.25 + 1;
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(finalModifier));
         break;
     case ABILITY_SLOW_START:
@@ -10004,7 +10004,7 @@ static inline u32 CalcDefenseStat(struct DamageCalculationData *damageCalcData, 
         }
         break;
     case ABILITY_STARCHILD: 
-        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.2 + 1;
+        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.25 + 1;
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(finalModifier));
         break;
     case ABILITY_FLOWER_GIFT:
