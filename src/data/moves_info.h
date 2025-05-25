@@ -8774,7 +8774,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Raises Defense and Sp. Def\n"
             "with a mystic power.\n"
-            "Lights up dark areas.\n"
             "Produces a lot of energy."),
         .fieldMoveEffect = FIELD_MOVE_EFFECT_ENERGIZE,
         .fieldMoveTier = 2,
