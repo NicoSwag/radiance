@@ -4813,7 +4813,7 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed /= 2;
     else if (ability == ABILITY_STARCHILD)
     {
-        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.25;
+        u8 finalModifier = VarGet(VAR_COSMOG_PIECES_RECOVERED) * 0.2;
         if(finalModifier)
             speed = speed + speed *finalModifier;
     }
