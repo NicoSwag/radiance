@@ -499,6 +499,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_EMPTYSTRING4]                         = COMPOUND_STRING(""),
     [STRINGID_ABOOSTED]                             = COMPOUND_STRING(" a boosted"),
     [STRINGID_PKMNSXINTENSIFIEDSUN]                 = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY} intensified the sun's rays!"), //not in gen 5+, ability popup
+    [STRINGID_PKMNSXINTENSIFIEDMOON]                 = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY} purified the moonlight!"), //not in gen 5+, ability popup
     [STRINGID_PKMNMAKESGROUNDMISS]                  = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} makes Ground-type moves miss with {B_DEF_ABILITY}!"), //not in gen 5+, ability popup
     [STRINGID_YOUTHROWABALLNOWRIGHT]                = COMPOUND_STRING("You throw a Ball now, right? I… I'll do my best!"),
     [STRINGID_PKMNSXTOOKATTACK]                     = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY} took the attack!"), //In gen 5+ but without naming the ability
@@ -632,6 +633,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ANTICIPATIONACTIVATES]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} shuddered!"),
     [STRINGID_FOREWARNACTIVATES]                    = COMPOUND_STRING("{B_SCR_ACTIVE_ABILITY} alerted {B_SCR_NAME_WITH_PREFIX2} to {B_DEF_NAME_WITH_PREFIX2}'s {B_BUFF1}!"),
     [STRINGID_ICEBODYHPGAIN]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s {B_ATK_ABILITY} healed it a little bit!"), //don't think this message is displayed anymore
+    [STRINGID_MOONLIGHTHPGAIN]                      = COMPOUND_STRING("The pure moon healed {B_ATK_NAME_WITH_PREFIX} a little bit!"),
     [STRINGID_SNOWWARNINGHAIL]                      = COMPOUND_STRING("It started to hail!"),
     [STRINGID_FRISKACTIVATES]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} frisked {B_DEF_NAME_WITH_PREFIX2} and found its {B_LAST_ITEM}!"),
     [STRINGID_UNNERVEENTERS]                        = COMPOUND_STRING("{B_DEF_TEAM1} team is too nervous to eat Berries!"),
@@ -877,7 +879,10 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_BOOSTERENERGYACTIVATES]               = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} used its {B_LAST_ITEM} to activate {B_SCR_ACTIVE_ABILITY}!"),
     [STRINGID_FOGCREPTUP]                           = COMPOUND_STRING("Fog crept up as thick as soup!"),
     [STRINGID_FOGISDEEP]                            = COMPOUND_STRING("The fog is deep…"),
+    [STRINGID_MOONSHINES]                           = COMPOUND_STRING("The pure moon shines."),
     [STRINGID_FOGLIFTED]                            = COMPOUND_STRING("The fog lifted."),
+    [STRINGID_MOONPURIFIED]                         = COMPOUND_STRING("The moonlight was purified!"),
+    [STRINGID_MOONDISAPPEARED]                      = COMPOUND_STRING("The moonlight went back to normal."),
     [STRINGID_PKMNMADESHELLGLEAM]                   = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} made its shell gleam! It's distorting type matchups!"),
     [STRINGID_FICKLEBEAMDOUBLED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is going all out for this attack!"),
     [STRINGID_COMMANDERACTIVATES]                   = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} was swallowed by Dondozo and became Dondozo's commander!"),
@@ -1024,6 +1029,7 @@ const u16 gMoveWeatherChangeStringIds[] =
     [B_MSG_STARTED_HAIL]      = STRINGID_STARTEDHAIL,
     [B_MSG_STARTED_SNOW]      = STRINGID_STARTEDSNOW,
     [B_MSG_STARTED_FOG]       = STRINGID_FOGCREPTUP, // Unused, can use for custom moves that set fog
+    [B_MSG_STARTED_MOON]      = STRINGID_MOONPURIFIED,
 };
 
 const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
@@ -1034,6 +1040,7 @@ const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
     [B_MSG_WEATHER_END_HAIL]         = STRINGID_HAILSTOPPED,
     [B_MSG_WEATHER_END_SNOW]         = STRINGID_SNOWSTOPPED,
     [B_MSG_WEATHER_END_FOG]          = STRINGID_FOGLIFTED,
+    [B_MSG_WEATHER_END_MOON]         = STRINGID_MOONDISAPPEARED,
     [B_MSG_WEATHER_END_STRONG_WINDS] = STRINGID_STRONGWINDSDISSIPATED,
 };
 
@@ -1046,6 +1053,7 @@ const u16 gWeatherTurnStringIds[] =
     [B_MSG_WEATHER_TURN_HAIL]         = STRINGID_HAILCONTINUES,
     [B_MSG_WEATHER_TURN_SNOW]         = STRINGID_SNOWCONTINUES,
     [B_MSG_WEATHER_TURN_FOG]          = STRINGID_FOGISDEEP,
+    [B_MSG_WEATHER_TURN_MOON]          = STRINGID_MOONSHINES,
     [B_MSG_WEATHER_TURN_STRONG_WINDS] = STRINGID_MYSTERIOUSAIRCURRENTBLOWSON,
 };
 

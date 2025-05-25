@@ -6534,6 +6534,30 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .validApprenticeMove = TRUE,
     },
 
+    [MOVE_PURE_MOON] =
+    {
+        .name = COMPOUND_STRING("Pure Moon"),
+        .description = COMPOUND_STRING(
+            "Heals Dark, Ghost and Stellar-\n"
+            "type Pokémon for 5 turns\n"
+            "Lights up dark areas."),
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
+        .effect = EFFECT_PURE_MOON,
+        .power = 0,
+        .type = TYPE_STELLAR,
+        .accuracy = 0,
+        .pp = 5,
+        .target = MOVE_TARGET_ALL_BATTLERS,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_PureMoon,
+        .validApprenticeMove = TRUE,
+    },
+
     [MOVE_SUNNY_DAY] =
     {
         .name = COMPOUND_STRING("Sunny Day"),

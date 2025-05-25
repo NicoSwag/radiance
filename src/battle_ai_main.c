@@ -1075,6 +1075,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
             case EFFECT_SUNNY_DAY:
             case EFFECT_RAIN_DANCE:
+            case EFFECT_PURE_MOON:
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
             case EFFECT_SANDSTORM:
@@ -1727,6 +1728,11 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
              || IsMoveEffectWeather(aiData->partnerMove))
                 ADJUST_SCORE(-8);
             break;
+        case EFFECT_PURE_MOON:
+            if (weather & (B_WEATHER_MOON)
+             || IsMoveEffectWeather(aiData->partnerMove))
+                ADJUST_SCORE(-8);
+            break;
         case EFFECT_HAIL:
             if (weather & (B_WEATHER_HAIL | B_WEATHER_PRIMAL_ANY)
              || IsMoveEffectWeather(aiData->partnerMove))
@@ -1961,7 +1967,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_MORNING_SUN:
         case EFFECT_SYNTHESIS:
         case EFFECT_MOONLIGHT:
-            if ((AI_GetWeather() & (B_WEATHER_RAIN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL | B_WEATHER_SNOW | B_WEATHER_FOG)))
+            if ((AI_GetWeather() & (B_WEATHER_RAIN | B_WEATHER_SUN | B_WEATHER_SANDSTORM | B_WEATHER_HAIL | B_WEATHER_SNOW | B_WEATHER_FOG)))
                 ADJUST_SCORE(-3);
             else if (AI_BattlerAtMaxHp(battlerAtk))
                 ADJUST_SCORE(-10);
@@ -2817,6 +2823,7 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         case EFFECT_HAIL:
         case EFFECT_SNOWSCAPE:
         case EFFECT_RAIN_DANCE:
+        case EFFECT_PURE_MOON:
         case EFFECT_SANDSTORM:
         case EFFECT_CHILLY_RECEPTION:
             if (IsMoveEffectWeather(move))
@@ -2874,6 +2881,12 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     {
     case EFFECT_SANDSTORM:
         if (ShouldSetSandstorm(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
+        {
+            RETURN_SCORE_PLUS(WEAK_EFFECT);   // our partner benefits from sandstorm
+        }
+        break;
+    case EFFECT_PURE_MOON:
+        if (ShouldSetMoon(battlerAtkPartner, atkPartnerAbility, atkPartnerHoldEffect))
         {
             RETURN_SCORE_PLUS(WEAK_EFFECT);   // our partner benefits from sandstorm
         }
@@ -3946,6 +3959,18 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
                 ADJUST_SCORE(WEAK_EFFECT);
         }
         break;
+    case EFFECT_PURE_MOON:
+        if (ShouldSetMoon(battlerAtk, aiData->abilities[battlerAtk], aiData->holdEffects[battlerAtk]))
+        {
+            ADJUST_SCORE(DECENT_EFFECT);
+            if (aiData->holdEffects[battlerAtk] == HOLD_EFFECT_BRITTLE_ROCK)
+                ADJUST_SCORE(WEAK_EFFECT);
+            if (HasMoveEffect(battlerDef, EFFECT_MORNING_SUN)
+              || HasMoveEffect(battlerDef, EFFECT_SYNTHESIS)
+              || HasMoveEffect(battlerDef, EFFECT_SOLAR_BEAM))
+                ADJUST_SCORE(WEAK_EFFECT);
+        }
+        break;
     case EFFECT_SUNNY_DAY:
         if (ShouldSetSun(battlerAtk, aiData->abilities[battlerAtk], aiData->holdEffects[battlerAtk]))
         {
@@ -3955,6 +3980,8 @@ static u32 AI_CalcMoveEffectScore(u32 battlerAtk, u32 battlerDef, u32 move)
             if (HasMoveWithType(battlerDef, TYPE_WATER) || HasMoveWithType(BATTLE_PARTNER(battlerDef), TYPE_WATER))
                 ADJUST_SCORE(WEAK_EFFECT);
             if (HasMoveEffect(battlerDef, EFFECT_THUNDER) || HasMoveEffect(BATTLE_PARTNER(battlerDef), EFFECT_THUNDER))
+                ADJUST_SCORE(WEAK_EFFECT);
+            if (HasMoveEffect(battlerDef, EFFECT_MOONLIGHT))
                 ADJUST_SCORE(WEAK_EFFECT);
         }
         break;
@@ -4997,6 +5024,7 @@ static s32 AI_ForceSetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 
     case EFFECT_TIDY_UP:
     case EFFECT_STICKY_WEB:
     case EFFECT_RAIN_DANCE:
+    case EFFECT_PURE_MOON:
     case EFFECT_SUNNY_DAY:
     case EFFECT_SANDSTORM:
     case EFFECT_HAIL:
@@ -5280,6 +5308,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
             case EFFECT_RAIN_DANCE:
+            case EFFECT_PURE_MOON:
             case EFFECT_FILLET_AWAY:
                 ADJUST_SCORE(-2);
                 break;
@@ -5443,6 +5472,10 @@ static s32 AI_PowerfulStatus(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
         if (!(AI_GetWeather() & (B_WEATHER_RAIN | B_WEATHER_PRIMAL_ANY)))
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
+    case EFFECT_PURE_MOON:
+        if (!(AI_GetWeather() & (B_WEATHER_MOON)))
+            ADJUST_SCORE(POWERFUL_STATUS_MOVE);
+        break;
     case EFFECT_HAIL:
         if (!(AI_GetWeather() & (B_WEATHER_HAIL | B_WEATHER_PRIMAL_ANY)))
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
@@ -5509,6 +5542,7 @@ static s32 AI_PredictSwitch(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     case EFFECT_TELEKINESIS:
     case EFFECT_GRAVITY:
     case EFFECT_RAIN_DANCE:
+    case EFFECT_PURE_MOON:
     case EFFECT_SANDSTORM:
     case EFFECT_SNOWSCAPE:
     case EFFECT_HAIL:

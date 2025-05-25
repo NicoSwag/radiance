@@ -586,8 +586,9 @@
 #define B_ANIM_TERA_CHARGE              50
 #define B_ANIM_TERA_ACTIVATE            51
 #define B_ANIM_SIMPLE_HEAL              52
+#define B_ANIM_MOON_CONTINUES           53
 
-#define NUM_B_ANIMS_GENERAL             53
+#define NUM_B_ANIMS_GENERAL             54
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
@@ -640,6 +641,7 @@
 #define ANIM_WEATHER_HAIL 4
 #define ANIM_WEATHER_SNOW 5
 #define ANIM_WEATHER_FOG 6
+#define ANIM_WEATHER_MOON 7
 
 // horseshoe/fist frames
 #define ANIM_RIGHT_FIST  0

@@ -131,6 +131,7 @@ bool32 IsHazardMove(u32 move);
 bool32 IsTwoTurnNotSemiInvulnerableMove(u32 battlerAtk, u32 move);
 void ProtectChecks(u32 battlerAtk, u32 battlerDef, u32 move, u32 predictedMove, s32 *score);
 bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect);
+bool32 ShouldSetMoon(u32 battler, u32 ability, u32 holdEffect);
 bool32 ShouldSetHail(u32 battler, u32 ability, u32 holdEffect);
 bool32 ShouldSetSnow(u32 battler, u32 ability, u32 holdEffect);
 bool32 ShouldSetRain(u32 battlerAtk, u32 ability, u32 holdEffect);

@@ -7279,6 +7279,18 @@ const struct SpriteTemplate gMoonUpSpriteTemplate =
     .callback = AnimWeatherBallUp,
 };
 
+
+const struct SpriteTemplate gPureMoonUpSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_MOON,
+    .paletteTag = ANIM_TAG_MOON,
+    .oam = &gOamData_AffineOff_ObjNormal_64x64,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimWeatherBallUp,
+};
+
 const union AnimCmd gSproutAnimCmds[] =
 {
     ANIMCMD_FRAME(96, 5),
@@ -9273,6 +9285,8 @@ void AnimTask_GetWeatherToSet(u8 taskId)
         gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_RAIN;
     else if (MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_SANDSTORM))
         gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_SANDSTORM;
+    else if (MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_MOON))
+        gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_MOON;
     else if (MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_HAIL))
         gBattleAnimArgs[ARG_RET_ID] = ANIM_WEATHER_HAIL;
 

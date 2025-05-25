@@ -535,6 +535,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
             .aiRating = 9,
         },
 
+        [ABILITY_ECLIPSE] =
+        {
+            .name = _("Drought"),
+            .description = COMPOUND_STRING("The user changes the weather to Pure Moon for five turns."),
+            .aiRating = 9,
+        },
+
         [ABILITY_ARENA_TRAP] =
         {
             .name = _("Arena Trap"),

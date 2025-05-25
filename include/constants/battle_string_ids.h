@@ -734,8 +734,13 @@
 #define STRINGID_PKMNALREADYFROSTBITTEN               732
 #define STRINGID_PKMNSXPREVENTSFROSTBITE              733
 #define STRINGID_MOVEPOWERSUP                         734
+#define STRINGID_MOONDISAPPEARED                      735
+#define STRINGID_MOONSHINES                           736
+#define STRINGID_MOONPURIFIED                         737
+#define STRINGID_PKMNSXINTENSIFIEDMOON                738
+#define STRINGID_MOONLIGHTHPGAIN                     739
 
-#define BATTLESTRINGS_COUNT                           735
+#define BATTLESTRINGS_COUNT                           740
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -788,6 +793,7 @@
 #define B_MSG_STARTED_HAIL      5
 #define B_MSG_STARTED_SNOW      6
 #define B_MSG_STARTED_FOG       7
+#define B_MSG_STARTED_MOON      8
 
 // gWeatherEndsStringIds
 #define B_MSG_WEATHER_END_RAIN         0
@@ -797,7 +803,8 @@
 #define B_MSG_WEATHER_END_SNOW         4
 #define B_MSG_WEATHER_END_FOG          5
 #define B_MSG_WEATHER_END_STRONG_WINDS 6
-#define B_MSG_WEATHER_END_COUNT        7
+#define B_MSG_WEATHER_END_MOON         7
+#define B_MSG_WEATHER_END_COUNT        8
 
 // gWeatherTurnStringIds
 #define B_MSG_WEATHER_TURN_RAIN         0
@@ -808,7 +815,8 @@
 #define B_MSG_WEATHER_TURN_SNOW         5
 #define B_MSG_WEATHER_TURN_FOG          6
 #define B_MSG_WEATHER_TURN_STRONG_WINDS 7
-#define B_MSG_WEATHER_TURN_COUNT        8
+#define B_MSG_WEATHER_TURN_MOON         8
+#define B_MSG_WEATHER_TURN_COUNT        9
 
 // gRainContinuesStringIds
 #define B_MSG_RAIN_CONTINUES     0

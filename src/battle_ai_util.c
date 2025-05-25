@@ -1638,6 +1638,21 @@ bool32 ShouldSetSandstorm(u32 battler, u32 ability, u32 holdEffect)
     return FALSE;
 }
 
+bool32 ShouldSetMoon(u32 battler, u32 ability, u32 holdEffect)
+{
+    u32 weather = AI_GetWeather();
+    if (weather & B_WEATHER_MOON)
+        return FALSE;
+
+    if (IS_BATTLER_ANY_TYPE(battler, TYPE_DARK, TYPE_GHOST, TYPE_STELLAR)
+      || HasMoveEffect(battler, EFFECT_WEATHER_BALL)
+      || HasMoveEffect(battler, EFFECT_MOONLIGHT))
+    {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 bool32 ShouldSetHail(u32 battler, u32 ability, u32 holdEffect)
 {
     u32 weather = AI_GetWeather();
@@ -1698,7 +1713,6 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
       || HasMoveEffect(battlerAtk, EFFECT_SOLAR_BEAM)
       || HasMoveEffect(battlerAtk, EFFECT_MORNING_SUN)
       || HasMoveEffect(battlerAtk, EFFECT_SYNTHESIS)
-      || HasMoveEffect(battlerAtk, EFFECT_MOONLIGHT)
       || HasMoveEffect(battlerAtk, EFFECT_WEATHER_BALL)
       || HasMoveEffect(battlerAtk, EFFECT_GROWTH)
       || HasMoveWithType(battlerAtk, TYPE_FIRE)))
@@ -3461,6 +3475,7 @@ bool32 IsMoveEffectWeather(u32 move)
     if (move != MOVE_NONE
      && (effect == EFFECT_SUNNY_DAY
       || effect == EFFECT_RAIN_DANCE
+      || effect == EFFECT_PURE_MOON
       || effect == EFFECT_SANDSTORM
       || effect == EFFECT_HAIL
       || effect == EFFECT_SNOWSCAPE

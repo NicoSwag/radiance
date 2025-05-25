@@ -4469,6 +4469,14 @@ BattleScript_EffectSunnyDay::
 	setfieldweather BATTLE_WEATHER_SUN
 	goto BattleScript_MoveWeatherChange
 
+BattleScript_EffectPureMoon::
+	attackcanceler
+	attackstring
+	ppreduce
+	call BattleScript_CheckPrimalWeather
+	setfieldweather BATTLE_WEATHER_MOON
+	goto BattleScript_MoveWeatherChange
+
 BattleScript_ExtremelyHarshSunlightWasNotLessened:
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_EXTREMELYHARSHSUNLIGHTWASNOTLESSENED
@@ -5901,6 +5909,14 @@ BattleScript_IceBodyHeal::
 	healthbarupdate BS_SCRIPTING
 	datahpupdate BS_SCRIPTING
 	printstring STRINGID_ICEBODYHPGAIN
+	waitmessage B_WAIT_TIME_LONG
+	end2
+
+BattleScript_MoonlightHeal::
+	playanimation BS_SCRIPTING, B_ANIM_SIMPLE_HEAL
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
+	printstring STRINGID_MOONLIGHTHPGAIN
 	waitmessage B_WAIT_TIME_LONG
 	end2
 
@@ -7939,6 +7955,15 @@ BattleScript_DroughtActivates::
 	printstring STRINGID_PKMNSXINTENSIFIEDSUN
 	waitstate
 	playanimation BS_BATTLER_0, B_ANIM_SUN_CONTINUES
+	call BattleScript_ActivateWeatherAbilities
+	end3
+
+BattleScript_EclipseActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSXINTENSIFIEDMOON
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_MOON_CONTINUES
 	call BattleScript_ActivateWeatherAbilities
 	end3
 

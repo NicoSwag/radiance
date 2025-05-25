@@ -4347,6 +4347,7 @@ void SetMoveEffect(bool32 primary, bool32 certain)
             case MOVE_EFFECT_SUN:
             case MOVE_EFFECT_RAIN:
             case MOVE_EFFECT_SANDSTORM:
+            case MOVE_EFFECT_MOON:
             case MOVE_EFFECT_HAIL:
             {
                 u8 weather = 0, msg = 0;
@@ -4367,6 +4368,10 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                     case MOVE_EFFECT_HAIL:
                         weather = BATTLE_WEATHER_HAIL;
                         msg = B_MSG_STARTED_HAIL;
+                        break;
+                    case MOVE_EFFECT_MOON:
+                        weather = BATTLE_WEATHER_MOON;
+                        msg = B_MSG_STARTED_MOON;
                         break;
                 }
                 if (TryChangeBattleWeather(gBattlerAttacker, weather, FALSE))
@@ -5933,7 +5938,8 @@ static void PlayAnimation(u32 battler, u8 animId, const u16 *argPtr, const u8 *n
           || animId == B_ANIM_SANDSTORM_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES
           || animId == B_ANIM_SNOW_CONTINUES
-          || animId == B_ANIM_FOG_CONTINUES)
+          || animId == B_ANIM_FOG_CONTINUES
+          || animId == B_ANIM_MOON_CONTINUES)
     {
         BtlController_EmitBattleAnimation(battler, BUFFER_A, animId, &gDisableStructs[battler], *argPtr);
         MarkBattlerForControllerExec(battler);
@@ -9610,6 +9616,8 @@ static void RemoveAllWeather(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_SNOW;
     else if(gBattleWeather & B_WEATHER_FOG)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_FOG;
+    else if(gBattleWeather & B_WEATHER_MOON)
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_MOON;
     else
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WEATHER_END_COUNT;  // failsafe
 
@@ -12030,6 +12038,9 @@ static void Cmd_setfieldweather(void)
         break;
     case BATTLE_WEATHER_HAIL:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_HAIL;
+        break;
+    case BATTLE_WEATHER_MOON:
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_MOON;
         break;
     case BATTLE_WEATHER_SNOW:
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_STARTED_SNOW;
@@ -14570,6 +14581,15 @@ static void Cmd_recoverbasedonsunlight(void)
                 gBattleStruct->moveDamage[gBattlerAttacker] = 20 * GetNonDynamaxMaxHP(gBattlerAttacker) / 30;
             else
                 gBattleStruct->moveDamage[gBattlerAttacker] = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
+        }
+        else if (gCurrentMove == MOVE_MOONLIGHT)
+        {
+            if (!(gBattleWeather & B_WEATHER_ANY) || !HasWeatherEffect())
+                gBattleStruct->moveDamage[gBattlerAttacker] = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
+            else if (gBattleWeather & B_WEATHER_MOON)
+                gBattleStruct->moveDamage[gBattlerAttacker] = 20 * GetNonDynamaxMaxHP(gBattlerAttacker) / 30;
+            else // not sunny weather
+                gBattleStruct->moveDamage[gBattlerAttacker] = GetNonDynamaxMaxHP(gBattlerAttacker) / 4;
         }
         else
         {

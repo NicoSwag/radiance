@@ -1510,6 +1510,18 @@ static s32 GetSwitchinWeatherImpact(void)
             if (weatherImpact == 0)
                 weatherImpact = -1;
         }
+
+        if ((gBattleWeather & B_WEATHER_MOON) && 
+        (
+            (AI_DATA->switchinCandidate.battleMon.types[0] == TYPE_DARK || AI_DATA->switchinCandidate.battleMon.types[1] == TYPE_DARK) ||
+            (AI_DATA->switchinCandidate.battleMon.types[0] == TYPE_GHOST || AI_DATA->switchinCandidate.battleMon.types[1] == TYPE_GHOST) ||
+            (AI_DATA->switchinCandidate.battleMon.types[0] == TYPE_STELLAR || AI_DATA->switchinCandidate.battleMon.types[1] == TYPE_STELLAR)))
+
+        {
+            weatherImpact = -(maxHP / 16);
+            if (weatherImpact == 0)
+                weatherImpact = -1;
+        }
     }
     return weatherImpact;
 }

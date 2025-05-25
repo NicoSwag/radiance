@@ -738,6 +738,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_PURE_MOON] =
+    {
+        .battleScript = BattleScript_EffectPureMoon,
+        .battleTvScore = 4,
+        .encourageEncore = TRUE,
+    },
+
     [EFFECT_SUNNY_DAY] =
     {
         .battleScript = BattleScript_EffectSunnyDay,

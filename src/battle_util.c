@@ -192,6 +192,15 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .animation = B_ANIM_FOG_CONTINUES,
     },
 
+    [BATTLE_WEATHER_MOON] =
+    {
+        .flag = B_WEATHER_MOON,
+        .rock = HOLD_EFFECT_NONE,
+        .endMessage = B_MSG_WEATHER_END_MOON,
+        .continuesMessage = B_MSG_WEATHER_TURN_MOON,
+        .animation = B_ANIM_MOON_CONTINUES,
+    },
+
     [BATTLE_WEATHER_STRONG_WINDS] =
     {
         .flag = B_WEATHER_STRONG_WINDS,
@@ -2267,6 +2276,17 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleScripting.battler = battler;
                 gBattleStruct->moveDamage[battler] = -1 * max(1, GetNonDynamaxMaxHP(battler) / 16);
                 BattleScriptExecute(BattleScript_IceBodyHeal);
+                effect++;
+            }
+            else if (gBattleWeather & (B_WEATHER_MOON)
+                  && !(gStatuses3[battler] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                  && !IsBattlerAtMaxHp(battler)
+                  && IS_BATTLER_ANY_TYPE(gBattlerAttacker, TYPE_DARK, TYPE_GHOST, TYPE_STELLAR)
+                  && !(gStatuses3[battler] & STATUS3_HEAL_BLOCK))
+            {
+                gBattleScripting.battler = battler;
+                gBattleStruct->moveDamage[battler] = -1 * max(1, GetNonDynamaxMaxHP(battler) / 16);
+                BattleScriptExecute(BattleScript_MoonlightHeal);
                 effect++;
             }
             else if (gBattleWeather & B_WEATHER_HAIL
@@ -4694,6 +4714,14 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
+            case WEATHER_MOON:
+                if (!(gBattleWeather & B_WEATHER_MOON))
+                {
+                    gBattleWeather = B_WEATHER_MOON;
+                    gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
+                    effect++;
+                }
+                break;
             case WEATHER_DROUGHT:
                 if (!(gBattleWeather & B_WEATHER_SUN))
                 {
@@ -5049,6 +5077,19 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             if (TryChangeBattleWeather(battler, BATTLE_WEATHER_SUN, TRUE))
             {
                 BattleScriptPushCursorAndCallback(BattleScript_DroughtActivates);
+                effect++;
+            }
+            else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && HasWeatherEffect() && !gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_BlockedByPrimalWeatherEnd3);
+                effect++;
+            }
+            break;
+        case ABILITY_ECLIPSE:
+            if (TryChangeBattleWeather(battler, BATTLE_WEATHER_MOON, TRUE))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_EclipseActivates);
                 effect++;
             }
             else if (gBattleWeather & B_WEATHER_PRIMAL_ANY && HasWeatherEffect() && !gSpecialStatuses[battler].switchInAbilityDone)

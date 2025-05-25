@@ -5944,6 +5944,8 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
                     return TYPE_FIRE;
                 else if (gBattleWeather & (B_WEATHER_SNOW | B_WEATHER_HAIL))
                     return TYPE_ICE;
+                else if (gBattleWeather & (B_WEATHER_MOON))
+                    return TYPE_DARK;
                 else
                     return moveType;
             }

@@ -17985,6 +17985,23 @@ gBattleAnimMove_Comeuppance::
 	clearmonbg ANIM_DEF_PARTNER
 	end
 
+
+gBattleAnimMove_PureMoon::
+	loadspritegfx ANIM_TAG_MOON
+	loadspritegfx ANIM_TAG_GREEN_SPARKLE
+	loadspritegfx ANIM_TAG_HOLLOW_ORB
+	setalpha 16, 0
+	createvisualtask AnimTask_BlendBattleAnimPal, 0xa, F_PAL_BG, 0x1, 0x0, 0x10, 0x0
+	createvisualtask AnimTask_BlendNonAttackerPalettes, 0xa, F_PAL_BG, 0x1, 0x0, 0x10, 0x0
+	waitforvisualfinish
+	playsewithpan SE_M_REFLECT, 0
+	createsprite gMoonSpriteTemplate, ANIM_ATTACKER, 2, 120, 56
+	createvisualtask AnimTask_AlphaFadeIn, 3, 0, 16, 16, 0, 1
+	delay 60
+	playsewithpan SE_M_DETECT, 0
+	createvisualtask AnimTask_MoonlightEndFade, 2
+	end
+
 gBattleAnimMove_BloodMoon::
 	loadspritegfx ANIM_TAG_BLOOD_MOON
 	loadspritegfx ANIM_TAG_BEAM
@@ -28116,6 +28133,7 @@ gBattleAnimMove_WeatherBall::
 	jumpreteq ANIM_WEATHER_HAIL, WeatherBallIce
 	jumpreteq ANIM_WEATHER_SNOW, WeatherBallIce
 	jumpreteq ANIM_WEATHER_FOG, WeatherBallNormal
+	jumpreteq ANIM_WEATHER_MOON, WeatherBallNormal
 WeatherBallNormal:
 	loadspritegfx ANIM_TAG_IMPACT
 	createsprite gWeatherBallNormalDownSpriteTemplate, ANIM_TARGET, 2, -30, -100, 25, 1, 0, 0
@@ -28861,6 +28879,9 @@ gBattleAnimGeneral_Snow::
 
 gBattleAnimGeneral_Fog::
 	goto gBattleAnimMove_Haze
+
+gBattleAnimGeneral_Moon::
+	goto gBattleAnimMove_PureMoon
 
 gBattleAnimGeneral_LeechSeedDrain::
 	createvisualtask AnimTask_GetBattlersFromArg, 5
