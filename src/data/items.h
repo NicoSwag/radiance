@@ -8008,6 +8008,23 @@ const struct Item gItemsInfo[] =
         .iconPalette = gItemIconPalette_SmoothRock,
     },
 
+    [ITEM_BRITTLE_ROCK] =
+    {
+        .name = _("Brittle Rock"),
+        .price = (I_PRICE >= GEN_9) ? 8000 : ((I_PRICE >= GEN_7) ? 4000 : 200),
+        .holdEffect = HOLD_EFFECT_BRITTLE_ROCK,
+        .description = COMPOUND_STRING(
+            "Extends the length\n"
+            "of Pure Moon if\n"
+            "used by the holder."),
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 10,
+        .iconPic = gItemIcon_SmoothRock,
+        .iconPalette = gItemIconPalette_SmoothRock,
+    },
+
     [ITEM_ICY_ROCK] =
     {
         .name = _("Icy Rock"),

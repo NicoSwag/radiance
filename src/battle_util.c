@@ -195,7 +195,7 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
     [BATTLE_WEATHER_MOON] =
     {
         .flag = B_WEATHER_MOON,
-        .rock = HOLD_EFFECT_NONE,
+        .rock = HOLD_EFFECT_BRITTLE_ROCK,
         .endMessage = B_MSG_WEATHER_END_MOON,
         .continuesMessage = B_MSG_WEATHER_TURN_MOON,
         .animation = B_ANIM_MOON_CONTINUES,
