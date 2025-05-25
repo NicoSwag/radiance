@@ -1647,7 +1647,9 @@ bool32 ShouldSetMoon(u32 battler, u32 ability, u32 holdEffect)
     if (IS_BATTLER_ANY_TYPE(battler, TYPE_DARK, TYPE_GHOST, TYPE_STELLAR)
       || HasMoveEffect(battler, EFFECT_WEATHER_BALL)
       || HasMoveEffect(battler, EFFECT_COSMIC_POWER)
-      || HasMoveEffect(battler, EFFECT_MOONLIGHT))
+      || HasMoveEffect(battler, EFFECT_DOUBLE_POWER_ON_ARG_STATUS)
+      || HasMoveEffect(battler, EFFECT_MOONLIGHT)
+      || ability == ABILITY_NOCTURNAL)
     {
         return TRUE;
     }

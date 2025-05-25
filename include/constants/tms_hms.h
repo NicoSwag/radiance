@@ -33,7 +33,7 @@
     F(PSYCHIC) \
     F(SHADOW_BALL) \
     F(BRICK_BREAK) \
-    F(BATON_PASS) \
+    F(PURE_MOON) \
     F(REFLECT) \
     F(CHARGE_BEAM) \
     F(FLAMETHROWER) \

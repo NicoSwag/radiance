@@ -261,6 +261,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
             .aiRating = 6,
         },
 
+        [ABILITY_NOCTURNAL] =
+        {
+            .name = _("Nocturnal"),
+            .description = COMPOUND_STRING("Doubles the Speed of the user under a Pure Moon."),
+            .aiRating = 6,
+        },
+
         [ABILITY_CHLOROPHYLL] =
         {
             .name = _("Chlorophyll"),

@@ -6539,7 +6539,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Pure Moon"),
         .description = COMPOUND_STRING(
             "Heals Dark, Ghost and Stellar-\n"
-            "type Pokémon for 5 turns\n"
+            "type Pokémon for 5 turns.\n"
             "Lights up dark areas."),
         .fieldMoveEffect = FIELD_MOVE_EFFECT_LIGHT,
         .effect = EFFECT_PURE_MOON,
@@ -12654,8 +12654,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Venoshock"),
         .description = COMPOUND_STRING(
-            "Does double damage if the\n"
-            "foe is poisoned."),
+            "Double damage if the foe has\n"
+            "a status or is under Pure Moon."),
         .effect = EFFECT_DOUBLE_POWER_ON_ARG_STATUS,
         .power = 65,
         .type = TYPE_POISON,
@@ -13521,8 +13521,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Hex"),
         .description = COMPOUND_STRING(
-            "Does double damage if the\n"
-            "foe has a status problem."),
+            "Double damage if the foe has\n"
+            "a status or is under Pure Moon."),
         .effect = EFFECT_DOUBLE_POWER_ON_ARG_STATUS,
         .power = 55,
         .type = TYPE_GHOST,

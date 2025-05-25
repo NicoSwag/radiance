@@ -10922,19 +10922,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_BRICK_BREAK,
     },
 
-    [ITEM_TM_BATON_PASS] =
+    [ITEM_TM_PURE_MOON] =
     {
         .name = _("TM32"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Switches out the\n"
-            "user while keeping\n"
-            "effects in play."),
+            "Heals Dark, Ghost\n"
+            "and Stellar-type\n"
+            "Pokémon for 5 turns."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_BATON_PASS,
+        .secondaryId = MOVE_PURE_MOON,
     },
 
     [ITEM_TM_REFLECT] =
