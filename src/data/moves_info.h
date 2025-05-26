@@ -21330,17 +21330,19 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Blood Moon"),
         .description = COMPOUND_STRING(
-            "Unleashes the blood moon.\n"
-            "Can't be used twice in a row."),
-        .effect = EFFECT_HIT,
-        .power = 140,
-        .type = TYPE_NORMAL,
+            "Gathers celestial power,\n"
+            "then unleashes it next turn."),
+        .effect = EFFECT_BLOOD_MOON,
+        .power = 120,
+        .type = TYPE_STELLAR,
         .accuracy = 100,
         .pp = 5,
+        .sleepTalkBanned = TRUE,
+        .instructBanned = TRUE,
+        .argument.twoTurnAttack = { .stringId =  STRINGID_PKMNTOOKMOONLIGHT, .status = B_WEATHER_MOON },
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
-        .cantUseTwice = TRUE,
         .battleAnimScript = gBattleAnimMove_BloodMoon,
     },
 

@@ -799,6 +799,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .twoTurnEffect = TRUE,
     },
 
+    [EFFECT_BLOOD_MOON] =
+    {
+        .battleScript = BattleScript_EffectTwoTurnsAttack,
+        .battleTvScore = 1,
+        .twoTurnEffect = TRUE,
+    },
+
     [EFFECT_THUNDER] =
     {
         .battleScript = BattleScript_EffectHit,

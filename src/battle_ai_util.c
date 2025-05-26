@@ -1647,6 +1647,7 @@ bool32 ShouldSetMoon(u32 battler, u32 ability, u32 holdEffect)
     if (IS_BATTLER_ANY_TYPE(battler, TYPE_DARK, TYPE_GHOST, TYPE_STELLAR)
       || HasMoveEffect(battler, EFFECT_WEATHER_BALL)
       || HasMoveEffect(battler, EFFECT_COSMIC_POWER)
+      || HasMoveEffect(battler, EFFECT_BLOOD_MOON)
       || HasMoveEffect(battler, EFFECT_DOUBLE_POWER_ON_ARG_STATUS)
       || HasMoveEffect(battler, EFFECT_MOONLIGHT)
       || ability == ABILITY_NOCTURNAL)
@@ -2579,6 +2580,7 @@ bool32 IsTwoTurnNotSemiInvulnerableMove(u32 battlerAtk, u32 move)
     switch (GetMoveEffect(move))
     {
     case EFFECT_SOLAR_BEAM:
+    case EFFECT_BLOOD_MOON:
     case EFFECT_TWO_TURNS_ATTACK:
         return !(AI_DATA->holdEffects[battlerAtk] == HOLD_EFFECT_POWER_HERB
               || (AI_GetWeather() & GetMoveTwoTurnAttackWeather(move)));

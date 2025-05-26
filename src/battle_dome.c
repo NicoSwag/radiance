@@ -4068,6 +4068,7 @@ static bool32 IsDomeComboMoveEffect(u32 effect)
     case EFFECT_THUNDER:
     case EFFECT_BLIZZARD:
     case EFFECT_SOLAR_BEAM:
+    case EFFECT_BLOOD_MOON:
     case EFFECT_GROWTH:
     case EFFECT_AURORA_VEIL:
     case EFFECT_WEATHER_BALL:
