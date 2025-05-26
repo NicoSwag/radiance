@@ -1074,6 +1074,7 @@ JungleHealing_RestoreTargetHealth:
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_JungleHealing_TryCureStatus:
+	jumpifmove MOVE_LUNAR_BLESSING, BattleScript_JungleHealingHandleLunarBlessing
 	jumpifmove MOVE_LIFE_DEW, BattleScript_JungleHealingTryRestoreAlly  @ life dew only heals
 	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_JungleHealingCureStatus
 	goto BattleScript_JungleHealingTryRestoreAlly
@@ -1088,6 +1089,15 @@ BattleScript_JungleHealingTryRestoreAlly:
 	jumpifnoally BS_TARGET, BattleScript_MoveEnd
 	setallytonexttarget JungleHealing_RestoreTargetHealth
 	goto BattleScript_MoveEnd
+
+
+BattleScript_JungleHealingHandleLunarBlessing::
+	jumpifweatheraffected BS_ATTACKER, B_WEATHER_MOON, BattleScript_LunarBlessingCureStatus
+	goto BattleScript_JungleHealingTryRestoreAlly
+
+BattleScript_LunarBlessingCureStatus::
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_JungleHealingCureStatus
+	goto BattleScript_JungleHealingTryRestoreAlly
 
 BattleScript_EffectRelicSong::
 	call BattleScript_EffectHit_Ret
