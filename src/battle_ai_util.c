@@ -1650,7 +1650,8 @@ bool32 ShouldSetMoon(u32 battler, u32 ability, u32 holdEffect)
       || HasMoveEffect(battler, EFFECT_BLOOD_MOON)
       || HasMoveEffect(battler, EFFECT_DOUBLE_POWER_ON_ARG_STATUS)
       || HasMoveEffect(battler, EFFECT_MOONLIGHT)
-      || ability == ABILITY_NOCTURNAL)
+      || ability == ABILITY_NOCTURNAL
+      || ability == ABILITY_LUNATIC)
     {
         return TRUE;
     }

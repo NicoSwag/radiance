@@ -5584,6 +5584,16 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     effect++;
                 }
                 break;
+            case ABILITY_LUNATIC:
+                if (IsBattlerWeatherAffected(battler, B_WEATHER_MOON))
+                {
+                    BattleScriptPushCursorAndCallback(BattleScript_SolarPowerActivates);
+                    gBattleStruct->moveDamage[battler] = GetNonDynamaxMaxHP(battler) / 8;
+                    if (gBattleStruct->moveDamage[battler] == 0)
+                        gBattleStruct->moveDamage[battler] = 1;
+                    effect++;
+                }
+                break;
             case ABILITY_HEALER:
                 gBattleScripting.battler = BATTLE_PARTNER(battler);
                 if (IsBattlerAlive(gBattleScripting.battler)
@@ -6269,6 +6279,26 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_STATUS_ABILITY_EFFECT;
+                effect++;
+            }
+            break;
+        case ABILITY_LUNATIC:
+        if (gBattleScripting.savedDmg > 0
+                && !(gBattleStruct->moveResultFlags[gBattlerTarget] & MOVE_RESULT_NO_EFFECT)
+                && gBattlerAttacker != gBattlerTarget
+                && !IsBattlerAtMaxHp(gBattlerAttacker)
+                && IsBattlerAlive(gBattlerAttacker)
+                && IsBattlerWeatherAffected(gBattlerAttacker, B_WEATHER_MOON)
+                && GetMoveEffect(gCurrentMove) != EFFECT_FUTURE_SIGHT
+                && GetMoveEffect(gCurrentMove) != EFFECT_PAIN_SPLIT
+                && (B_HEAL_BLOCKING < GEN_5 || !(gStatuses3[battler] & STATUS3_HEAL_BLOCK)))
+            {
+                gBattleScripting.battler = gBattlerAttacker;
+                gBattleStruct->moveDamage[gBattlerAttacker] = (gBattleScripting.savedDmg / 8) * -1;
+                if (gBattleStruct->moveDamage[gBattlerAttacker] == 0)
+                    gBattleStruct->moveDamage[gBattlerAttacker] = -1;
+                BattleScriptPushCursor();
+                gBattlescriptCurrInstr = BattleScript_AbilityHealHP;
                 effect++;
             }
             break;
@@ -9793,6 +9823,10 @@ static inline u32 CalcAttackStat(struct DamageCalculationData *damageCalcData, u
         if (IsBattleMoveSpecial(move) && IsBattlerWeatherAffected(battlerAtk, B_WEATHER_SUN))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
+    case ABILITY_LUNATIC:
+        if (IsBattlerWeatherAffected(battlerAtk, B_WEATHER_MOON))
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.3));
+        break;
     case ABILITY_DEFEATIST:
         if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
@@ -10068,6 +10102,14 @@ static inline u32 CalcDefenseStat(struct DamageCalculationData *damageCalcData, 
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
             if (damageCalcData->updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_GRASS_PELT);
+        }
+        break;
+    case ABILITY_MOONS_VEIL:
+        if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_MOON) && !usesDefStat)
+        {
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+            if (damageCalcData->updateFlags)
+                RecordAbilityBattle(battlerDef, ABILITY_MOONS_VEIL);
         }
         break;
     case ABILITY_STARCHILD: 

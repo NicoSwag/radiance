@@ -726,6 +726,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
             .aiRating = 3,
         },
 
+        [ABILITY_LUNATIC] =
+        {
+            .name = _("Lunatic"),
+            .description = COMPOUND_STRING("Under a Pure Moon, offense increases by 30%, and moves drain."),
+            .aiRating = 3,
+        },
+
         [ABILITY_QUICK_FEET] =
         {
             .name = _("Quick Feet"),
@@ -1362,7 +1369,15 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         [ABILITY_GRASS_PELT] =
         {
             .name = _("Grass Pelt"),
-            .description = COMPOUND_STRING("Ups Defense by 20% in Grassy Terrain."),
+            .description = COMPOUND_STRING("Ups Defense by 50% in Grassy Terrain."),
+            .aiRating = 2,
+            .breakable = TRUE,
+        },
+
+        [ABILITY_MOONS_VEIL] =
+        {
+            .name = _("Moon's Veil"),
+            .description = COMPOUND_STRING("Ups Special Defense by 50% under a Pure Moon."),
             .aiRating = 2,
             .breakable = TRUE,
         },

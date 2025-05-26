@@ -740,8 +740,9 @@
 #define STRINGID_PKMNSXINTENSIFIEDMOON                738
 #define STRINGID_MOONLIGHTHPGAIN                      739
 #define STRINGID_PKMNTOOKMOONLIGHT                    740
+#define STRINGID_PKMNABILITYRESTOREDHPALITTLE         741
 
-#define BATTLESTRINGS_COUNT                           741
+#define BATTLESTRINGS_COUNT                           742
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
