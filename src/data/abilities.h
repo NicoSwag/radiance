@@ -1307,7 +1307,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         [ABILITY_BULLETPROOF] =
         {
             .name = _("Bulletproof"),
-            .description = COMPOUND_STRING("Avoids some projectiles."),
+            .description = COMPOUND_STRING("Avoids ball and bomb moves."),
             .aiRating = 7,
         },
 
@@ -1363,6 +1363,13 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         {
             .name = _("Mega Launcher"),
             .description = COMPOUND_STRING("Boosts pulse moves by 30%."),
+            .aiRating = 7,
+        },
+
+        [ABILITY_STRIKER] =
+        {
+            .name = _("Striker"),
+            .description = COMPOUND_STRING("Boosts ball and kicking moves by 30%."),
             .aiRating = 7,
         },
 

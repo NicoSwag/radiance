@@ -48,7 +48,7 @@
     F(REST) \
     F(ENDURE) \
     F(ELECTRIC_TERRAIN) \
-    F(ENTRAINMENT) \
+    F(ENERGY_BALL) \
     F(SKILL_SWAP) \
     F(SNATCH) \
     F(FLASH) \

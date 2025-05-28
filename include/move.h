@@ -72,6 +72,7 @@ struct MoveInfo
     bool32 pulseMove:1;
     bool32 soundMove:1;
     bool32 ballisticMove:1;
+    bool32 kickingMove:1;
     bool32 powderMove:1;
     bool32 danceMove:1;
     // end of word
@@ -287,6 +288,11 @@ static inline bool32 IsSoundMove(u32 moveId)
 static inline bool32 IsBallisticMove(u32 moveId)
 {
     return gMovesInfo[SanitizeMoveId(moveId)].ballisticMove;
+}
+
+static inline bool32 IsKickingMove(u32 moveId)
+{
+    return gMovesInfo[SanitizeMoveId(moveId)].kickingMove;
 }
 
 static inline bool32 IsPowderMove(u32 moveId)

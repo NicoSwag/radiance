@@ -11147,19 +11147,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_ELECTRIC_TERRAIN,
     },
 
-    [ITEM_TM_ENTRAINMENT] =
+    [ITEM_TM_ENERGY_BALL] =
     {
         .name = _("TM47"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "Makes the foe\n"
-            "mimic the user,\n"
-            "gaining its ability."),
+            "Draws power from\n"
+            "nature to attack.\n"
+            "May lower Sp. Def."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_ENTRAINMENT,
+        .secondaryId = MOVE_ENERGY_BALL,
     },
 
     [ITEM_TM_SKILL_SWAP] =
