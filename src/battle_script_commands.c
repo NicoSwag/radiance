@@ -3832,14 +3832,20 @@ void SetMoveEffect(bool32 primary, bool32 certain)
                 if (!NoAliveMonsForEitherParty())
                 {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_AtkDefDown;
+                    if(GetBattlerAbility(gEffectBattler) == ABILITY_SHELL_ARMOR)
+                        gBattlescriptCurrInstr = BattleScript_AtkDown;
+                    else
+                        gBattlescriptCurrInstr = BattleScript_AtkDefDown;
                 }
                 break;
             case MOVE_EFFECT_DEF_SPDEF_DOWN: // Close Combat
                 if (!NoAliveMonsForEitherParty())
                 {
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
-                    gBattlescriptCurrInstr = BattleScript_DefSpDefDown;
+                    if(GetBattlerAbility(gEffectBattler) == ABILITY_SHELL_ARMOR)
+                        gBattlescriptCurrInstr = BattleScript_SpDefDown;
+                    else
+                        gBattlescriptCurrInstr = BattleScript_DefSpDefDown;
                 }
                 break;
             case MOVE_EFFECT_RECOIL_HP_25: // Struggle
@@ -6064,7 +6070,8 @@ static void Cmd_playstatchangeanimation(void)
                         && !((ability == ABILITY_KEEN_EYE || ability == ABILITY_MINDS_EYE) && currStat == STAT_ACC)
                         && !(B_ILLUMINATE_EFFECT >= GEN_9 && ability == ABILITY_ILLUMINATE && currStat == STAT_ACC)
                         && !(ability == ABILITY_HYPER_CUTTER && currStat == STAT_ATK)
-                        && !(ability == ABILITY_BIG_PECKS && currStat == STAT_DEF))
+                        && !(ability == ABILITY_BIG_PECKS && currStat == STAT_DEF)
+                        && !(ability == ABILITY_SHELL_ARMOR && currStat == STAT_DEF))
                 {
                     if (gBattleMons[battler].statStages[currStat] > MIN_STAT_STAGE)
                     {
@@ -12527,7 +12534,8 @@ static u32 ChangeStatBuffs(s8 statValue, u32 statId, u32 flags, const u8 *BS_ptr
                 && (((battlerAbility == ABILITY_KEEN_EYE || battlerAbility == ABILITY_MINDS_EYE) && statId == STAT_ACC)
                 || (B_ILLUMINATE_EFFECT >= GEN_9 && battlerAbility == ABILITY_ILLUMINATE && statId == STAT_ACC)
                 || (battlerAbility == ABILITY_HYPER_CUTTER && statId == STAT_ATK)
-                || (battlerAbility == ABILITY_BIG_PECKS && statId == STAT_DEF)))
+                || (battlerAbility == ABILITY_BIG_PECKS && statId == STAT_DEF)
+                || (battlerAbility == ABILITY_SHELL_ARMOR && statId == STAT_DEF)))
         {
             if (flags == STAT_CHANGE_ALLOW_PTR)
             {
@@ -14752,7 +14760,8 @@ static bool32 CheckIfCanFireTwoTurnMoveNow(u8 battler, bool8 checkChargeTurnEffe
     // If this move has charge turn effects, it must charge, activate them, then try to fire
     if (checkChargeTurnEffects && MoveHasChargeTurnAdditionalEffect(gCurrentMove))
         return FALSE;
-
+    if(gFieldStatuses & STATUS_FIELD_GRAVITY && gCurrentMove == MOVE_METEOR_BEAM)
+        return TRUE;
     // Insert custom conditions here
 
     // Certain two-turn moves may fire on the first turn in the right weather (Solar Beam, Electro Shot)

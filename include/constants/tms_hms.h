@@ -68,7 +68,7 @@
     F(PSYCHIC_TERRAIN) \
     F(FLASH_FREEZE) \
     F(EERIE_NOISE) \
-    F(SIMPLE_BEAM) \
+    F(HONE_CLAWS) \
     F(LEECH_LIFE) \
     F(SLEEP_TALK) \
     F(CUT) \

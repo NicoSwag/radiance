@@ -19040,10 +19040,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Meteor Beam"),
         .description = COMPOUND_STRING(
-            "A 2-turn move that raises\n"
-            "Sp. Attack before attacking."),
+            "A 2-turn move that executes\n"
+            "immediately under Gravity."),
         .effect = EFFECT_TWO_TURNS_ATTACK,
-        .power = 120,
+        .power = 110,
         .type = TYPE_ROCK,
         .accuracy = 90,
         .pp = 10,
@@ -19052,11 +19052,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_SPECIAL,
         .instructBanned = TRUE,
         .argument.twoTurnAttack = { .stringId = STRINGID_METEORBEAMCHARGING },
-        .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SP_ATK_PLUS_1,
-            .self = TRUE,
-            .onChargeTurnOnly = TRUE,
-        }),
         .contestEffect = CONTEST_EFFECT_USER_MORE_EASILY_STARTLED,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,

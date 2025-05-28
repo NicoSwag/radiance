@@ -4282,7 +4282,7 @@ bool32 CanAbilityBlockMove(u32 battlerAtk, u32 battlerDef, u32 move, u32 ability
         }
         break;
     case ABILITY_DAZZLING:
-    case ABILITY_QUEENLY_MAJESTY:
+    case ABILITY_ROYAL_MAJESTY:
     case ABILITY_ARMOR_TAIL:
         if (atkPriority > 0 && !IsBattlerAlly(battlerAtk, battlerDef))
         {
@@ -4307,7 +4307,7 @@ bool32 CanAbilityBlockMove(u32 battlerAtk, u32 battlerDef, u32 move, u32 ability
         switch (GetBattlerAbility(BATTLE_PARTNER(battlerDef)))
         {
         case ABILITY_DAZZLING:
-        case ABILITY_QUEENLY_MAJESTY:
+        case ABILITY_ROYAL_MAJESTY:
         case ABILITY_ARMOR_TAIL:
             if (atkPriority > 0 && !IsBattlerAlly(battlerAtk, BATTLE_PARTNER(battlerDef)))
             {
@@ -10219,10 +10219,10 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(struct DamageCalculationDa
     if (moveType == TYPE_MYSTERY)
         return UQ_4_12(1.0);
     else if (gBattleStruct->pledgeMove && IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), moveType))
-        return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
+        return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(1.5) : UQ_4_12(1.3);
     else if (!IS_BATTLER_OF_TYPE(battlerAtk, moveType) || move == MOVE_STRUGGLE || move == MOVE_NONE)
         return UQ_4_12(1.0);
-    return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(2.0) : UQ_4_12(1.5);
+    return (abilityAtk == ABILITY_ADAPTABILITY) ? UQ_4_12(1.5) : UQ_4_12(1.3);
 }
 
 // Utility Umbrella holders take normal damage from what would be rain- and sun-weakened attacks.

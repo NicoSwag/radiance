@@ -497,6 +497,8 @@ extern const u8 BattleScript_SpikesActivates[];
 extern const u8 BattleScript_BerserkGeneRet[];
 extern const u8 BattleScript_TargetFormChangeWithStringNoPopup[];
 extern const u8 BattleScript_DefDown[];
+extern const u8 BattleScript_AtkDown[];
+extern const u8 BattleScript_SpDefDown[];
 extern const u8 BattleScript_UltraBurst[];
 extern const u8 BattleScript_SelectingNotAllowedCurrentMove[];
 extern const u8 BattleScript_SelectingNotAllowedCurrentMoveInPalace[];

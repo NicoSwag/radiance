@@ -13,7 +13,7 @@ DOUBLE_BATTLE_TEST("Dazzling, Queenly Majesty and Armor Tail protect the user fr
 
     PARAMETRIZE { species = SPECIES_BRUXISH; ability = ABILITY_DAZZLING; }
     PARAMETRIZE { species = SPECIES_FARIGIRAF; ability = ABILITY_ARMOR_TAIL; }
-    PARAMETRIZE { species = SPECIES_TSAREENA; ability = ABILITY_QUEENLY_MAJESTY; }
+    PARAMETRIZE { species = SPECIES_TSAREENA; ability = ABILITY_ROYAL_MAJESTY; }
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -35,7 +35,7 @@ DOUBLE_BATTLE_TEST("Dazzling, Queenly Majesty and Armor Tail protect users partn
 
     PARAMETRIZE { species = SPECIES_BRUXISH; ability = ABILITY_DAZZLING; }
     PARAMETRIZE { species = SPECIES_FARIGIRAF; ability = ABILITY_ARMOR_TAIL; }
-    PARAMETRIZE { species = SPECIES_TSAREENA; ability = ABILITY_QUEENLY_MAJESTY; }
+    PARAMETRIZE { species = SPECIES_TSAREENA; ability = ABILITY_ROYAL_MAJESTY; }
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -57,7 +57,7 @@ DOUBLE_BATTLE_TEST("Dazzling, Queenly Majesty and Armor Tail don't protect the u
 
     PARAMETRIZE { species = SPECIES_BRUXISH; ability = ABILITY_DAZZLING; }
     PARAMETRIZE { species = SPECIES_FARIGIRAF; ability = ABILITY_ARMOR_TAIL; }
-    PARAMETRIZE { species = SPECIES_TSAREENA; ability = ABILITY_QUEENLY_MAJESTY; }
+    PARAMETRIZE { species = SPECIES_TSAREENA; ability = ABILITY_ROYAL_MAJESTY; }
 
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);

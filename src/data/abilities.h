@@ -582,7 +582,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
         [ABILITY_SHELL_ARMOR] =
         {
             .name = _("Shell Armor"),
-            .description = COMPOUND_STRING("The user is protected from critical hits."),
+            .description = COMPOUND_STRING("The user is protected from critical hits, and defense cannot be lowered by any means."),
             .aiRating = 2,
             .breakable = TRUE,
         },
@@ -1652,9 +1652,9 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
             .cantBeOverwritten = TRUE,
         },
 
-        [ABILITY_QUEENLY_MAJESTY] =
+        [ABILITY_ROYAL_MAJESTY] =
         {
-            .name = _("Queenly Majesty"),
+            .name = _("Royal Majesty"),
             .description = COMPOUND_STRING("Protects from priority."),
             .aiRating = 6,
             .breakable = TRUE,
@@ -4070,7 +4070,7 @@ const struct Ability gAbilitiesInfo[ABILITIES_COUNT] =
             .cantBeOverwritten = TRUE,
         },
 
-        [ABILITY_QUEENLY_MAJESTY] =
+        [ABILITY_ROYAL_MAJESTY] =
         {
             .name = _("Queenly Majesty"),
             .description = COMPOUND_STRING("Protects from priority."),

@@ -11447,19 +11447,19 @@ const struct Item gItemsInfo[] =
         .secondaryId = MOVE_EERIE_NOISE,
     },
 
-    [ITEM_TM_SIMPLE_BEAM] =
+    [ITEM_TM_HONE_CLAWS] =
     {
         .name = _("TM67"),
         .price = 0,
         .description = COMPOUND_STRING(
-            "A beam that changes\n"
-            "the foe's ability\n"
-            "to Simple."),
+            "Sharpens its claws\n"
+            "to raise Attack\n"
+            "and Accuracy."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_SIMPLE_BEAM,
+        .secondaryId = MOVE_HONE_CLAWS,
     },
 
     [ITEM_TM_LEECH_LIFE] =
