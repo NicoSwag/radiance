@@ -1439,7 +1439,7 @@ static void Task_GiveExpToMon(u8 taskId)
                 DynamaxModifyHPLevelUp(mon, battler, oldMaxHP);
 
             gainedExp -= nextLvlExp - currExp;
-            BtlController_EmitTwoReturnValues(battler, BUFFER_B, RET_VALUE_LEVELED_UP, (B_LEVEL_UP_NOTIFICATION >= GEN_9) ? 0 : gainedExp);
+            BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, RET_VALUE_LEVELED_UP, (B_LEVEL_UP_NOTIFICATION >= GEN_9) ? 0 : gainedExp);
 
             if (IsDoubleBattle() == TRUE
              && (monId == gBattlerPartyIndexes[battler] || monId == gBattlerPartyIndexes[BATTLE_PARTNER(battler)]))
@@ -1525,7 +1525,7 @@ static void Task_GiveExpWithExpBar(u8 taskId)
                     DynamaxModifyHPLevelUp(mon, battler, oldMaxHP);
 
                 gainedExp -= expOnNextLvl - currExp;
-                BtlController_EmitTwoReturnValues(battler, BUFFER_B, RET_VALUE_LEVELED_UP, (B_LEVEL_UP_NOTIFICATION >= GEN_9) ? 0 : gainedExp);
+                BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, RET_VALUE_LEVELED_UP, (B_LEVEL_UP_NOTIFICATION >= GEN_9) ? 0 : gainedExp);
                 gTasks[taskId].func = Task_LaunchLvlUpAnim;
             }
             else
