@@ -1393,6 +1393,8 @@ static void FieldCallback_Fly_2(void)
     FreezeObjectEvents();
 	gFieldCallback = NULL;
 }
+#define taskState           task->data[3]
+#define fieldEffectStarted  task->data[0]
 
 static void Task_UseFly(u8 taskId)
 {

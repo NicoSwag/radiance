@@ -1785,7 +1785,7 @@ static u16 PackGraphicsId(const struct ObjectEventTemplate *template)
     return graphicsId;
 }
 
-static u8 TrySpawnObjectEventTemplate(const struct ObjectEventTemplate *objectEventTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
+u8 TrySpawnObjectEventTemplate(const struct ObjectEventTemplate *objectEventTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
 {
     u8 objectEventId;
     u16 graphicsId = PackGraphicsId(objectEventTemplate);
@@ -3516,12 +3516,6 @@ u8 GetObjectEventBerryTreeId(u8 objectEventId)
 {
     return gObjectEvents[objectEventId].trainerRange_berryTreeId;
 }
-
-const struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
-{
-    const struct ObjectEventTemplate *templates;
-    const struct MapHeader *mapHeader;
-    u8 count;
 
 
 
