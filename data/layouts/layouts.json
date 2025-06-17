@@ -5428,12 +5428,12 @@
     {
       "id": "LAYOUT_EARTH_FACTORY_AREA_EAST",
       "name": "Earth_Factory_Area_East_Layout",
-      "width": 89,
-      "height": 80,
-      "border_width": 2,
+      "width": 90,
+      "height": 60,
+      "border_width": 3,
       "border_height": 2,
       "primary_tileset": "gTileset_MountainPeak",
-      "secondary_tileset": "gTileset_MountainPeak_Secondary",
+      "secondary_tileset": "gTileset_MountainPeak_Factory_Secondary",
       "border_filepath": "data/layouts/Earth_Factory_Area_East/border.bin",
       "blockdata_filepath": "data/layouts/Earth_Factory_Area_East/map.bin"
     },

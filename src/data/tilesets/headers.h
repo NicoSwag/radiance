@@ -892,3 +892,14 @@ const struct Tileset gTileset_GleamingForest_Secondary =
     .metatileAttributes = gMetatileAttributes_GleamingForest_Secondary,
     .callback = InitTilesetAnim_GleamingForestSecondary,
 };
+
+const struct Tileset gTileset_MountainPeak_Factory_Secondary =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_MountainPeak_Factory_Secondary,
+    .palettes = gTilesetPalettes_MountainPeak_Factory_Secondary,
+    .metatiles = gMetatiles_MountainPeak_Factory_Secondary,
+    .metatileAttributes = gMetatileAttributes_MountainPeak_Factory_Secondary,
+    .callback = NULL,
+};
