@@ -20699,9 +20699,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Aqua Step"),
         .description = COMPOUND_STRING(
             "Hits with light, fluid dance\n"
-            "steps. Ups the user's Speed."),
+            "steps. Ups the user's Speed.\n"
+            "Allows to climb rocky walls."),
         .effect = EFFECT_HIT,
-        .power = 80,
+        .fieldMoveEffect = FIELD_MOVE_EFFECT_CLIMB,
+        .power = 50,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 10,

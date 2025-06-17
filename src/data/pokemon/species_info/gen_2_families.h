@@ -5368,7 +5368,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_KEEN_EYE, ABILITY_PICKPOCKET },
+        .abilities = { ABILITY_INNER_FOCUS, ABILITY_NONE, ABILITY_OPPORTUNIST },
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = TRUE,
         .speciesName = _("Sneasel"),
@@ -5434,8 +5434,8 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .teachableLearnset = sSneaselTeachableLearnset,
         .eggMoveLearnset = sSneaselEggMoveLearnset,
         .formSpeciesIdTable = sSneaselFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_ITEM_HOLD_NIGHT, ITEM_RAZOR_CLAW, SPECIES_WEAVILE},
-                                {EVO_ITEM_NIGHT, ITEM_RAZOR_CLAW, SPECIES_WEAVILE}),
+        .evolutions = EVOLUTION({EVO_ITEM_HOLD, ITEM_RAZOR_CLAW, SPECIES_WEAVILE},
+                                {EVO_ITEM, ITEM_RAZOR_CLAW, SPECIES_WEAVILE}),
     },
 
 #if P_GEN_4_CROSS_EVOS
@@ -5458,7 +5458,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = 35,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_PICKPOCKET },
+        .abilities = { ABILITY_INNER_FOCUS, ABILITY_NONE, ABILITY_OPPORTUNIST },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Weavile"),
         .cryId = CRY_WEAVILE,
