@@ -5,7 +5,9 @@
 #define MUGSHOT_TEST  1
 #define MUGSHOT_COZMO 2
 #define MUGSHOT_COSMOG 3
-#define MUGSHOT_COUNT 4
+#define MUGSHOT_ARI 4
+#define MUGSHOT_LEO 5
+#define MUGSHOT_COUNT 6
 
 #define EMOTE_NORMAL  0
 #define EMOTE_ALT     1

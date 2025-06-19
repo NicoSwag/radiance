@@ -1,0 +1,200 @@
+mapscripts AriHouse_Upstairs_MapScripts {}
+
+script AriHouse_Upstairs_Text_Togepi{
+    lock
+    msgbox(format(
+        "It's {COLOR RED}Egg{COLOR DARK_GRAY}, the beloved Togepi plush.\p
+        You pet it gently on its head."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Mimikyu{
+    lock
+    msgbox(format(
+        "It's {COLOR RED}The Boy{COLOR DARK_GRAY}, the charming Mimikyu plush.\p
+        You pet it gently on its head."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Snorlax{
+    lock
+    msgbox(format(
+        "It's {COLOR RED}Benedict{COLOR DARK_GRAY}, the trusty Snorlax\nplush.\p
+        You pet it gently on its tummy."
+
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_AriPC{
+    lock
+    msgbox(format(
+        "Ol' reliable.\p
+        You'll need to replace this eventually, but that day is not today."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_FloorBooks{
+    lock
+    msgbox(format(
+        "You were looking for your copy of\n'How to Survive in Space'.\p
+        A real classic, that one."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Bed{
+    lock
+    msgbox(format(
+        "It is very much not time for bed."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Garbage{
+    lock
+    msgbox(format(
+        "You are definitely not going to dig in the trash."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Bookshelf{
+    lock
+    msgbox(format(
+        "The shelves are full of survival manuals."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Globe{
+    lock
+    msgbox(format(
+        "There's so many places you'd like to travel to.\p
+        But today, you're going to go even further."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Note{
+    lock
+    msgbox(format(
+        "There's a note on your desk.\n
+        It's in {RIVAL}'s handwriting.\p
+        Read it?"
+    ), MSGBOX_YESNO)
+    if(var(VAR_RESULT) == YES){
+        msgbox(format(
+            "You can picture it in her voice."
+        ))
+        speakername("{RIVAL}")
+        createfieldmugshot(MUGSHOT_LEO, EMOTE_NORMAL)
+        msgbox(format(
+            "Dearest sibling,\n
+            I hope that this missive finds thee well.\p
+            I have attempted to rouse thee from thine slumber, to no avail.\p
+            As thou doubtlessly know, today is a very important date.\p
+            Being late would be a most unfavourable affair.\p
+            Therefore,\p
+            GET YOUR ASS TO THE SPACE CENTER RIGHT AWAY, YOU LAZY BUM!\p
+            -{RIVAL}"
+        ))
+        speakername(NULL)
+        removefieldmugshot
+        msgbox(format(
+            "Uh, oh.\n
+            She seems mad.\p
+            You should probably head to the {COLOR RED}Space Center{COLOR DARK_GRAY}."
+        ))
+
+    }
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Wii{
+    lock
+    msgbox(format(
+        "It's an emulation box that {RIVAL} set up for you.\p
+        The resemblance to any real gaming console is coincidental."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_TV{
+    lock
+    msgbox(format(
+        "It's your fancy TV.\p
+        You only use it to play videogames."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Easel{
+    lock
+    msgbox(format(
+        "{RIVAL}'s just finished painting something.\p
+        Looks good."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_LeoBed{
+    lock
+    msgbox(format(
+        "{RIVAL}'s bed.\p
+        You should probably refrain from touching it."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Laptop_Leo{
+    lock
+    msgbox(format(
+        "{RIVAL}'s old laptop.\p
+        She should really replace this piece of junk."
+    ))
+    closemessage
+    release
+    end
+}
+
+script AriHouse_Upstairs_Text_Mess{
+    lock
+    msgbox(format(
+        "Wait, who's going to clean this mess up?"
+    ))
+    closemessage
+    release
+    end
+}

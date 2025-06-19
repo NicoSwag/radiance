@@ -903,3 +903,14 @@ const struct Tileset gTileset_MountainPeak_Factory_Secondary =
     .metatileAttributes = gMetatileAttributes_MountainPeak_Factory_Secondary,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_Mossdeep_Past_Interior =
+{
+    .isCompressed = TRUE,
+    .isSecondary = FALSE,
+    .tiles = gTilesetTiles_Mossdeep_Past_Interior,
+    .palettes = gTilesetPalettes_Mossdeep_Past_Interior,
+    .metatiles = gMetatiles_Mossdeep_Past_Interior,
+    .metatileAttributes = gMetatileAttributes_Mossdeep_Past_Interior,
+    .callback = NULL,
+};

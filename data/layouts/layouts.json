@@ -5520,6 +5520,18 @@
       "secondary_tileset": "gTileset_GleamingForest_Secondary",
       "border_filepath": "data/layouts/Earth_Gleaming_Forest/border.bin",
       "blockdata_filepath": "data/layouts/Earth_Gleaming_Forest/map.bin"
+    },
+    {
+      "id": "LAYOUT_ARI_HOUSE_UPSTAIRS",
+      "name": "AriHouse_Upstairs_Layout",
+      "width": 19,
+      "height": 13,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Mossdeep_Past_Interior",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/AriHouse_Upstairs/border.bin",
+      "blockdata_filepath": "data/layouts/AriHouse_Upstairs/map.bin"
     }
   ]
 }

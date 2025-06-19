@@ -39,7 +39,8 @@
     "gMapGroup_IndoorRoute124"
   ],
   "gMapGroup_Radiance_Earth_Past": [
-    "MossdeepCityPast"
+    "MossdeepCityPast",
+    "AriHouse_Upstairs"
   ],
   "gMapGroup_Radiance_Earth": [
     "Earth_test",
