@@ -46,7 +46,7 @@
 #define FLAG_EXP_ALL    0x20 // Unused Flag
 #define FLAG_OVERWORLD_POKEMON_ENCOUNTER_OBJECTS    0x21 // Unused Flag
 #define FLAG_PREVENT_RUNNING    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
+#define FLAG_SPAWN_INVISIBLE    0x23 // Unused Flag
 #define FLAG_UNUSED_0x024    0x24 // Unused Flag
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_UNUSED_0x026    0x26 // Unused Flag

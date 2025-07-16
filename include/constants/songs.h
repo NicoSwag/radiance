@@ -553,8 +553,9 @@
 #define MUS_VS_ULTRA_BEAST          615
 #define MUS_DREAM                   616
 #define MUS_TREESHROUD_FOREST       617
+#define MUS_NUVEMA                  618
 
-#define END_MUS                     MUS_TREESHROUD_FOREST
+#define END_MUS                     MUS_NUVEMA
 
 #define MUS_ROUTE118                0x7FFF  // Map is split into 2 music sections. controlled by GetCurrLocationDefaultMusic().
 

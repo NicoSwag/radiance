@@ -1272,6 +1272,7 @@ SECTIONS {
         sound/songs/midi/mus_vs_ultra_beast.o(.rodata);
         sound/songs/midi/mus_dream.o(.rodata);
         sound/songs/midi/mus_treeshroud_forest(.rodata);
+        sound/songs/midi/mus_nuvema(.rodata);
 
     } > ROM =0
 

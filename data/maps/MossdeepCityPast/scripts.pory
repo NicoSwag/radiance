@@ -1,1 +1,18 @@
-mapscripts MossdeepCityPast_MapScripts {}
+mapscripts MossdeepCityPast_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_MOSSDEEP_PAST_STATE, 0: MossdeepCityPast_EventScript_Intro_Camera
+    ]
+}
+
+
+script MossdeepCityPast_EventScript_Intro_Camera{
+    setvar(VAR_MOSSDEEP_PAST_STATE, 1)
+    special(SpawnCameraObject)
+    delay(32)
+    applymovement(OBJ_EVENT_ID_CAMERA, moves(
+        walk_left*19
+        walk_up*14
+    ))
+    waitmovement(0)
+    warp(MAP_ARI_HOUSE_UPSTAIRS, 17, 6)
+}

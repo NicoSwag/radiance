@@ -1161,6 +1161,7 @@ struct SaveBlock1
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
     // sizeof: 0x3???
     u32 unlockedRecipes[16];
+    struct Coords16 savedPos;
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

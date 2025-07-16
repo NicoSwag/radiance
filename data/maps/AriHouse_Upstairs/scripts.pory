@@ -1,4 +1,8 @@
-mapscripts AriHouse_Upstairs_MapScripts {}
+mapscripts AriHouse_Upstairs_MapScripts {
+        MAP_SCRIPT_ON_FRAME_TABLE [
+        VAR_MOSSDEEP_PAST_STATE, 1: AriHouse_Upstairs_EventScript_Intro
+    ]
+}
 
 script AriHouse_Upstairs_Text_Togepi{
     lock
@@ -196,5 +200,43 @@ script AriHouse_Upstairs_Text_Mess{
     ))
     closemessage
     release
+    end
+}
+
+script AriHouse_Upstairs_EventScript_Intro{
+    
+    setvar(VAR_MOSSDEEP_PAST_STATE, 2)
+    delay(16)
+    createfieldmugshot(MUGSHOT_ARI, EMOTE_NORMAL)
+    speakername("{PLAYER}")
+    msgbox(format(
+        "Yaaaaawn…\p
+        I feel like I just had a crazy dream.\n
+        It was… Hmm…\p
+        Dammit, I can't remember it.\p
+        I really should start keeping a dream journal.\p
+        Oh well.\p
+        What time is it, anyway?\n
+        Where's {RIVAL}?\p
+        … … …\p
+        Oh crap.\n
+        I overslept.\p
+        This is bad.\n
+        This is REALLY bad.\p
+        And today, of all days!\p
+        {RIVAL} is gonna kill me!\n
+        And Professor Cozmo…\p
+        Well, he probably isn't gonna kill me.\N
+        But still!\p
+        I need to get up and head to the {COLOR RED}Space Center{COLOR DARK_GRAY} right away!"
+    ))
+    closemessage
+    fadescreen(FADE_TO_BLACK)
+    applymovement(OBJ_EVENT_ID_PLAYER, moves(
+        walk_fast_left*2
+        walk_fast_down
+    ))
+    waitmovement(0)
+    fadescreen(FADE_FROM_BLACK)
     end
 }
